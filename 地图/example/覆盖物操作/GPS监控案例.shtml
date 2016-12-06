@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>GPS轨迹监控</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map");
+}
+
+var marker;
+function moveMarker(){
+	//随机生成监控轨迹
+	var lngX = 116.373881;
+	var latY = 39.907409;
+	var lineArr ; 
+    lineArr = new Array(); 
+    lineArr.push(new AMap.LngLat(lngX,latY)); 
+    for (var i = 1; i <50; i++){ 
+        lngX=lngX+Math.random()*0.05; 
+        if(i%2){ 
+            latY = latY+Math.random()*0.0001; 
+        }else{ 
+            latY = latY+Math.random()*0.06; 
+        } 
+        lineArr.push(new AMap.LngLat(lngX,latY)); 
+    } 
+	//绘制轨迹
+    var polyline=new AMap.Polyline({
+		id:"polyline",
+		path:lineArr,
+		strokeColor:"#F00",//线颜色
+		strokeOpacity:0.4,//线透明度
+		strokeWeight:3,//线宽
+		strokeStyle:"dashed",//线样式
+		strokeDasharray:[10,5]//补充线样式
+	});
+	mapObj.addOverlays(polyline);
+	
+	
+	//添加第一辆小车，速度80码
+	marker = new AMap.Marker({
+		id:"car",
+		position:new AMap.LngLat(lngX,latY),
+		icon:"http://api.amap.com/webapi/static/Images/car.png",
+		offset:{x:-26,y:-13}
+	});
+	mapObj.addOverlays(marker);
+	marker.moveAlong(lineArr,80,null,true);//80千米每小时
+	var inforWindow = new AMap.InfoWindow({
+		content:"this is gps car"
+	});
+	mapObj.bind(marker,"click",function(e){
+		inforWindow.open(mapObj,marker.getPosition());
+		mapObj.bind(marker,"moving",function(e){
+			inforWindow.setPosition(marker.getPosition());
+		});
+	});
+	
+	//移动地图到轨迹初始点
+	mapObj.panTo(marker.getPosition());
+	
+	//绑定移动事件，如果超越视野，则移动地图
+	mapObj.bind(marker,"moving",function(e){
+		var lnglat = marker.getPosition();
+		var bounds = mapObj.getBounds();
+		if(lnglat.lng <= bounds.southwest.lng || lnglat.lng>=bounds.northeast.lng || lnglat.lat<=bounds.southwest.lat || lnglat.lat>=bounds.northeast.lat){
+			mapObj.panTo(lnglat);	
+		}
+	});
+	
+	
+	//添加第二辆小车，速度90码
+	var marker2 = new AMap.Marker({
+		id:"car2",
+		position:new AMap.LngLat(lngX,latY),
+		icon:"http://api.amap.com/webapi/static/Images/car2.png",
+		offset:{x:-26,y:-13}
+	});
+	mapObj.addOverlays(marker2);	
+	
+	//5秒钟后第二辆小车再出发
+	setTimeout(function(){
+		marker2.moveAlong(lineArr,90,null);//80千米每小时	
+	},5000);
+}
+</script>
+</head>
+
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:moveMarker();">随机生成轨迹并监控</a>
+</body>
+</html>

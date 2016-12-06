@@ -1,0 +1,10 @@
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	//病害或缺陷类型(病害指标)	和 	预估工程量单位  联动
+	$("#binghaiOrQueXianType").change(function(){
+		var value = $(this).find("option:selected").attr("p");
+		$("#yuGuGongChengLiangDw").attr("value",value);
+	});
+	
+});
+</script>

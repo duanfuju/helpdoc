@@ -1,0 +1,299 @@
+CSS层叠样式表
+
+	语法：
+		selector{
+			propert:value;
+		}
+
+	多个selector用 ,  分隔
+	多个propert用  ;  分隔
+
+选择器
+	派生选择器：通过标签元素嵌套的位置来定义标签元素的属性
+	id选择器：以 # 来定义
+	类选择器：以 . 来定义
+	标签选择器：直接使用标签元素进行定义
+	属性选择器：以 [] 来定义;
+		例：
+			[title=zhi](ie6等不支持此写法)
+		模糊写法：(含义：具备title属性，且它的值为【zhi+任意字符】)
+			[title~=zhi]
+	元素选择器：文档的元素就是最基本的选择器
+	选择器分组：	、表示分隔不同的选择器   *表示全局的通配
+	后代选择器：以空格隔开，可以跳代选择
+	子元素选择器:以>号来隔开，不可以跳代选择，只能选择下一级元素
+	相邻兄弟选择器：可选择紧接在另一个元素后的元素，且二者有相同的父元素
+		例：h1+p（含义：h1和p同级且p紧接在h1后，则选择该p）
+
+
+背景
+	background-image:url(""):定义背景图片
+	background-repeat：是否允许重复
+	background-position：定义背景图的位置
+	background-attachment：fixed（固定）；背景图像是否固定或者随着页面的其余部分滚动
+	background-size：规定背景图片的尺寸
+
+文本
+	color：文本颜色
+	direction:文本方向
+	line-height：行高
+	letler-spacing：字符间距
+	text-align：对齐元素中的文本
+	text-decoraction：向文本添加修饰
+	text-indent：缩进元素中文本的首行
+	text-transform：元素中的字母（格式化，统一英文的大小写）
+	unicode-bidi：设置文本方向
+	white-space：元素中空白的处理方式
+	word-spacing：字间距
+	text-shadow：文字阴影效果
+		例：text-shadow:5px 5px 1px red;
+		说明：第一个参数代表左边距的长度，第二个参数代表上边距的长度，第三个参数代表清晰度，第四个参数代表颜色
+	text-wrap：文本的换行的规则，一般与width合用；英文整体不拆
+
+
+
+字体
+	font-family：设置字体系列
+	font-size：设置字体的尺寸
+	font-style：设置字体的风格
+	font-variant：以小型大写字体或正常字体显示文本
+	fint-weight：设置字体的粗细
+
+	定义自定义的字体
+	@font-face{
+		font-family:myfont;
+		src:url();
+	}
+
+
+
+链接(a标签的伪类)
+	link：普通的、未被访问的链接
+	visited：用户已访问的链接
+	hover：鼠标指针位于链接的上方
+	active：链接被点击的时刻
+	first-child：第一个子元素
+	text-decoraction：是否去除a标签的下划线
+
+
+
+列表
+	list-style：简写列表项
+	list-style-iamge：列表项图像
+	list-style-position：列表标志位置
+	list-style-type：列表类型
+
+
+
+表格
+	border-collapse：collapse；折叠边框（表格单线）
+	隔行变色：odd奇数行、even偶数行、也可以直接指定数字
+	tr:nth-child(even){
+		color: #CCC
+	}
+	隔列变色：需要在table的子标签的下增加标签<col>
+	table col:nth-child(2n+2) {background: #CCC}
+
+
+
+轮廓(作用相当于border)
+	outline：设置轮廓属性
+	outline-color：设置轮廓的颜色
+	outline-style：设置轮廓的样式
+	outline-width：设置轮廓的宽度
+
+
+
+css盒子模型
+	height：标签元素的高度
+	width：标签元素的宽度
+	content：标签元素的内容
+	padding：标签的内容距离标签的边框之间的距离
+	border：标签元素的边框
+		border-radius：圆角边框
+		box-shadow：边框阴影
+		border-image：边框图片
+	margin：标签元素的边框距离父级标签（容器）的距离
+		两个标签同级的距离，取较大值
+
+css定位
+	定位机制
+		普通流：元素按照其在HTML中的位置顺序决定排布的过程
+			定位的属性
+				position：把元素放在一个静态的（static）、
+							相对的（relative）、
+							绝对的（absolute：不占位置，相当于在页面中被扣除，然后浮在表面；和浮动涂层的效果类似）、
+							固定的（fixed：网页中滚动条的广告的实现）位置中
+						
+				top：元素向上的偏移量
+				left：元素向左的偏移量
+				right：元素向右的偏移量
+				bottom：元素向下的偏移量
+				overflow：设置元素溢出其区域发生的事情
+				clip：设置元素显示的形状
+				vertical-align：设置元素垂直对齐方式
+				z-index：设置元素的堆叠顺序（0-99：数字越大越在前边）
+		浮动
+			float属性可用的值
+				left：元素向左浮动
+				right：元素向右浮动
+				none：元素不浮动
+				inherit：从父级继承浮动属性
+			clear属性：去掉浮动属性（包括继承来的属性）
+				left、right：去掉想做、向右浮动
+				both：左右两侧均去掉浮动
+				inherit：从腹肌继承来clear的值
+				
+		绝对布局
+
+
+尺寸操作
+	height：设置元素高度
+	line-height：设置行高
+	max-height：设置元素最大高度
+	max-width：设置元素最大宽度
+	min-width：设置元素最小宽度
+	min-height：设置元素最小高度
+	width：设置元素宽度
+
+
+分类操作
+	clear:设置一个元素的侧面是否允许其他的浮动元素
+	cursor：规定当指向某个元素之上时显示的指针类型
+	display:设置是否及如何显示元素
+	float:定义元素在哪个方向浮动
+	position:把元素放置到一个静态的、相对的、绝对的、固定的位置
+	visibility:设置元素是否可见或不可见
+
+
+Css动画因兼容问题有可能要多次复写，复写前缀
+	-webkit-   谷歌
+	-ms-	   IE
+	-o-	   Opera
+	-moz-	   火狐
+
+2D转换方法
+	transform:translate(100px,100px)	移动
+	transform:rotate(180deg)		旋转
+	transform:scale(1,2)			缩放
+		第一个参数是宽度（单位:倍数）
+		第二个参数是高度（单位:倍数）
+	transform:skew(50deg，50deg)		倾斜
+		第一个参数是沿着X轴旋转的角度（单位:度）
+		第二个参数是沿着Y轴旋转的角度（单位:度）
+	transform:matrix()
+3D转换方法
+	transform:rotateX(100deg)
+	transform:rotateY(100deg)
+
+
+
+过渡
+	transition：设置四个过渡属性
+	transition-property：过渡的名称
+	transition-duration：过渡效果花费的时间
+	transition-timing-function：过渡效果的时间曲线
+	transition-delay：过渡效果开始时间(延时)
+动画
+	div{
+		width:100px;
+		height:100px;
+		background-color:red;
+		position:relative;
+		animation:anim 5s infinite alternate;
+		-moz-animation:anim 5s infinite alternate;
+	}
+	@keyframes anim{
+		0%{background:red;left:0px;top:0px}
+		25%{background:blue;left:200px;top:0px}
+		50%{background:#cccffcc;left:200px;top:200px}
+		75%{background:#00ffff;left:0px;top:200px}
+		100%{background:red;left:0px;top:0px}
+	}
+	@-moz-keyframes anim{
+		0%{background:red;left:0px;top:0px}
+		25%{background:blue;left:200px;top:0px}
+		50%{background:#cccffcc;left:200px;top:200px}
+		75%{background:#00ffff;left:0px;top:200px}
+		100%{background:red;left:0px;top:0px}
+	}
+
+
+多列
+	column-count：分页的数量
+	column-gap：列的间隔的距离
+	column-rule：间隔线的颜色
+
+
+
+
+
+
+
+
+
+小技巧 
+
+取消一些浏览器的默认的边距和填充
+*{
+	margin:0px;
+	padding:0px;
+}
+
+主体部分居中显示
+body .content{
+	margin:0px auto;
+}
+
+	
+导航栏
+li{
+	display:inLine;
+}
+	
+	
+图片半透明
+img{
+	opacity:0.5;
+}
+
+ 
+瀑布流
+	HTML：
+		<div class="container">
+			for(int i=0;i<list.size();i++){
+				<div>内容</div>
+			}
+		</div>
+
+	CSS：
+		.container{
+			column-width:250px;
+			-moz-column-width:250px;
+			column-grap:5px;
+			-moz-column-grap:5px;
+		}
+		.container div{
+			width:250px;
+			margin:5px 0px;
+		}
+
+
+
+希望容器有一个固定高度，但当其中的内容多的时候，又希望高度能够自适应，也即容器在纵向能被撑开，且如果有背景，也能够自适应
+li{
+	height:auto!important;
+	height:200px;
+	min-height:200px; 
+}
+在有些时候依然无法解决容器无法撑开自适应的问题。那一定是有容器嵌套的情况下，而子容器又是浮动的。
+例如
+	<div class="fuqin"><ul><li>内容1</li><li>内容1</li></ul></div>
+其中class为fuqin的div有浮动的li，当li比较多的时候，即便是div设置的是最小高度，也无法被撑开。
+原因就在于作为子容器的li是浮动的即 。在这种情况下，即便是li的内容超过了div的高度，div也无法撑开。
+解决方法如下：
+在浮动的容器后面，父容器结束之前加入一个div 
+HTML：
+	<div class="fuqin"><ul><li>内容1</li><li>内容1</li&gt;</ul><div class="clearfloat"></div></div>
+Css：
+	.clearfloat{clear:both;height:0;font-size: 1px;line-height: 0px;} 

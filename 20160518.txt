@@ -1,0 +1,22 @@
+1.时间默认值
+2.上线离线统计
+
+
+数据库文件 在D盘20160518.dmp
+
+
+select * from PUSH_SERVICE_TER_LOG t where t.edit_date>sysdate -1  order by t.edit_date desc 
+
+
+10.127.13.212
+
+administrator
+
+abc@123
+
+
+
+
+
+oking
+123456

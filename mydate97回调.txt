@@ -1,0 +1,15 @@
+<input type="text" id="planMonth" name="planMonth"  readonly  value="${plandate!}" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM',onpicked:function() {javascript:bathePlanShowMp();}})"class="form-control" >
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+function bathePlanShowMp(){
+	var plandate=$("#planMonth").val();
+	common_ajax.ajaxDiv("divModel","/jf/manage/monthplan/select",{'plandate':plandate});
+}
+</script>

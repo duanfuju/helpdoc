@@ -1,0 +1,57 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    <html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>在指定位置添加点对象</title> 
+    <!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" /> 
+    <script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>  
+    <script language="javascript">  
+      
+    var mapObj,toolbar,overview,scale;  
+    function mapInit()  
+    {  
+        var opt = {  
+        level:13,//设置地图缩放级别  
+        center:new AMap.LngLat(116.397428,39.90923),//设置地图中心点     
+        doubleClickZoom:true,//双击放大地图  
+        scrollWheel:true//鼠标滚轮缩放地图  
+        }  
+        mapObj = new AMap.Map("iCenter",opt);  
+        mapObj.plugin(["AMap.ToolBar","AMap.OverView","AMap.Scale"],function()  
+        {   
+        toolbar = new AMap.ToolBar();  
+        toolbar.autoPosition=false; //加载工具条   
+        mapObj.addControl(toolbar);       
+        overview = new AMap.OverView(); //加载鹰眼  
+        mapObj.addControl(overview);      
+        scale = new AMap.Scale(); //加载比例尺  
+        mapObj.addControl(scale);  
+        });   
+    }  
+    function addMarkerOnMap(){  
+       var a = document.getElementById('lnglat').value;  
+       var ll = a.split(",");  
+       var marker = new AMap.Marker({                      
+       id:"m", //marker id                     
+       position:new AMap.LngLat(ll[0],ll[1]), //位置   
+       icon:"http://api.amap.com/webapi/static/Images//0.png",//复杂图标  
+       offset:new AMap.Pixel(0,-36), //相对于基点的偏移量  
+       draggable:true, //可拖动   
+       cursor:"default",//鼠标悬停时显示的光标  
+       visible:true//可见  
+       });   
+     mapObj.addOverlays(marker);  
+     mapObj.setFitView();//设置地图合适视野级别  
+    }  
+    </script>  
+    </head>  
+    <body onload="mapInit();">  
+    <div id="iCenter" style="width:659px; height:400px"></div>  
+    添加点的坐标：<input type="text" name="lnglat" id="lnglat" value="116.355342,39.941111" style="width: 250px" />  
+    <a href="javascript:addMarkerOnMap()">添加点对象</a>  
+    </body>  
+    </html>  
+

@@ -1,0 +1,121 @@
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<%=basePath%>
+
+
+
+
+
+
+
+获取当前的日期时间 格式“yyyy-MM-dd HH:MM:SS”
+function getNowFormatDate() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    return currentdate;
+}
+
+
+
+
+
+CSS不换行
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+
+//获取5天后的时间
+Calendar c = Calendar.getInstance();  
+c.setTimeInMillis(new Date().getTime());
+c.add(Calendar.DATE, 5);//5天后的日期
+Date date= new Date(c.getTimeInMillis()); //将c转换成Date
+
+
+
+//获取登录的人
+IUser user = ContextHolder.getLoginUser();
+
+
+
+前台获取session：'${session.getAttribute("project_id")}';
+
+前台获取request："${request.getParameter('p')}";
+
+
+
+
+修改日期格式的将中文日期转换成带时分秒的日期
+	①将models中的日期的匹配类型由Date转换成DateTime
+	②将实体类映射的日期字段中的注解改成下列
+		@Temporal(TemporalType.TIMESTAMP)
+
+
+
+
+应该采用Context来传递全局参数。它在View的整个生命周期中无论在Browser还是在Server端，都可以很方便的访问和存储常用的是数据。
+
+view中配置：http://wiki.bsdn.org/pages/viewpage.action?pageId=6947222
+
+前后台取值：http://wiki.bsdn.org/pages/viewpage.action?pageId=10354826
+
+
+
+*{  
+	  scrollbar-face-color:#01b9f6; /*面子*/  
+	  scrollbar-arrow-color:#fff; /*箭头*/  
+	  scrollbar-3dlight-color:#e9f1d2; /*最外左*/  
+	  scrollbar-highlight-color:#e9f1d2; /*左二*/  
+	  scrollbar-shadow-color:#e9f1d2; /*右二*/  
+	  scrollbar-darkshadow-color:#e9f1d2; /*右一*/  
+	  scrollbar-track-color:#e9f1d2; /*滑道*/  
+}
+
+
+/*滚动条整体*/  
+::-webkit-scrollbar{  
+    width:12px; /*滚动条宽度*/  
+}  
+/*滚动条按钮*/  
+::-webkit-scrollbar-button {  
+
+}  
+::-webkit-scrollbar-track{  
+    background-color: #e9f1d2;  /*滑道全部*/  
+}  
+::-webkit-scrollbar-track-piece{  
+    background-color:#c7dce3;  /*滑道*/  
+    -webkit-border-radius:1px; /*滑道圆角宽度*/  
+}  
+::-webkit-scrollbar-thumb{  
+   background:#01b9f6; /*滑动条表面*/  
+    /*滑动条边框*/  
+    border-radius:8px;/*滑动条圆角宽度*/ 
+}  
+/*横竖滚动条交角*/  
+::-webkit-scrollbar-corner {  
+    background-color: #0380f5;  
+}  
+/*横竖滚动条交角图案*/  
+::-webkit-resizer {  
+    background-repeat: no-repeat;  
+    background-position: bottom right;  
+}  
+/*鼠标滑过滑动条*/  
+::-webkit-scrollbar-thumb:hover{  
+    background:#009dd2; 
+} 

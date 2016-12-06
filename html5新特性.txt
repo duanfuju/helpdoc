@@ -1,0 +1,200 @@
+HTML5新特性
+
+			  语义：  能够让你更恰当地描述你的内容是什么。
+			连通性：  能够让你和服务器之间通过创新的新技术方法进行通信。
+		   离线 & 存储：  能够让网页在客户端本地存储数据以及更高效地离线运行。
+	                多媒体：  使 video 和 audio 成为了在所有 Web 中的一等公民。
+	     2D/3D 绘图 & 效果：  提供了一个更加分化范围的呈现选择。
+		   性能 & 集成：  提供了非常显著的性能优化和更有效的计算机硬件使用。
+	设备访问 Device Access：  能够处理各种输入和输出设备。
+
+
+
+
+
+音频的播放
+	1.audio(音频)
+		html5提供了播放音频文件的标准
+	2.control(控制器)
+		control属性供添加播放、暂停和音量控件
+	3.标签：
+		<audio> ：定义声音
+		<source> ：规定多媒体资源，可以是多个
+
+编解码工具
+	FFmpeg（教程上的推荐）
+	超级录屏 8.0(纯属个人推荐)
+
+视频的播放
+	1.Video(视频)
+		html5提供了展示视频的标准
+	2.control(控制器)
+		control属性供添加播放、暂停和音量控件
+	3.标签
+		<video>:定义声音
+		<source>:规定多媒体资源，可以是多个
+	4.属性
+		width:宽
+		height:高
+
+	注意：<source>一般用来解决多个浏览器之间的兼容性问题
+
+HTML5拖放
+	1.html5拖放
+		拖放(Drag和drop)是HTML5标准的组成部门
+	2.拖动开始
+		ondragstart：调用了一个函数，drag(event),它规定了被拖动的数据
+	3.设置拖动数据
+		setData()：设置被拖数据的数据类型和值
+	4.放置
+		ondrop：当放置被拖数据时，会发生drop事件
+
+
+Canvas标签
+	含义：HTML5<canvas>远古三用于图形的回执，通过脚本（通常是JavaScript）来完成
+	      <canvas>标签只是图形容器，必须使用脚本来回执图形
+	      可以通过多种方法使用Canva回执路径、盒、园、字符以及添加图像    
+	 帮助文档：
+		https://developer.mozilla.org/zh-CN/
+	一般使用的接口：CanvasRenderingContext2D
+	使用时获取对象
+		var canvas = document.getElementById('canvas标签在html中的id');
+		var context = canvas.getContext('2d');
+
+		//context.rotate(45);            旋转
+	       //context.translate(200,-200);   移动
+		context.scale(2,0.5);       // 缩放
+
+
+Createjs
+	官网：createjs.com
+	easeljs:处理html5的canvas
+	tweenjs:处理动画效果和js属性
+	soundjs:处理音频的api
+	preloadjs:处理预加载项
+
+
+
+SVG(Scalable Vector Graphics)
+	含义：可伸缩矢量图形
+	用来定义用于网络的基于矢量的图形
+	使用xml格式定义图形
+	图像在放大或改变尺寸的情况下器图形质量不会有损失
+	是万维网联盟的标准
+	优势：
+		1.SVG图像可通过文本编辑器来创建和修改
+		2.SVG图像可被搜索、索引、脚本化或压缩
+		3.SVG是可伸缩的
+		4.SVG图像可在任何的分辨率下呗高质量地打印
+		5.SVG可在图像质量不下降的情况下呗放大
+
+客户端存储数据的新方法
+	localStorage：没有时间限制的数据存储，用户关闭浏览器后数据不会消失
+		
+
+	sessionStorage：针对一个session的数据存储，用户关闭浏览器后数据会消失
+	与cookie做对比：
+		之前，这些都是由cookie完成的。但是cookie不适合
+		大量数据的存储，因为它们有每个对服务器的请求来
+		传递，这使得cookie速度很慢而且效率也不高
+
+应用缓存
+	含义：HTML5引入了应用程序缓存，这意味着web应用可进行缓存，
+	      并可在没有因特网连接时进行访问
+	应用缓存的优势：
+		1.离线浏览-用户可在应用里显示使用它们
+		2.速度-已缓存资源加载得更快
+		3.减少服务器负载-浏览器将只从服务器下载更新过
+			或更改过的资源
+	实现缓存：
+		如需启用应用缓存，请在文档的<html>标签中包含manifest
+		属性，manifest文件的建议的文件扩展名是：".appcache"
+	Manifest文件
+		1.CACGE MANIFEST-在此标题下列出的文件将在首次下载后进行缓存
+		2.NETWORK-在此标题下列出的文件血药与服务器的连接，且不会被缓存
+		3.FALLBACK-在此标题下列出的文件规定当页面无法进行访问时的回退页面(比如404页面)
+
+Web Workers
+	运行在后台的JavaScript，独立于其他脚本，不会影响页面的性能
+	方法：
+		postMessage()-它用于向HTML页面出那会一段信息
+		terminate()-终止web worker,并释放浏览器/计算机资源
+	事件：
+		onmessage
+
+	注意事项:
+		用来测试的js和html文件都需要发布到站点才可以正常访问，否则会提示这个错误：
+		Uncaught
+		 SecurityError: Failed to construct 'Worker': Script at 'file:///D:/selftraining/html5/webworker/my_task.js'
+		 cannot be accessed from origin 'null'.
+
+
+HTML5服务器推送事件（Server-sent Events）
+	介绍：
+		它是 HTML 5 规范中的一个组成部分，可以用来从服务端实时推送数据到浏览器端。
+	传统的服务器端推送数据技术
+		WebSocket:WetbSocket规范是HTML5中的一个重要组成部分，已经被很多主流浏览器所支持，也有不少基于WebSocket开发的应用。
+			正如名称所表示的一样，WebSocket使用的是套接字连接，基于TCP协议。使用WebSocket之后，实际上在服务器端和浏览器
+			之间建立一个套接字连接，可以进行双向的数据传输。WebSocket的功能是很强大的，使用起来也灵活，可以使用于不同的
+			场景。不过WebSocket技术也比较复杂，包括服务器端和浏览器的实现都不同于一般的Web应用。
+	
+	HTTP协议：简易轮询，即浏览器端定时向服务器端发出请求，来查询是否有数据更新。这种做法比较简单，可以再一定程度上解决问题。不过对于轮询
+		的时间间隔需要进行仔细考虑。轮询的间隔过长，会导致用户不能及时接收到更新的数据；轮询的间隔过短，会导致查询请求过多，增加服务器端的负担。
+
+	实现：
+		1.服务器代码头：header('Content-Type:text/event-stream');
+		2.EventSource事件：
+			onopen		服务器的链接被打开
+			onmessage	接收消息
+			onerror		错误发生
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

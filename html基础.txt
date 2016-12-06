@@ -1,0 +1,122 @@
+HTML5（基础：html、xhtml、css、css3、javaScript、JQuery）
+
+html（超文本标记语言）不是编程语言，是标记语言
+
+html5和html的区别：
+	1.在文档类型声明上
+		html:<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+		html5:<!doctype html>
+		在文档声明上，html有很长的一段代码，并且很难记住这段代码，而html5却不同，只有简简单单的声明，这也方便人们的记忆。
+	2.在结构语义上
+		html:没有体现结构语义化的标签，通常都是这样来命名的<div id="header"></div>，这样表示网站的头部。
+		html5:在语义上却有很大的优势。提供了一些新的标签，比如:<header><article><footer>。 
+
+html5的运行要求
+	1.硬件：双核、2G内存
+	2.软件：Windows、Mac OS X、Linux
+
+html5的优势
+	1.各大浏览器的支持
+	2.跨平台运行
+	3.硬件要求低
+	4.flash之外的选择
+
+html5的新特性
+	1.用于绘画的canvas标签（重点）
+	2.用于媒介回放的video和audio（重点）
+	3.对本地离线存储的更好支持
+	4.新的特殊内容元素
+		如：article、footer、header、nav、section
+	5.新的表单控件
+		如：calendar、date、time、email、url、search
+	6.浏览器的支持
+		Safari、Chrome、FireFox以及Opera包括IE9基本支持了HTML5
+
+HTML5的声明：<!doctype html>
+
+html的格式化
+	b：定义粗体文本
+	big：定义大号字
+	em：定义着重文字
+	i：定义斜体文字
+	small：定义小号字
+	strong：定义加重语气
+	sub：定义下标字
+	sup：定义上标字
+	ins：定义插入字
+	del：定义删除字
+
+a标签：超链接
+	name：文档内的链接
+	href:可以跳转到另一个；也可以#+name跳转到的页面中的a标签中name属性的元素位置
+
+
+
+html表格
+	table：定义表格
+	caption：定义表格标题
+	th：定义表格的表头
+	tr：定义表格的行
+	td：定义表格的列
+	thead：定义表格页眉
+	tbody：定义表格的主体
+	tfoot：定义表格的页脚
+	col：定义表格的列属性
+
+html列表
+	ol：有序列表	type:a(a-z) A(A-Z) I(罗马数字) i
+	ul：无序列表	type：disc（实体圆）、circle（空心圆）、square（方块）
+	li：列表项
+
+	dl：自定义列表
+	dt：列表项
+	dd：描述	
+
+html块元素
+	1.块元素在显示时，通常会以新行开始
+		如：h1、p、ul
+	2.html内联元素
+		内联元素通常不会以新行开始
+		如：b、a、img
+	3.html div元素
+		div元素也被成为块元素，主要是组合html元素的容器
+	4.html span元素
+		span元素是内联元素，可作为文本的容器
+
+html布局
+	1.使用div元素布局
+	2.table元素布局
+	
+html表单
+	form：表单
+	input：输入域
+	textarea：文本域
+	label：控制标签
+	fieldset：定义域
+	legend：域的标题
+	select：选择列表
+	optgroup：选项组
+	option：下拉列表中的选项
+	button：按钮
+
+
+html框架（html5中已经过时，【除：iframe】）
+	1.frame
+	2.frameset（不能够加在body标签中间）
+
+html的实体
+	&lt;  ：小于
+	&gt;  ：大于
+	&nbsp;：空格
+
+
+
+html样式
+	①外部样式表
+		<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+	②内部样式表
+		<style type="text/css">
+			body{background-color:red}
+		</style>
+	③内联样式表
+		<div style="color:red"></div>

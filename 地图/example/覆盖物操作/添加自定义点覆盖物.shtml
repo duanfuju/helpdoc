@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>添加自定义点覆盖物</title>
+<style>
+body{ margin:0; padding:0;font:12px/16px Verdana,Helvetica,Arial,sans-serif;}
+/* 定义自定义点样式 */
+div.marker{height:40px;width:120px;background:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker.png) left top no-repeat;white-space:nowrap;}
+div.marker span{ display:inline-block;height:28px;line-height:28px;margin:0 10px;color:#FFF;background:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker_bg_170x28.gif) right top no-repeat;padding-right:10px;}
+
+/* 修改背景URL */
+div.change{display:inline-block;background-image:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker-h.png);}
+div.change span{background-image:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker-h-l.gif);}
+</style>
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map",{
+		center:new AMap.LngLat(116.392936,39.919479)
+	});
+	mapObj.plugin(["AMap.ToolBar","AMap.OverView,AMap.Scale"],function(){
+		//加载工具条
+		tool = new AMap.ToolBar({
+			direction:false,
+			ruler:false,
+			autoPosition:false//禁止自动定位
+		});
+		mapObj.addControl(tool);
+		//加载鹰眼
+		view = new AMap.OverView({visible:false});
+		mapObj.addControl(view);
+		//加载比例尺
+		scale = new AMap.Scale();
+		mapObj.addControl(scale);
+	});
+}
+function addCustomMarker(){
+	//自定义覆盖物dom 元素
+	var m = document.createElement("div");
+	m.className = "marker";
+	var n = document.createElement("span");
+	n.innerHTML = "Amap";
+	m.appendChild(n);
+	
+	var marker = new AMap.Marker({
+		id:"m225",
+		position:new AMap.LngLat(116.373881,39.907409), //基点位置
+		offset:new AMap.Pixel(0,-40), //相对于基点的偏移位置
+		//draggable:true,  //是否可拖动
+		content:m   //自定义覆盖物内容
+	});
+	mapObj.addOverlays(marker);	 //添加到地图
+	//mouseover,换个皮肤
+	mapObj.bind(marker,"mouseover",function(){
+		n.innerHTML = "高德地图"; //修改内容
+		m.className = "marker change";//增加样式
+	});
+	//mouseout,换回皮肤
+	mapObj.bind(marker,"mouseout",function(){
+		n.innerHTML = "Amap"; //修改内容
+		m.className = "marker";
+	});
+}
+</script>
+</head>
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:addCustomMarker()">添加自定义点覆盖物</a>
+</body>
+</html>

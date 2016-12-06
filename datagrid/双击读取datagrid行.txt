@@ -1,0 +1,12 @@
+/** @Bind #dgpersonnel.onDataRowClick */
+!function(dsFinfByE){
+	var datagrid = this.get("#dgpersonnel");
+	var dataset =datagrid.get("dataSet");
+	var row = dataset.getData("#");
+	var username1= row.get("username1");
+	var parameter={
+			username1:username1
+	};
+	dsFinfByE.set("parameter",parameter);
+	dsFinfByE.flushAsync();
+};

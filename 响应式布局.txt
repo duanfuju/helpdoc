@@ -1,0 +1,161 @@
+响应式布局
+	兼容多个终端：pc、phone、pad等
+	优点：
+		1.面对不同分辨率设备灵活性强
+		2.能够快捷解决设备显示适应问题
+	缺点：
+		1.兼容各种设备工作量大，效率低下
+		2.代码累赘，会出现隐藏无用的元素，加载时间加长
+
+
+基本实现：
+	1.CSS中的Media Query(媒介查询)
+		设备宽高:device-width,device-height
+		渲染窗口的宽和高:width,height
+		设备的手持方向:orientation
+		设备的分辨率:resolution
+	2.使用方法:
+		外联 
+			html页面添加：
+				<meta name="viewport" content="width = device-width,initial-scale=1">
+			css页面添加：
+				@media screen and (min-width: 600px)[and (max-width: 960px)]
+		内嵌样式
+		    <style type="text/css" >
+		       /*当前样式表为页面的最小宽度为640px，才能实现效果
+		       @media screen and (min-width:640px) {
+			   body{
+			       background-color: aqua;
+			   }
+		       }*/
+		    </style>
+
+Bootstrap
+	介绍：
+		简介、直观、强悍的前端开发框架，让web开发更迅速、简单
+	优点：
+		快速、简单、灵活的栅格系统、小而强大、响应式布局、跨平台
+	下载：
+		http://getbootstrap.com/
+	目录：
+		bootstrap/
+		├── less/
+		├── js/
+		├── fonts/
+		├── dist/
+		│   ├── css/
+		│   ├── js/
+		│   └── fonts/
+		└── docs/
+		    └── examples/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

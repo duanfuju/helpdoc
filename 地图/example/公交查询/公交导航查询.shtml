@@ -1,0 +1,464 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>公交导航查询</title>
+		<!--<style>
+		body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+		</style>-->
+		<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+		<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+		<script language="javascript">
+			var mapObj, toolbar, overview, scale;
+            var date,startTime;
+			function mapInit() {
+				var opt = {
+					level : 13, //设置地图缩放级别
+					center : new AMap.LngLat(116.397428, 39.90923), //设置地图中心点
+					doubleClickZoom : true, //双击放大地图
+					scrollWheel : true//鼠标滚轮缩放地图
+				}
+				mapObj = new AMap.Map("iCenter", opt);AMap.Conf.network = 1;
+				mapObj.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function() {
+					toolbar = new AMap.ToolBar();
+					toolbar.autoPosition = false;
+					//加载工具条
+					mapObj.addControl(toolbar);
+					overview = new AMap.OverView();
+					//加载鹰眼
+					mapObj.addControl(overview);
+					scale = new AMap.Scale();
+					//加载比例尺
+					mapObj.addControl(scale);
+				});
+			}
+
+			function busSearch() {
+				this.busSType = "s";
+				//起始点
+				this.cityname = "";
+				this.start_x = "";
+				this.start_y = "";
+				this.start_name = "";
+				this.start_address = "";
+				this.start_tel = "";
+				this.start_pid = "";
+				this.start_citycode = "";
+				this.start_cityname = "";
+				this.start_detailLink = "";
+				this.start_type = "";
+
+				this.end_x = "";
+				this.end_y = "";
+				this.end_name = "";
+				this.end_address = "";
+				this.end_tel = "";
+				this.end_pid = "";
+				this.end_citycode = "";
+				this.end_cityname = "";
+				this.end_detailLink = "";
+				this.end_type = "";
+				this.x_array
+				this.y_array
+				this.x_c_array
+				this.y_c_array
+				this.xy_array
+				this.xy_c_array
+			}
+
+			var busS = new busSearch();
+			function keywordSearch() {
+				busS.cityname = document.getElementById("city").value;
+				busS.start_name = document.getElementById("keyword").value;
+				busS.end_name = document.getElementById("keyword1").value;
+				var i = 1;
+				var che = "";
+				if (busS.cityname == "") {
+					che += i + "．请您输入城市\n";
+					i = i + 1;
+				}
+				if (busS.start_name == "") {
+					che += i + "．请您输入起点";
+					i = i + 1;
+				}
+				if (busS.end_name == "") {
+					che += i + "．请您输入终点";
+					i = i + 1;
+				}
+				if (i == 1) {
+					busS.busSType = "s";
+					busChange_search(busS.cityname, busS.start_name);
+				} else {
+
+					alert(che);
+				}
+			}
+
+			function busChange_search(city, keywords) {
+				var PoiSearchOption = {
+					number : 10, //每页数量
+					batch : 1//请求页数
+				};
+				var MSearch = new AMap.PoiSearch(PoiSearchOption);
+				MSearch.byKeywords(keywords, city, busChange_search_CallBack);
+                date = new Date();
+                startTime = date.getTime();
+			}
+
+            function showTime(){
+                var date = new Date();
+                document.getElementById("textSearchTime").value = date.getTime() - startTime + "毫秒";
+            }
+
+			function busChange_search_CallBack(data) {
+                showTime();document.getElementById("textUniqId").value = data.uniqid;
+				if (busS.busSType == "s") {
+					if (data.list == null) {
+						document.getElementById("result").innerHTML = "起点未查找到任何结果!<br />建议：<br />1.请确保所有字词拼写正确。<br />2.尝试不同的关键字。<br />3.尝试更宽泛的关键字。";
+					} else {
+						busS.start_x = data.list[0].x;
+						busS.start_y = data.list[0].y;
+						busS.start_name = data.list[0].name;
+						busS.start_address = data.list[0].address;
+						busS.start_tel = data.list[0].tel;
+						busS.start_type = data.list[0].type;
+						busS.start_pid = data.list[0].pguid;
+						busS.start_citycode = data.list[0].citycode;
+						buschange_EndSearch();
+
+					}
+				} else if (busS.busSType == "e") {
+
+					if (data.status == "E1") {
+						document.getElementById("result").innerHTML = "终点未查找到任何结果!<br />建议：<br />1.请确保所有字词拼写正确。<br />2.尝试不同的关键字。<br />3.尝试更宽泛的关键字。";
+					} else {
+						busS.end_x = data.list[0].x;
+						busS.end_y = data.list[0].y;
+						busS.end_name = data.list[0].name;
+						busS.end_address = data.list[0].address;
+						busS.end_tel = data.list[0].tel;
+						busS.end_type = data.list[0].type;
+						busS.end_pid = data.list[0].pguid;
+						busS.end_citycode = data.list[0].citycode;
+						busChangeSearchXY();
+					}
+				}
+
+			}
+
+			function buschange_EndSearch() {
+
+				busS.busSType = "e";
+				busChange_search(busS.cityname, busS.end_name);
+
+			}
+
+			function busChangeSearchXY() {
+
+				var startXY = new AMap.LngLat(busS.start_x, busS.start_y);
+				var endXY = new AMap.LngLat(busS.end_x, busS.end_y);
+				var mrs = new AMap.BusSearch(BusSearchOption);
+				var BusSearchOption = {
+					per : 100, //抽稀参数
+					batch : 1, //当前页码
+					number : 10//每页数量
+				};
+				var arr = new Array();
+				//经纬度坐标数组
+				arr.push(startXY);
+				arr.push(endXY);
+				var bus = new AMap.BusSearch(BusSearchOption);
+				mrs.byTwoPoi(arr, busS.cityname, busChangeSearchXY_CallBack)
+
+			}
+
+			function busChangeSearchXY_CallBack(data) {
+				busS.xy_array = new Array();
+				busS.xy_c_array = new Array();
+				var resultStr = "";
+				if (data.status == "E0") {
+					var bus_content = new Array();
+					var bus_count = data.list.length;
+					bus_content.push("<table width=\"340\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\"><tr><td colspan=\"2\" style=\"background:#e1e1e1;\">　线路</td><td width=\"181\" style=\" border-left:1px solid #fff; background:#e1e1e1;\">　乘车方案</td><td width=\"80\" style=\" border-left:1px solid #fff; background:#e1e1e1;\">　估计车程</td><td width=\"15\" style=\" background:#e1e1e1;\">&nbsp;</td></tr><tr><td colspan=\"5\">");
+					for (var i = 0; i < bus_count; i++) {
+						bus_content.push("<table width=\"350\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">");
+						var bus_length = 0;
+						var bus_name = "";
+						var busxy = "";
+						var busCHxy = "";
+						var str_list = data.list[i].segmentList.length;
+						//每次线路的换乘次数.
+						var bus_text = "<tr style=\"background:#efefef;\"><td width=\"42\" align=\"center\"><img src=\"http://api.amap.com/webapi/static/Images/start.gif\" /></td><td colspan=\"3\">起点 " + data.list[i].segmentList[0].startName + "</td><td>&nbsp;</td></tr>";
+						for (var k = 0; k < str_list; k++) {
+							if (k == (str_list - 1)) {
+								bus_name += (data.list[i].segmentList[k].busName).split("(")[0];
+							} else {
+								bus_name += (data.list[i].segmentList[k].busName).split("(")[0] + " <img src=\"http://api.amap.com/webapi/static/Images/supermap_arrow3.gif\" /> ";
+							}//得到公交车名称.
+							var passDepotName = (data.list[i].segmentList[k].passDepotName).split(" ");
+							//对途经站点名称进行分隔.
+							var passDepotNum = passDepotName.length + 1;
+
+							bus_text += "<tr><td>&nbsp;</td><td colspan=\"2\">步行" + Getdistance(data.list[i].segmentList[k].footLength) + "到车站</td><td align=\"center\"><span style=\"color:#004a80;\">" + passDepotNum + "站</span></td><td>&nbsp;</td></tr><tr><td style=\" border-bottom:none;\">&nbsp;</td><td colspan=\"3\" style=\" border-bottom:none;\">" + data.list[i].segmentList[k].busName + "</td><td style=\" border-bottom:none;\">&nbsp;</td></tr><tr><td>&nbsp;</td><td colspan=\"3\"><span class=\"gray\">在</span>　" + data.list[i].segmentList[k].startName + " <span class=\"gray\">上车</span>　<br />    <span class=\"gray\">在　</span>" + data.list[i].segmentList[k].endName + "　<span class=\"gray\">下车</span></td><td>&nbsp;</td></tr>";
+							if (k == 0) {
+								var xy = (data.list[i].segmentList[k].coordinateList).split(";");
+								busCHxy += xy[xy.length - 1] + ";";
+							} else if ((k + 1) != str_list) {
+								var xy = (data.list[i].segmentList[k].coordinateList).split(";");
+								busCHxy += xy[0] + ";" + xy[xy.length - 1] + ";";
+							} else {
+								var xy = (data.list[i].segmentList[k].coordinateList).split(";");
+								busCHxy += xy[0] + ";";
+							}
+							busxy += data.list[i].segmentList[k].coordinateList + ";";
+							if (str_list == 1) {
+								busCHxy = "";
+							}//如果换乘次数为"1",没有换乘XY.此次线路可以直达.
+							bus_length += parseInt(data.list[i].segmentList[k].driverLength);
+							//每条线路车程
+						}
+						busS.xy_c_array[i] = busCHxy;
+						busS.xy_array[i] = busxy;
+						bus_content.push("<tr onclick=\"drawBuschangeLine('" + i + "')\" style=\"cursor:pointer\"><td colspan=\"3\" class=\"change_blue\">" + bus_name + "</td><td class=\"change_blue\">" + Getdistance(bus_length) + "</td><td class=\"change_blue\">&nbsp;</td></tr>" + bus_text + "<tr><td>&nbsp;</td><td colspan=\"3\">步行" + Getdistance(data.list[i].footEndLength) + "到终点<br /></td><td>&nbsp;</td></tr><tr style=\"background:#efefef;\"><td align=\"center\"><img src=\"http://api.amap.com/webapi/static/Images/end.gif\" /></td><td colspan=\"3\">终点 " + data.list[i].segmentList[str_list - 1].endName + "</td><td>&nbsp;</td></tr></table>");
+						bus_content.push("<div style=\"height:0px;width:100%; line-height:0px;\"></div>");
+					}
+					bus_content.push("</td></tr></table>");
+					resultStr = bus_content.join("");
+					drawBuschangeLine('0');
+				} else if (data.status == "E1") {
+					resultStr = "未查找到任何结果!<br />建议：<br />1.请确保所有字词拼写正确。<br />2.尝试不同的关键字。<br />3.尝试更宽泛的关键字。";
+
+				} else {
+					resultStr = "错误信息：" + data.state + "请对照API Server v2.0.0 简明提示码对照表查找错误类型!";
+				}
+				document.getElementById("result").innerHTML = resultStr;
+				mapObj.setFitView();
+			}
+
+			function TipContents(type, address, tel) {
+				if (type == "" || type == "undefined" || type == null || type == " undefined" || typeof type == "undefined") {
+					type = "暂无";
+				}
+				if (address == "" || address == "undefined" || address == null || address == " undefined" || typeof address == "undefined") {
+					address = "暂无";
+				}
+				if (tel == "" || tel == "undefined" || tel == null || tel == " undefined" || typeof address == "tel") {
+					tel = "暂无";
+				}
+				var str = "<br />地址：" + address + "<br />电话：" + tel + " <br />类型：" + type;
+				return str;
+			}
+
+			function Getdistance(le) {
+				if (le <= 1000) {
+					var s = le;
+					return s + "米";
+				} else {
+					var s = Math.round(le / 1000);
+					return "约" + s + "公里";
+				}
+			}
+
+			function drawBuschangeLine(n) {
+				var allover = new Array();
+				var busxy = busS.xy_array[n].split(";");
+				var busxy_n = busxy.length - 2;
+				var busCHxy = busS.xy_c_array[n].split(";");
+				var busCHxy_n = busCHxy.length - 1;
+
+				var arrBus = new Array();
+				for (var e = 0; e <= busxy_n; e++) {
+					var xy = busxy[e].split(",");
+					arrBus.push(new AMap.LngLat(xy[0], xy[1]));
+				}
+				var line = new AMap.Polyline({
+					id : "polyline01",
+					path : arrBus, //线经纬度数组
+					strokeColor : "#005cb5", //线颜色
+					strokeOpacity : 0.8, //线透明度
+					strokeWeight : 6,  //线宽
+				});
+				allover.push(line);
+				/*换乘点之间的线*/
+
+				if (busCHxy_n != 0) {
+					var arrc = new Array();
+					//alert(busS.xy_c_array[n]+"--"+busCHxy_n);
+					for (var r = 0; r < 2; r++) {
+						var xy = busCHxy[r].split(",");
+						arrc.push(new AMap.LngLat(xy[0], xy[1]));
+					}
+					var changeline = new AMap.Polyline({
+						path : arrc, //线经纬度数组
+						strokeColor : "#6EB034", //线颜色
+						strokeOpacity : 1, //线透明度
+						strokeWeight : 6, //线宽
+						id : "changeline1"
+					});
+					allover.push(changeline);
+					var arrc1 = new Array();
+					if (busCHxy_n > 2) {
+						for (var q = 2; q < 4; q++) {
+							var xy = busCHxy[q].split(",");
+							arrc1.push(new AMap.LngLat(xy[0], xy[1]));
+						}
+						var changeline1 = new AMap.Polyline({
+							path : arrc1, //线经纬度数组
+							strokeColor : "#6EB034", //线颜色
+							strokeOpacity : 1, //线透明度
+							strokeWeight : 6, //线宽
+							//strokeStyle:"dashed", //线样式
+							id : "changeline2"
+						});
+					}
+				}
+				/*换乘点*/
+				var temp = "";
+				for (var r = 0; r < busCHxy_n; r++) {
+					var xy = busCHxy[r].split(",");
+					var change = new AMap.LngLat(xy[0], xy[1]);
+					var changetmarker = new AMap.Marker({
+						icon : "http://api.amap.com/webapi/static/Images/bx11.png", //复杂图标
+						visible : true, //可见
+						position : change,
+						offset : {
+							x : -27,
+							y : -34
+						}
+					});
+					changetmarker.id = busS.start_pid + "-" + r;
+					allover.push(changetmarker);
+				}
+				/**/
+				 /*1起点到线的起点 2线的终点到终点*/
+				var arr1 = new Array();
+				arr1.push(new AMap.LngLat(busS.start_x, busS.start_y));
+				var linestartxy = busxy[0].split(",");
+				arr1.push(new AMap.LngLat(linestartxy[0], linestartxy[1]));
+				var line1 = new AMap.Polyline({
+					path : arr1, //线经纬度数组
+					strokeColor : "#6EB034", //线颜色
+					strokeOpacity : 0.8, //线透明度
+					strokeWeight : 6, //线宽
+					id : "linestartline"
+				});
+				allover.push(line1);
+
+				var arr2 = new Array();
+				arr2.push(new AMap.LngLat(busS.end_x, busS.end_y));
+				var lineendxy = busxy[busxy_n].split(",");
+				arr2.push(new AMap.LngLat(lineendxy[0], lineendxy[1]));
+
+				var line2 = new AMap.Polyline({
+					path : arr2, //线经纬度数组
+					strokeColor : "#6EB034", //线颜色
+					strokeOpacity : 0.8, //线透明度
+					strokeWeight : 6, //线宽
+					id : "lineendline"
+				});
+				allover.push(line2);
+				/**/
+				 /*添加步行点*/
+				var stepxy = busxy[0].split(",");
+				var step = new AMap.LngLat(stepxy[0], stepxy[1]);
+				var steptmarker = new AMap.Marker({
+					icon : "http://api.amap.com/webapi/static/Images/bx.png", //复杂图标
+					visible : true, //可见
+					position : step,
+					id : "steptmarker",
+					offset : {
+						x : -27,
+						y : -34
+					}
+				});
+				allover.push(steptmarker);
+
+				var stepxy1 = busxy[busxy_n].split(",");
+				var step1 = new AMap.LngLat(stepxy1[0], stepxy1[1]);
+				var steptmarker1 = new AMap.Marker({
+					icon : "http://api.amap.com/webapi/static/Images/bx.png", //复杂图标
+					visible : true, //可见
+					position : step1,
+					id : "steptmarker1",
+					offset : {
+						x : -27,
+						y : -34
+					}
+				});
+				allover.push(steptmarker1);
+				/*起点,终点*/
+				var startmarker = new AMap.Marker({
+					icon : "http://api.amap.com/webapi/static/Images/qd.png", //复杂图标
+					visible : true, //可见
+					position : new AMap.LngLat(busS.start_x, busS.start_y),
+					id : busS.start_pid + "start",
+					offset : {
+						x : -15,
+						y : -15
+					}
+				});
+				var infoWindowS = new AMap.InfoWindow({
+					content : "<font color=\"#00a6ac\">&nbsp;&nbsp;"+ busS.start_name +"</font>"+ TipContents(busS.start_type, busS.start_address, busS.start_tel),
+					size : new AMap.Size(300, 0), //设置信息窗口大小
+					autoMove : true
+				});
+				mapObj.bind(startmarker, "click", function(e) {
+					infoWindowS.open(mapObj, startmarker.getPosition());
+				});
+				var endmarker = new AMap.Marker({
+					icon : "http://api.amap.com/webapi/static/Images/zd.png", //复杂图标
+					visible : true, //可见
+					position : new AMap.LngLat(busS.end_x, busS.end_y),
+					id : busS.end_pid + "end",
+					offset : {
+						x : -15,
+						y : -15
+					}
+				});
+				var infoWindowE = new AMap.InfoWindow({
+					content : "<font color=\"#00a6ac\">&nbsp;&nbsp;"+ busS.end_name +"</font>"+ TipContents(busS.end_type, busS.end_address, busS.end_tel),
+					size : new AMap.Size(300, 0), //设置信息窗口大小
+					autoMove : true
+				});
+				mapObj.bind(endmarker, "click", function(e) {
+					infoWindowE.open(mapObj, endmarker.getPosition());
+				});
+				allover.push(startmarker);
+				allover.push(endmarker);
+
+				mapObj.addOverlays(allover);
+			}
+		</script>
+	</head>
+	<body onload="mapInit();">
+		<table width="661px"  border="0" cellpadding="0" cellspacing="0">
+
+			<tr>
+				<td><div id="iCenter" style="height:300px; width:661px"> </div></td>
+			</tr>
+			<tr>
+				<td >
+				<div style="padding:2px 0px 0px 5px;font-size:12px">
+					<div>
+						公交导航查询 <b>从：</b>
+						<input type="text" id="city" name="city" value="010" />
+						<input type="text" id="keyword" name="keyword" value="中关村"/>
+						<b>到：</b>
+						<input type="text" id="keyword1" name="keyword1" value="天安门"/>
+						<input type="button" value="查询" onclick="keywordSearch()"/>
+                        <br><b>端到端往返延迟（round-trip delay）：</b><input type="text" id="textSearchTime" readonly="yes" style="border: 0px;width:60%"/><br><b>本次请求 ID：</b><input type="text" id="textUniqId" readonly="yes" style="border: 0px;width:60%" /></input>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<div style="padding:0px 0 4px 2px; background-color:#D1EEEE">
+					<b>查询结果:</b>
+				</div></td>
+			</tr>
+			<tr>
+				<td><div id="result" name="result" style="overflow:auto;margin-top:5px;width:661px;height:255px"> </div></div></td>
+			</tr>
+		</table>
+	</body>
+</html>

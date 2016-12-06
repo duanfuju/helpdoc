@@ -1,0 +1,14 @@
+var k=0;
+/** @Bind #dgShow.onRenderRow */
+!function(arg){
+	 k+=1;
+		if(k%2==1){
+			arg.dom.style.background="#c7e5ff";
+		}else {
+			arg.dom.style.background="#FFFFFF";
+		}
+		arg.processDefault=true;
+};
+
+
+

@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>反地理解析（位置描述）</title>
+    <!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+    <link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+    <script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+    <script language="javascript">
+
+        var mapObj, toolbar, overview, scale;
+        var date, startTime;
+        function showTime() {
+            var date = new Date();
+            document.getElementById("textSearchTime").value = date.getTime() - startTime + "毫秒";
+        }
+
+        function initTimer() {
+            date = new Date();
+            startTime = date.getTime();
+        }
+
+        function mapInit() {
+            var opt = {
+                level: 13, //设置地图缩放级别  
+                center: new AMap.LngLat(116.397428, 39.90923), //设置地图中心点   
+                doubleClickZoom: true, //双击放大地图  
+                scrollWheel: true//鼠标滚轮缩放地图  
+            }
+            mapObj = new AMap.Map("iCenter", opt); AMap.Conf.network = 1;
+            mapObj.plugin(["AMap.ToolBar", "AMap.OverView", "AMap.Scale"], function () {
+                toolbar = new AMap.ToolBar();
+                toolbar.autoPosition = false; //加载工具条   
+                mapObj.addControl(toolbar);
+                overview = new AMap.OverView(); //加载鹰眼  
+                mapObj.addControl(overview);
+                scale = new AMap.Scale(); //加载比例尺  
+                mapObj.addControl(scale);
+            });
+
+            mapObj.bind(mapObj, "click", clickMapSearch);
+        }
+
+        function clickMapSearch(e) {
+            //alert(e.lnglat.lng + "," + e.lnglat.lat);
+            var geocodeOption = {
+                range: 3000,
+                crossnum: 2,
+                roadnum: 3,
+                poinum: 2
+            }
+            var geocoder = new AMap.Geocoder(geocodeOption);
+            geocoder.regeocode(e.lnglat, poiToAddressSearch_CallBack);
+            initTimer();
+            addMarker(e.lnglat);
+        }
+
+        function geocodeSearch() {
+            var xy = document.getElementById("lnglat").value;
+            if (xy == "") {
+                return;
+            } else {
+                var coor = xy.split(",");
+                var lnglatXY = new AMap.LngLat(coor[0], coor[1])
+                var GeocoderOption = {
+                    range: 3000, //范围  
+                    crossnum: 2, //道路交叉口数  
+                    roadnum: 3, //路线记录数  
+                    poinum: 2//POI点数  
+                };
+                var geo = new AMap.Geocoder(GeocoderOption);
+                geo.regeocode(lnglatXY, poiToAddressSearch_CallBack);
+                initTimer();
+                addMarker(lnglatXY);
+            }
+        }
+        function addMarker(lnglat) {
+            var marker = new AMap.Marker({
+                id: "marker",
+                icon: "http://api.amap.com/webapi/static/Images/0.png",
+                position: lnglat,
+                offset: new AMap.Pixel(-10, -34)
+            });
+            mapObj.addOverlays(marker);
+            mapObj.setCenter(lnglat);
+        }
+
+        function poiToAddressSearch_CallBack(data) {
+            showTime(); document.getElementById("textUniqId").value = data.uniqid;
+            var resultStr = "";
+            if (data.status == "E0") {
+                var province, city, district, road, address;
+
+                province = data.list[0].province.name;
+                if (province == "北京市") {
+                    city = province;
+                }
+                else {
+                    city = data.list[0].city.name;
+                }
+                district = data.list[0].district.name;
+                road = data.list[0].roadlist[0].name;
+                address = data.list[0].poilist[0].address;
+
+                resultStr = province + "," + city + "," + district + "," + road + "," + address;
+                //alert(resultStr);
+
+                /*
+                for (var i = 0; i < data.list.length; i++) {
+                resultStr += "省：" + data.list[i].province.name + "<br />市：" + data.list[i].city.name + "<br />区：" + data.list[i].district.name + "</span>";
+
+                for (var j = 0; j < data.list[i].roadlist.length; j++) {
+                resultStr += "<br />道路：" + data.list[i].roadlist[j].name + "&nbsp;&nbsp;<br />距离：" + data.list[i].roadlist[j].distance + "<br />";
+                }
+                for (var j = 0; j < data.list[i].poilist.length; j++) {
+                resultStr += "<br />名称：" + data.list[i].poilist[j].name + "<br />地址：" + data.list[i].poilist[j].address + "<br />类型：" + data.list[i].poilist[j].type + "<br />距离：" + data.list[i].poilist[j].distance + "<br />经度：" + data.list[i].poilist[j].x + "<br />纬度：" + data.list[i].poilist[j].y + "<br />";
+                }
+                }
+                */
+            }
+            else if (data.status == "E1") {
+                resultStr = "未查找到任何结果!<br />建议：<br />1.请确保所有字词拼写正确。<br />2.尝试不同的关键字。<br />3.尝试更宽泛的关键字。";
+            }
+            else {
+                resultStr = "错误信息：" + data.state + "请对照API Server v2.0.0 简明提示码对照表查找错误类型";
+            }
+            document.getElementById("result").innerHTML = resultStr;
+
+        }  
+      
+    </script>
+</head>
+<body onload="mapInit();">
+    <table width="661px" border="0" cellpadding="0" cellspacing="0">
+        <tr height="100%">
+            <td>
+                <div id="iCenter" style="height: 300px; width: 661px">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 247px; solid #666;" valign="top">
+                <div style="padding: 2px 0px 0px 2px; font-size: 12px;">
+                    <div>
+                        反地理解析（位置描述）<b>经纬度坐标：</b><input type="text" id="lnglat" name="lnglat" value="116.334,39.9872" />
+                        <input type="button" value="查询" onclick="geocodeSearch()" style="margin-left: 5px" />
+                        <br>
+                        <b>端到端往返延迟（round-trip delay）：</b>
+                        <input type="text" id="textSearchTime" readonly="yes" style="border: 0px; width: 60%" /><br>
+                        <b>本次请求 ID：</b><input type="text" id="textUniqId" readonly="yes" style="border: 0px;
+                            width: 60%" /></input>
+                    </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="padding: 0px 0 4px 2px; background-color: #D1EEEE">
+                    <b>搜索结果:</b></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="result" name="result" style="overflow: auto; margin-top: 5px; width: 661px;
+                    height: 255px">
+                </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,4 @@
+将用户的某张表导入到另一个用户上
+exp 用户名1/密码 file=*.dmp table=表名
+
+imp 用户名2/密码 file=d:\*.dmp fromuser=用户名1 touser=用户名2

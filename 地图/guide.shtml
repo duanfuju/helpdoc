@@ -1,0 +1,2087 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Javascript API - 高德地图API</title>
+        <meta name="Keywords" content="高德地图,API,Javascript,开发指南" />
+		<meta name="Description" content="本文档适用于熟悉 JavaScript 编程和面向对象编程概念的读者。此外，读者还应该对地图产品有一定的了解。地图 API 可以在网页中嵌入一张地图，还可以通过鼠标操作地图。该 API 提供了大量实用工具，并通过各种服务向地图添加内容，从而使您能够在您的网站上创建功能全面的地图应用程序。" />
+        <link rel="stylesheet" href="javascript.style.css" type="text/css" />
+        <link rel="stylesheet" href="__APP__/Home/Tpl/default/Public/Css/syntax-highlighter-style.css" type="text/css" />
+        <link type="image/x-icon" href="__APP__/Favicon.ico" rel="icon">
+    <script src="http://code.jquery.com/jquery-1.6.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+            var name = 'guide';
+        </script>
+        <!--
+        <style type="text/css">  
+                #sidebar a.zl_normal{
+                    font-weight:normal;
+                    background:url(__APP__/Home/Tpl/default/Public/Images/jia1.png) no-repeat left center;
+                    padding-left:20px;
+                    color:#067EC0;
+                    height:24px;
+                    line-height:24px;
+                }
+                                    #sidebar a.zl_highlight{
+                    font-weight:bold;
+                    background:url(__APP__/Home/Tpl/default/Public/Images/jian1.png) no-repeat left center;
+                    color:#333333;
+                }
+                .parent li a{
+                    background:url(__APP__/Home/Tpl/default/Public/Images/dd-background.png) no-repeat left center;
+                    padding-left:10px;
+                }
+                </style>-->
+        
+            <!--GA统计代码-->
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31262608-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+    </head>
+    <body><div id="wrapper">
+        <div style="padding: 0 10px;margin: 30px 0 30px;color: #333;">
+          
+            	<h1 >高德地图JavaScript API V1.1 开发指南</h1>
+
+           
+        </div>
+        <!-- #hd : end -->
+<div id="md" class="clearfix">
+	<div id="sidebar">
+		<div class="a_box directory  grid_m3">
+			<div class="box_wrapper guide">
+				<h3>目录</h3>
+				 <ul class="parent" >
+				 	<li ><a href="#introduction"  class="zl_normal" >API 简介</a>
+				 		<!--
+						 <ul class="child">
+													  <li class="on"><a href="#introduce_gaishu">姒傝堪</a></li>
+													  <li><a href="#reader">闈㈠悜鐨勮鑰�/a></li>
+													  <li><a href="#get_api">鑾峰彇API</a></li>
+													  <li><a href="#compatible">鍏煎鎬�/a></li>
+													  <li><a href="#version">鐗堟湰璇存槑</a></li>
+												  </ul>-->
+						 
+				 	</li>
+					<li><a href="#basics" class="zl_normal" name="first_class_menu">基础知识</a>
+						<!--
+						<ul class="child">
+													<li><a href="#helloworld">楂樺痉鍦板浘鐨�Hello World!</a></li>
+													<li><a href="#lnglat">缁忕含搴﹀潗鏍�/a></li>
+													<li><a href="#scalelevel">缂╂斁绾у埆</a></li>
+												</ul>-->
+						
+					</li>
+					<li><a href="#control" class="zl_normal">插件</a>
+						<!--
+						<ul class="child">
+													<li><a href="#plugin_gaishu">姒傝堪</a></li>
+													<li><a href="#addplugin">鍚戝湴鍥炬坊鍔犳彃浠�/a></li>
+													<li><a href="#self_plugin">鑷畾涔夋彃浠�/a></li>
+												</ul>-->
+						
+					</li>
+					<li><a href="#event" class="zl_normal">事件</a>
+						<!--
+						<ul class="child">
+													<li><a href="#event_gaishu">姒傝堪</a></li>
+													<li><a href="#event_listener">浜嬩欢鐩戝惉鍣�/a></li>
+													<li><a href="#event_para">璁块棶鐢ㄦ埛鐣岄潰浜嬩欢鍙傛暟鍜宼his </a></li>
+													<li><a href="#remove_event">绉婚櫎鐩戝惉浜嬩欢</a></li>
+												</ul>
+											</li>-->
+						
+					
+					<li><a href="#overlay" class="zl_normal">覆盖物</a>
+						<!--
+						<ul class="child">
+													<li><a href="#overlay_gaishu">姒傝堪</a></li>
+													<li><a href="#marker">鏍囨敞</a></li>
+													<li><a href="#infowindow">淇℃伅绐楀彛</a></li>
+													<li><a href="#polyline">鎶樼嚎</a></li>
+													<li><a href="#polygon">澶氳竟褰�/a></li>
+													<li><a href="#circle">鍦�/a></li>
+												</ul>-->
+						
+					</li>
+					<li >
+						<a href="#maplayer" class="zl_normal" >图层</a>
+						<!--
+						<ul class="child">
+													<li><a href="#layer_gaishu">姒傝堪</a></li>
+													<li><a href="#addremovelayer">娣诲姞鍜屽垹闄ゅ浘灞�/a></li>
+													<li><a href="#selflayer">鑷畾涔夊浘灞�/a></li>
+												</ul>-->
+						
+					</li>
+					<li >
+						<a href="#server" class="zl_normal">服务</a>
+						<!--
+						<ul class="child">
+													<li><a href="#service_gaishu">姒傝堪</a></li>
+													<li><a href="#poisearch">POI 鎼滅储</a></li>
+													<li><a href="#searcharound">鍛ㄨ竟鏌ヨ</a></li>
+													<li><a href="#rangesearch">鑼冨洿鏌ヨ</a></li>
+													<li><a href="#keywordinfo">鍏抽敭瀛楁彁绀�/a></li>
+													<li><a href="#buschange">鍏氦鎹箻鏌ヨ鏈嶅姟</a></li>
+													<li><a href="#geocode">鍦板潃瑙ｆ瀽</a>
+														<ul> 
+															<li><a href="#geocode+">鍦扮悊缂栫爜</a></li>
+															<li><a href="#regeocode">閫嗗湴鐞嗙紪鐮�/a></li>
+														</ul>
+													</li>
+												</ul>-->
+						
+					</li>
+				 </ul>
+			</div><!-- #box_wrapper guide: end -->
+		</div>
+	</div><!-- #sidebar : end -->
+	
+	<div id="content">
+		<div class="a_box c_guide grid_m9">
+			<div class="box_wrapper">
+				<div id="introduction">
+					<h3>API 简介</h3>
+					<div class="sec1">
+						<h4 id="introduce_gaishu">概述</h4>
+						<p>
+					高德地图JavaScript API 是一套用JavaScript 语言编写的应用程序接口，您可以通过各种API 接口向地图添加内容，创建功能丰富、交互性强的地图应用。高德地图JavaScript API 提供了大量的实用工具和富有特色的插件功能，并提供了搜索和路线规划等服务。</p>
+					</div>
+					
+					<div class="sec1">
+						<h4 id="reader">面向的读者</h4>
+						<p>
+							本文档适用于熟悉 JavaScript 编程和面向对象编程概念的读者。此外，读者还应该对地图产品有一定的了解。
+						</p>
+					</div>
+					
+					<div class="sec1">
+						<h4 id="get_api">获取API</h4>
+						<p>
+							本API 是由JavaScript 语言编写的，您在使用之前需要通过&lt;script&gt;标签将API 引用到页面中：
+					  </p>
+						<p>
+							 <pre class="js" name="code">&lt;script src="http://webapi.amap.com/maps?v=1.1&key=<用户key>" type="text/javascript"&gt;&lt;/script&gt;</pre>
+						</p>
+						<p>其中v 是版本信息，当前最新版本是1.1，提供的是最新的API 接口。key 是在调用高德地图JavaScript API 时的key 验证。</p>
+					</div>
+					
+					<div class="sec1">
+						<h4 id="compatible">兼容性</h4>
+						<p>浏览器：IE 6.0+、Firefox 3.6+、Opera 9.0+、Safari 3.0+、Chrome</p>
+						<p>操作系统：Windows、Mac、Linux</p>
+						<p>移动平台：iPhone、Android</p>
+					</div>
+					
+					<div class="sec1">
+						<h4 id="version">版本说明</h4>
+						<p>
+							地址 http://webapi.amap.com/maps?v=1.1&key=<用户key> 中的参数v 表示您加载API 的版本，例如当前API 的最新版本为1.1，则您可在地址中添加 v=1.1。当API 升级后，如果已有接口在使用、命名等方面发生了变化，我们会为其增加一个新的版本号。如果升级只是修复一些bug 或者在不影响现有功能的前提下增加接口、改善性能，则版本号不会发生变化。
+                        </p>
+					</div>
+
+					<div class="sec1">
+						<h4 id="key">获取Key</h4>
+						<p>
+							地址 http://webapi.amap.com/maps?v=1.1&key=<用户key> 中的参数key 是用户调用高德地图JavaScript API 的鉴权。该key 与您的高德地图账户相关联，您必须要先有高德账号才获得API Key，请在<a href="http://api.amap.com/Account/index">申请Key</a> 页面申请Key。
+                        </p>
+					</div>
+
+				</div><!-- #introduction : end -->
+				
+				<div id="basics">
+					<h3>基础知识</h3>
+					
+					<div class="sec1">
+						<h4 id="helloworld">高德地图的Hello World!</h4>
+						<p>
+							从一个简单的示例开始学习高德地图JavaScript API。以下代码创建了一个地图，以天安门为中心点。 
+						</p>
+					  <pre class="js" name="code">
+&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta name="viewport" content="initial-scale=1.0, user-scalable=no" &gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"&gt;
+&lt;title&gt;Hello, world&lt;/title&gt;
+&lt;style type="text/css"&gt;
+	html { height:100% }
+	body { height:100%; margin:0px; padding:0px }
+	#container { height:100% }
+&lt;/style&gt;
+&lt;script type="text/javascript"
+	src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"&gt;
+&lt;/script&gt;   
+&lt;script type="text/javascript"&gt;
+	function initialize() {
+		var mapObj = new AMap.Map("container"); // 创建地图实例
+		var point = new AMap.LngLat(116.404, 39.915); // 创建点坐标
+		mapObj.setCenter(point); // 设置地图中心点坐标
+	}
+&lt;/script&gt;
+&lt;/head&gt;  
+
+&lt;body onload="initialize()"&gt;  
+	&lt;div id="container"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+						<p>
+							您可以复制示例代码到您的剪贴板中。
+				    </p>
+						
+						<p>
+							下面来说明这些步骤：
+						</p>
+						<p class="bold">一、准备页面</p>
+						<p>根据HTML 标准，每一份HTML 文档都应该声明正确的文档类型，我们建议您使用最新的符合HTML5 规范的文档声明： </p>
+						<p> <pre class="js" name="code">
+&lt;!DOCTYPE html&gt;
+</pre></p>
+						<p>
+							您也可以根据需要选择其他类型的文档声明，这样浏览器会以标准的方式对页面进行渲染，保证页面最大的兼容性.
+						</p>
+						<p>
+下面我们添加一个meta 标签，以便使您的页面更好的在移动平台上展示。 
+						</p>
+						<p> <pre class="js" name="code">
+&lt;meta name="viewport" content="initial-scale=1.0, user-scalable=no" /&gt;
+</pre></p>
+						
+	<p class="bold">二、设置样式，使地图充满整个浏览器窗口</p>
+<p> <pre class="js" name="code">
+&lt;style type="text/css"&gt;
+html { height:100% }
+body { height:100%; margin:0px; padding:0px }
+#container { height:100% }
+&lt;/style&gt;
+</pre></p>
+<p class="bold">三、引入高德地图JavaScript API 文件</p>
+<p> <pre class="js" name="code">&lt;script type="text/javascript" src=“http://webapi.amap.com/maps?v=1.1&key=<用户key>”&gt;&lt;/script&gt;  
+</pre></p>
+				<p class="bold">四、创建地图容器元素</p>
+						<p> <pre class="js" name="code">
+&lt;div id="container"&gt;&lt;/div&gt; 
+</pre></p>
+<p>为了让地图在网页中显示，我们必须为其留出一个位置。通常的做法是创建一个div 对象，在此例中，我们创建了一个ID为“container”的 div 元素。</p>
+
+	<p class="bold">五、命名空间</p>
+<p>API 使用 AMap 作为命名空间，所有类均在该命名空间之下，比如：AMap.Map、AMap.ToolBar、AMap.BusSearch。</p>
+	<p class="bold">六、创建地图实例</p>
+						<p> <pre class="js" name="code">
+mapObj = new AMap.Map("container");
+</pre></p>
+<p>AMap.Map 类表示地图，定义了网页上的单个地图，通过new 操作符可以创建此类的一个实例。
+实例化一个地图时，需要在网页中指定一个 &lt;div&gt; 元素的引用作为地图的容器。
+</p>
+		<p class="bold">七、载入地图</p>
+						<p> <pre class="js" name="code">
+&lt;body onload="initialize()"&gt;
+</pre></p>
+<p>为了确保系统在完全载入网页后才将我们的地图添加到网页上，我们会在 HTML 网页的 &lt;body&gt;元素收到onload 事件后，才会执行用于构建 Map 对象的函数。这样做可以避免出现不可预期的行为，并使我们可以对地图绘制的方式和时间进行更多控制。
+</p>
+</div>
+	<div class="sec1">
+<h4 id="lnglat">经纬度坐标</h4>
+<p>我们还需要一种表示各种地图位置的方法。在高德地图JavaScript API 中，AMap.LngLat 提供了这种机制。您可以构建一个LngLat 对象，以(经度，纬度)的顺序传递其参数：</p>
+<p> <pre class="js" name="code">
+var lnglat=new AMap.LngLat(116.404, 39.915);  
+</pre></p>	<p>该类的toString() 方法可以将LngLat 对象转换为字符串。将“地址”转变为地理地点的过程叫做“地址解析”。此版本的高德地图JavaScript API 可支持地址解析。有关详细信息，请参见服务部分中的<a href="#geocode">地址解析</a></p>					
+<p>LngLat对象在高德地图JavaScript API 中用途广泛。例如，AMap.Marker 中应用LngLat，在地图指定的位置上添加地图点标注覆盖物。</p>						</div>					
+<div class="sec1">
+<h4 id="scalelevel">缩放级别</h4>
+<p>如果要完整显示全中国的地图，则要么需要很大的地图，要么需要分辨率极低的小型地图。因此，高德地图JavaScript API 提供的中国地图分为地图“图块”和“缩放级别”两部分来显示不同分辨率下的地图。在低缩放级别下，一小组地图图块就可以覆盖广阔的区域；而在高缩放级别下，图块的分辨率会更高，覆盖的区域则会更小。</p>
+<p>要指定地图的显示分辨率，您可以设置 Map 的 level 属性，其中缩放 0 相当于将地图缩小到最低程度，而较高的缩放级别会将地图放大到较高的分辨率。</p>	
+</div>
+				</div><!-- #basics : end -->
+	
+				<div id="control">
+					<h3>插件</h3>
+				  <div class="sec1">
+				 <h4 id="plugin_gaishu">概述</h4>
+					<p>高德地图JavaScript API 控件是用户与地图交互的UI 元素。高德地图JavaScript API 提供了各种类型的控件，为了保证API 的迅捷性，所有控件均以插件的形式提供给用户使用。</p>
+					<p>高德地图JavaScript API 目前提供的系统插件有：</p>
+					<ul>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/1">地图工具条插件 </a> （AMap.ToolBar）包括缩放控件，用户可控制缩放按钮是用滑动滚动条还是“+/-”按钮形式，方向键盘控件、自动定位控制。添加之后默认位于地图左上角。	</span>
+					</li>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/2">地图鹰眼插件 </a> （AMap.OverView）加载此插件后，会在地图右下角显示一个地图简略的概览，用于在更广阔的区域反映当前的地图视口，支持用户控制此鹰眼是打开状态还是关闭状态。添加之后默认位于地图右下角。</span>	
+					</li>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/3">地图比例尺插件</a>  （AMap.Scale）用于显示地图比例关系，添加之后默认位于地图左下角。</span>
+					</li>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/4">圆编辑插件</a>  （AMap.Circle）用于编辑AMap.Circle对象。通过该插件可以使用鼠标拖动直接修改圆的半径，改变圆心的位置。</span>
+					</li>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/5">折线、多边形编辑插件</a>  （AMap.PolyEditor）用于编辑AMap.Polyline、AMap.Polygon对象。通过该插件可以使用鼠标将折线上的各个节点或多边形的各个顶点调整到目标位置，在折线上新增、删除节点或在多边形上新增、删除顶点，拖拽多边形到目标位置。</span>
+					</li>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/6">拖拽导航插件</a>  （AMap.DragRoute）通过鼠标拖拽已有导航路径上的任一点，可以实现导航起点、途经点、终点的调整，系统根据调整后的起点、途经点、终点信息，实时查询拖拽后的导航路径并在地图上同步显示。</span>
+					</li>
+					<li>
+					<span><a href="http://api.amap.com/Javascript/plugin_detail/id/7">鼠标工具插件</a>  (AMap.MouseTool）通过鼠标工具插件，可以开启鼠标工具，实现鼠标画标注点、画线、画多边形、画矩形、画圆、测距、测面积、拉框放大、拉框缩小等功能。</span>
+					</li>
+					</ul>
+					 <h4 id="addplugin">向地图添加插件</h4>
+					 <p>你在初始化一幅地图之后，可能想要通过删除、添加或修改用户界面行为或控件来调整您的地图。这时，您需要调用相关插件接口来设置您想要显示在地图上的控件。您可以通过Map 对象的的plugin() 方法在地图上添加插件。通过以下代码，您可以向地图添加工具条、鹰眼、比例尺插件：</p>			 
+		        <p> <pre class="js" name="code">
+mapObj.plugin(["AMap.ToolBar","AMap.OverView,AMap.Scale"], function() {
+      // 加载工具条
+tool = new AMap.ToolBar({        direction: false, // 隐藏方向导航
+        ruler: false, // 隐藏视野级别控制尺
+        autoPosition: false // 禁止自动定位
+    });
+    mapObj.addControl(tool);
+    
+// 加载鹰眼
+    view = new AMap.OverView();
+    mapObj.addControl(view);
+    
+// 加载比例尺
+    scale = new AMap.Scale();
+    mapObj.addControl(scale);
+});
+</pre>
+</p>
+
+<p>添加一个圆对象，双击该圆开始对该圆进行编辑，单击右键停止对该圆的编辑，示例代码如下：</p>			 
+		        <p> <pre class="js" name="code">
+//构造一个圆对象
+	circle = new AMap.Circle({
+		id:"circle",
+		center:new AMap.LngLat(116.40332221984863,39.90025505675715),
+		radius:1000,
+		strokeColor: "#F33",
+		strokeOpacity: 1,
+		strokeWeight: 3,
+		fillColor: "#ee2200",
+		fillOpacity: 0.35
+	});
+//添加该圆对象
+	obj.addOverlays(circle);
+	//使用obj.plugin()方法添加圆编辑插件AMap.CircleEditor，同时设置双击开始编辑。单击右键停止圆编辑的事件。
+	obj.plugin("AMap.CircleEditor",function(){
+		circleEditor = new AMap.CircleEditor(obj,circle);
+		obj.bind(circle,"dblclick",function(e){
+			circleEditor.open();
+			obj.stopPropagation(e);
+		});
+		var cl = function(e){
+			circleEditor.close();
+		}; 
+		obj.bind(circle,"rightclick",cl);
+	}); 
+</pre>
+</p>
+ <h4 id="self_plugin">自定义插件</h4>
+ <p>除了高德地图JavaScript API 提供的插件，您还可以创建自己的插件,与用户进行交互。需要注意的是，每个插件都是位置固定的窗口小部件，浮动在地图上，这与叠加图层和覆盖物不同，后两者会随着地图的拖动一起改变位置。</p>
+ <p>要创建一个自定义插件，您需要按照以下步骤进行：</p>
+ <ul><li><span>
+定义插件的构造函数。</span>
+ </li>
+ <li><span>设置插件的prototype 属性的_getHtmlDom() 方法及其他方法。</span></li>
+ <li><span>调用地图对象的plugin() 方法将插件加载到地图上。</span></li>
+ </ul>
+ <p>下面来创建一个简单的控件来实现返回地图设定的中心点：</p>
+ <p class="bold">定义插件的构造函数</p>
+ <p>创建自定义插件需要先定义插件的构造函数，如创建一个名为homeControlDiv 的中心点控件，先定义它的构造函数，如下代码所示：</p>
+  <pre class="js" name="code">//定义一个插件类 homeControlDiv，AMap 为命名空间
+AMap.homeControlDiv=function(){
+}
+</pre>
+<p class="bold">实现prototype 属性</p><p>在定义完插件的构造函数之后，需要实现prototype 属性的_getHtmlDom() 方法。
+我们建议您将所有插件的显示方式放在一个单独的&lt;div&gt;元素中，以便可以将插件作为一个单元进行处理。
+ <pre class="js" name="code">
+AMap.homeControlDiv.prototype={
+_getHtmlDom:function(map){
+	this.map=map;
+	// 创建一个能承载控件的&lt;div&gt;容器
+	var controlUI=document.createElement("DIV");
+	controlUI.style.width='80px';     //设置控件容器的宽度
+controlUI.style.height='20px';    //设置控件容器的高度
+	controlUI.style.backgroundColor='white';   
+	controlUI.style.borderStyle='solid';
+	controlUI.style.borderWidth='2px';
+	controlUI.style.cursor='pointer';
+	controlUI.style.textAlign='center'; 
+	
+	// 设置控件的位置 
+	controlUI.style.position='absolute';
+	controlUI.style.left='120px';     //设置控件离地图的左边界的偏移量
+	controlUI.style.top='5px';        //设置控件离地图上边界的偏移量
+	controlUI.style.zIndex='300';     //设置控件在地图上显示
+	
+ // 设置控件字体样式
+	controlUI.style.fontFamily='Arial,sens-serif';
+	controlUI.style.fontSize='12px';
+	controlUI.style.paddingLeft='4px';
+	controlUI.style.paddingRight='4px';
+	controlUI.innerHTML="返回中心";
+	
+	// 设置控件响应点击onclick 事件
+	controlUI.onclick=function(){
+	  map.setCenter(new AMap.LngLat(116.404, 39.915));
+	}
+	return controlUI;
+}
+}
+</pre>
+</p>
+<p class="bold">添加自定义的插件</p>
+<p>在创建插件完成后，调用地图对象的plugin()方法，将自定义插件加载到地图上。</p>
+ <pre class="js" name="code">mapObj.plugin(["homeControlDiv"], function() {
+	var homeControl=new AMap.homeControlDiv(mapObj);
+	mapObj.addControl(homeControl);
+});
+</pre>					
+<p>在完成上述步骤后会在地图上显示一个“返回中心”的按钮，点击按钮会返回到您设定的地图中心点。</p>
+</div>
+				</div><!-- #control : end -->
+				
+				<div id="event">
+					<h3>事件</h3>
+<div class="sec1">					
+ <h4 id="event_gaishu">概述</h4>
+ <p>浏览器中的JavaScript 是事件驱动的，这表示JavaScript 通过生成事件来响应交互，并期望程序侦听感兴趣的事件。例如，在浏览器中，用户鼠标左键点击地图时，浏览器会触发点击事件，对此事件感兴趣的用户会注册事件监听器。当点击事件触发时，用户可以在监听器中接收到这个事件，并执行自定义的行为，例如显示点击处的经纬度坐标信息。</p>
+ <p>高德地图JavaScript API 拥有一个自己的事件模型，程序员可监听地图API 对象的自定义事件，这些事件是独立的，并且与标准DOM 事件不同。</p>
+ <h4 id="event_listener">事件监听器</h4>
+ <p>高德地图JavaScript API 通过bind() 方法绑定对象和事件，您可以通过该方法来监听对象的事件，例如AMap.Map 的click,dblclick 等事件。在用bind() 方法绑定之后，当这些事件被触发时，监听函数可以获取到相应的事件参数event，该参数中包含鼠标所对应的地理位置的经纬度坐标。</p>	
+ <p>有关地图API 对象的事件对应描述，请参考JavaScript <a>参考手册</a>。有关地图API 事件使用方法请参考JavaScript<>示例中心的事件相关。</p>				
+ <p>使用bind()方法来监听事件，有三个参数，一个对象，一个待监听事件和一个指定事件发生时调用的函数。</p>
+ <p>如下所示，mapObj 是一个地图对象，click 是待监听的鼠标左键单击事件，eventHandler() 函数是当单击事件发生时调用的函数。当用户点击地图时，会弹出一个对话框显示“You clicked me!”。</p>
+  <pre class="js" name="code">mapObj = new AMap.Map("map");
+function eventHandler() {
+alert("You clicked me!");
+}
+mapObj.bind(mapObj, "click", eventHandler);
+</pre>
+	<h4 id="event_para">访问用户界面事件参数和this</h4>
+	<p>通常情况下，高德地图JavaScript API 的用户界面事件会传递事件参数，您可以通过事件监听器访问这些参数，这些参数会注明事件发生时用户界面所处的状态。例如，用户界面“click”事件，监听函数会得到一个事件对象event，在event 的属性中可以获取有关该事件的详细信息，例如经纬度属性，该属性指出了用户在地图上点击位置的经纬度。同时在监听函数中this.obj 会指向触发该事件的DOM 元素。</p>
+	<p>您可以访问事件侦听器的事件参数，这与访问对象属性的方法一样。以下示例介绍了如何为地图添加事件侦听器，以及如何在用户点击地图时，在所点击的位置处创建一个标记。</p>
+ <pre class="js" name="code">var lnglat;
+	mapObj.bind(mapObj,"click",function(e){
+	lnglat=e.lnglat;  
+	var marker = new AMap.Marker({
+	id:"m123",
+	position:e.lnglat,
+	icon:"http://webapi.amap.com/static/images/marker_sprite.png",
+	offset:{x:-8,y:-34}
+	});
+     mapObj.addOverlays(marker);
+     mapObj.setCenter(lnglat);
+});
+</pre>
+<p>添加事件监听和解除事件监听的方法由bind 与unbind 来实现，以区别于JavaScript 原生的事件注册方式。</p>
+<h4 id="remove_event">移除监听事件</h4>
+<p>当您不再希望监听事件时，可以将事件监听器移除。地图对象mapObj 提供了unbind()方法来移出事件监听函数。</p>
+<p>如移除在事件监听器章节中注册的click 监听器函数，直接将bind 改为unbind。</p>
+ <pre class="js" name="code">mapObj.unbind(mapObj, "click", eventHandler);
+</pre>
+</div>
+</div><!-- #event : end -->
+				<div id="overlay">
+					<h3>覆盖物</h3>
+				  <div class="sec1">
+						<h4 id="overlay_gaishu">概述</h4>
+					<p>所有叠加或覆盖到地图的内容，我们统称为地图覆盖物。如标注、矢量图形元素(包括折线、多边形和圆)、信息窗口等。覆盖物拥有自己的地理坐标，当您拖动或缩放地图时，它们会相应的移动。</p>
+<p>地图API提供了如下几种覆盖物：</p>
+<ul>
+	<li><span>Marker： 标注表示地图上的点，可自定义标注的图标。</span></li>
+	<li><span>Label： 表示地图上的文本标注，您可以自定义标注的文本内容。</span></li>
+	<li><span>Polyline： 表示地图上的折线。</span></li>
+	<li><span>Polygon： 表示地图上的多边形。多边形类似于闭合的折线，另外您也可以为其设置填充颜色。</span></li>
+	<li><span>Circle： 表示地图上的圆。</span></li>
+	<li><span>InfoWindow： 表示信息窗口，也是一种特殊的覆盖物，它可以展示更为丰富的文字和多媒体信息。需要注意的是，同一时刻只能有一个信息窗口在地图上打开。</span></li>
+</ul>
+<p>可以使用addOverlays()方法向地图添加覆盖物，使用removeOverlays()方法移除覆盖物，注意此方法不适用于InfoWindow。</p>
+<h4 id="marker">标注</h4>
+<p>标注表示地图上的点。您可以使用默认点标注Marker 类在地图上显示一个标注，也可以使用Icon 类来构造复杂的点标注，如修改图标的显示，设置点标注的大小，设置点标注的鼠标滑过和滑出的状态等。</p>
+<p class="bold">点标注</p>
+<p>点标注用于标识地图上的位置。API 提供了默认图标样式，类名为AMap.Marker，其构造函数的参数为MarkerOptions，用来设置点标注的经纬度位置、偏移量、图像、显示内容、图标的热点区域、图标是否可拖动、图标旋转、图标是否可见。您也可以通过Icon 属性自定义标注图标。</p>
+<p>在创建一个点标注之后，可以使用地图对象的addOverlays()方法将其添加到地图上。</p>
+<p>以下示例介绍了在地图指定位置添加一个默认点标注：</p>
+ <pre class="js" name="code">var marker = new AMap.Marker({
+id:"m",
+position: new AMap.LngLat(116.40632629394531, 39.90394233735701),
+offset: new AMap.Pixel(-8,-34),
+icon: "http://webapi.amap.com/static/images/marker_sprite.png"
+});// 自定义构造AMap.Marker对象
+mapObj.addOverlays(marker); //加载覆盖物
+</pre>
+<p>position 属性用于为点标注设置位置。
+offset 属性用于设置偏移量，将其设置为(0,0) 即“offset: new AMap.Pixel(0,0);”则点标注图标左上角跟position 对齐，如A 图所示。如果将偏移量设置为(-8,-34) 即“offset: new AMap.Pixel(-8,-34);”偏移量向上向左为负数，向下向右为正数，点标注图标中心点跟position 对齐，如B图所示：
+</p>
+<p>A: <img src="__APP__/Home/Tpl/default/Public/Images/icon_A.png" > B: <img src="__APP__/Home/Tpl/default/Public/Images/icon_B.png" ></p>
+
+<p class="bold">复杂点标注</p>
+<p>复杂点标注是在默认标注的基础上，构造AMap.Icon 类，设置标注图标的大小，显示图标等。它的其他属性和设置默认点标注的相同。</p>
+ <pre class="js" name="code">var marker = new AMap.Marker({
+	id:"m24",//唯一ID
+	position:new AMap.LngLat(116.37388157654,39.907409934248),//基点位置
+	offset:new AMap.Pixel(-14,-34),//相对于基点的位置
+	icon:new AMap.Icon({  //复杂图标
+		size:new AMap.Size(27,36),//图标大小
+		image:"http://webapi.amap.com/static/images/custom_a_j.png", //大图地址
+		imageOffset:new AMap.Pixel(-28,0)//相对于大图的取图位置
+	})
+});
+mapObj.addOverlays(marker);
+</pre>
+
+<p class="bold">自定义点标注</p>
+<p>用户可以根据初始化的AMap.Marker 对象来设置一个自定义的点标注。如对于一个点标注，当鼠标移上时显示为“高德软件”，当鼠标移出时恢复为“AMap”，具体示例代码如下：</p>
+ <pre class="js" name="code">…
+/* 定义自定义点样式 */
+div.marker{height:40px;background:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker.png)
+left top no-repeat;}
+div.marker div{height:28px;line-height:28px;margin:0 10px;color:#FFF;background:
+url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker_bg_170x28.gif) right top no-repeat;
+padding-right:10px;}
+
+/* 修改背景URL */
+div.change{background-image:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker-h.png);}
+div.change div{background-image:url(http://pages.haozu.ajkcdn.com/20110909/img/map/marker-h-l.gif);}
+…
+…
+//自定义覆盖物dom元素
+	var m = document.createElement("div");
+	m.className = "marker";
+	var n = document.createElement("div");
+	n.innerHTML = "Amap";
+	m.appendChild(n);
+	
+	var marker = new AMap.Marker({
+		id:"m225",
+		position:new AMap.LngLat(116.37388157654,39.907409934248),//基点位置
+		offset:new AMap.Pixel(0,-40),//相对于基点的偏移位置
+		//draggable:true, //是否可拖动
+		content:m //自定义覆盖物内容
+	});
+	mapObj.addOverlays(marker);  //添加到地图
+	//mouseover,换个皮肤
+	mapObj.bind(marker,"mouseover",function(){
+		n.innerHTML = "高德软件";//修改内容
+		m.className = "marker change";//增加样式
+	});
+	//mouseout,换回皮肤
+	mapObj.bind(marker,"mouseout",function(){
+		n.innerHTML = "Amap";//修改内容
+		m.className = m.className.replace(" change",""); 
+	});
+</pre>
+<h4 id="infowindow">信息窗口</h4>
+<p class="bold">默认信息窗口</p>
+<p>信息窗口在地图上方的浮动窗口中显示内容，用户可以点击地图上的一个标注，弹出相关活动的信息窗口。</p>
+<p>InfoWindow 构造函数的参数是infoWindowOption 对象，该对象指定了用于显示信息窗口的一组初始参数。在创建信息窗口之后，您需要调用InfoWindow 的open()方法，向其传递要在其中打开信息窗口的Map，以及向其传递用于锚定信息窗口的Marker（可选）。（如果未提供任何标记，那么，会在其position 属性上打开信息窗口）。</p>
+<p>infoWindowOption 对象是包含以下字段的对象常量：</p>
+<ul>
+	<li><span>content 指定信息窗口打开时，系统要在其中显示的文本字符串或DOM节点。</span></li>
+	<li><span>offset 指定从信息窗口的顶部到信息窗口锚定位置的偏移量。</span></li>
+	<li><span>autoMove 是否自动调整信息窗口至视野内。</span></li>
+	<li><span>size 信息窗口大小。</span></li>
+	<li><span>isCustom 是否自定义窗口。</span></li>
+</ul>
+<p>InfoWindow 的位置取决于inforWindow.open()方法传入的经纬度坐标。注意同一时刻地图上只能有一个信息窗口处于打开状态。</p>
+<p>以下代码显示了在地图上添加标记，点击该标记可显示信息窗口：</p>
+ <pre class="js" name="code">//构建点对象
+	var marker = new AMap.Marker({
+		id:"m23",//唯一ID
+		position:new AMap.LngLat(116.37388157654,39.907409934248),  
+		icon:"http://webapi.amap.com/static/images/marker_sprite.png", //marker图标，直接传递地址url
+		offset:{x:-8,y:-34}  //相对于基点的位置
+	});
+	mapObj.addOverlays(marker);//将点添加到地图
+
+	var info = [];
+	info.push("<b>&nbsp;&nbsp;高德软件</b>");
+	info.push("&nbsp;&nbsp;电话 : 010-84107000   邮编 : 100102");
+	info.push("&nbsp;&nbsp;地址 : 北京市望京阜通东大街方恒国际中心A座16层");
+	
+	var inforWindow = new AMap.InfoWindow({
+		offset:new AMap.Pixel(45,-34),
+		content:info.join("<br />")
+	});
+	mapObj.bind(marker,"click",function(e){
+		inforWindow.open(mapObj,marker.getPosition());
+	});
+</pre>
+<p>position 为信息窗口打开open()方法的位置参数，传入此参数，设置信息窗口打开的位置。如果将信息窗口偏移量设置为(0,0) 即“offset: new AMap.Pixel(0,0);”则信息窗口的左上角与position 对齐，如下图A 所示。如果将信息窗口偏移量设置为(-78,-88)，即“offset: new AMap.Pixel(-78,-88);”，则信息窗口向左上方移动（78，88）像素，如下图B 所示。</p>
+<p>A: <img src="__APP__/Home/Tpl/default/Public/Images/infowindow_A.png"></p>
+<p>B: <img src="__APP__/Home/Tpl/default/Public/Images/infowindow_B.png"></p>
+
+<p class="bold">自定义信息窗口</p>
+<p>用户可根据自己的需要自定义信息窗口，包括信息窗口的显示外观和内容，设置content 属性的值。将content 内容添加为要在html 页面中显示的代码。如下代码所示：</p>
+
+ <pre class="js" name="code">//定义InfoWindow()方法，包括信息窗口显示外观和信息窗口的内容
+function InfoWindow(title,content){
+var bg = "http://webapi.amap.com/static/images/info_01.png";
+var m = [];
+m.push('&lt;div style="height:30px;position:relative;z-index:104;overflow:hidden;"&gt;');
+m.push('&lt;div style="width:8px;height:30px;background:url('+bg+') 0px 0px;
+position:absolute;left:0;top:0;overflow:hidden;"&gt;&lt;/div&gt;');
+//信息窗体头部样式更改
+m.push('&lt;div style="position:relative;height:29px;border-top:#BBCCD3 solid 1px;
+margin:0px 8px 1px 8px;background-color:#BBCCD3;overflow:hidden;font-size:14px;line-height:29px;
+color:#333333"&gt;'+title+'&lt;/div&gt;');
+m.push('&lt;div style="width:8px;height:30px;background:url('+bg+') -8px 0px;
+position:absolute;right:0;top:0;overflow:hidden;"&gt;&lt;/div&gt;');
+m.push('&lt;div style="position:absolute;width:7px;height:7px;background:url('+bg+') -25px -35px;right:8px;
+top:11px;cursor:hand;cursor:pointer;" onclick="closeInfoWindow()"&gt;&lt;/div&gt;');
+m.push('&lt;/div&gt;');
+//信息窗体内部样式更改
+m.push('&lt;div style="width:300px;padding:0 2px;border-left:#BBCCD3 solid 1px;border-right:#BBCCD3 solid 1px; 
+background-color:#F8F8F8;word-break:break-all;font-size:12px;overflow:hidden;"&gt;');
+m.push(content);
+m.push('&lt;/div&gt;');
+m.push('&lt;div style="height:8px;position:relative;z-index:104;"&gt;');
+m.push('&lt;div style="width:8px;height:8px;background:url('+bg+') 0px -38px;
+position:absolute;left:0;top:0;overflow:hidden;"&gt;&lt;/div&gt;');
+m.push('&lt;div style="height:7px;border-bottom:#BBCCD3 solid 1px;margin:0px 8px;
+background-color:#F8F8F8;overflow:hidden;"&gt;&lt;/div&gt;');
+m.push('&lt;div style="width:8px;height:8px;background:url('+bg+') -8px -38px;
+position:absolute;right:0;top:0;overflow:hidden;"&gt;&lt;/div&gt;');
+m.push('&lt;/div&gt;');
+m.push('&lt;div style="height:0;position:relative;z-index:104;"&gt;');
+for(var i=0;i&lt;5;i++){
+m.push("&lt;div style=\"position:absolute;width:"+(26-i*5)+"px;height:5px;
+background:url("+bg+") -"+(22-i)+"px "+(-i*5)+"px;left:"+(120-i)+"px;top:"+(-1+i*5)+"px;\"&gt;&lt;/div&gt;");
+	}
+	m.push('&lt;/div&gt;');
+	return m.join("");
+}
+
+// 初始化一个信息窗口对象
+var inforWindow = new AMap.InfoWindow({  
+		isCustom:true,
+		offset:new AMap.Pixel(38,-26),
+		content:InfoWindow('高德软件',info.join("&lt;br/&gt;") )  //设置content内容为调用InfoWindow()方法的返回值
+	}); 
+….
+// 打开信息窗口
+inforWindow.open(this.mapObj,new AMap.LngLat(116.37388157654,39.907409934248));
+</pre>
+<h4 id="polyline">折线</h4>
+<p>折线将一系列坐标指定为LatLng 对象的数组。使用AMap.Polyline(polylineOption)构造一个多折线新实例，其中polylineOption 包括对象id、线的经纬度数组、线的颜色、线的不透明度，线的粗细、线的样式。可以通过该类的getLength()方法获取该折线的长度。</p>
+<p>以下代码段绘制一条粗细为3 像素的红色的透明度为0.4 的折线: </p>
+ <pre class="js" name="code">   var arr = new Array();//经纬度坐标数组  
+    arr.push(new AMap.LngLat("116.36890411376953 ","39.913423004886866"));  
+    arr.push(new AMap.LngLat("116.38212203979492","39.9011768955094"));  
+    arr.push(new AMap.LngLat("116.38727188110351","39.91250133090293"));  
+    arr.push(new AMap.LngLat("116.39825820922851 ","39.904600759441024"));  
+    var polyline = new AMap.Polyline({  
+        id:"polyline",  
+        path:arr,  
+        strokeColor:"#F00",  
+        strokeOpacity:0.4,  
+        strokeWeight:3,  
+        strokeStyle:"dashed",  
+        strokeDasharray:[10,5]  
+    });  
+    mapObj.addOverlays(polyline);  
+    //调整视野到合适的位置及级别  
+    mapObj.setFitView();  
+</pre>
+<h4 id="polygon">多边形</h4>
+<p>Polygon 对象类似于Polyline 对象，都由一系列有序坐标构成。不过，多边形是定义闭合区域。可以通过该类的getArea()方法获取该多边形的面积。</p>
+<p>与折线一样，您可以定义多边形的polygonOption 来定义多边形的颜色、透明度、线宽、填充色、透明度。</p>
+ <pre class="js" name="code">var arr = new Array();//经纬度坐标数组   
+	arr.push(new AMap.LngLat("116.40332221984863","39.92025505675715")); 
+	arr.push(new AMap.LngLat("116.41070365905762","39.89755531478615")); 
+	arr.push(new AMap.LngLat("116.40229225158691","39.892353073034826")); 
+	arr.push(new AMap.LngLat("116.38984680175781","39.89136526100842")); 	
+
+	var polygon=new AMap.Polygon({
+		id:"polygon01",//多边形ID
+		path:arr,//多边形顶点经纬度数组
+		strokeColor:"#0000ff",//线颜色
+		strokeOpacity:0.2,//线透明度
+		strokeWeight:3,	//线宽
+		fillColor: "#f5deb3",//填充色
+		fillOpacity: 0.35 //填充透明度
+	});
+	mapObj.addOverlays(polygon);
+</pre>
+<p>上例的多边形包括四个经纬度数组，对于任意指定的路径，高德地图JavaScript API 将通过绘制连接最后一个坐标与第一个坐标的笔触以自动“封闭”任何多边形。</p>
+<h4 id="circle">圆</h4>
+<p>除了普通的Polygon 类之外，高德地图JavaScript API 还包括面向Circle 的绘制圆形的类。
+Circle 类与Polygon 类似，您可以使用circleOption 指定圆构造函数属性的边的颜色、粗细和透明度，以及填充颜色和透明度。还有两个用于定义其形状的属性：center：中心点，radius：半径。
+</p>
+<p>以下示例代码显示在地图上画一个以当前地图中心点为圆心，以1000px 为半径的圆:</p>
+ <pre class="js" name="code">circle = new AMap.Circle({
+		id:"circle",
+		center:mapObj.getCenter(),//圆心，基点
+		radius:1000,//半径
+		strokeColor: "#F33",//线颜色
+		strokeOpacity: 1,//线透明度
+		strokeWeight: 3,//线宽
+		fillColor: "#ee2200",//填充颜色
+		fillOpacity: 0.35//填充透明度
+	});
+	mapObj.addOverlays(circle);
+</pre>
+</div>
+
+</div><!-- #mapoverlay : end -->
+<div id="maplayer">
+<h3>图层</h3>
+ <div class="sec1">
+ 	<h4 id="layer_gaishu">概述</h4>
+ 	<p>图层是地图上的对象，它们覆盖了地球的整个表面，图层通常反映了您添加到地图上用于指定公共关联的对象集合，如您在地图上看到的街道、学校、兴趣点、公园等内容的地图展现就是一个图层，另外实时交通的展现也是通过图层来实现的。</p>
+ 	<h4 id="addremovelayer">添加和删除图层</h4>
+ 	<p class="bold">添加图层</p>
+ 	<p>要在地图上添加图层，需要初始化一个AMap.TileLayer 对象，使用tileLayerOption 来设置图层的属性，包括切片的大小、取图地址、id、透明度、叠加的顺序。使用地图对象的addLayer() 方法来添加初始化的地图图层。</p>
+ 	<p>目前高德地图API提供的添加图层包括以下两种：</p>
+ 	<ul>
+ 		<li><span>添加实时交通图层</span></li>
+ 		<li><span>添加轨道交通图层</span></li>
+ 	</ul>
+ 	<p>以下代码表示添加实时交通图层和轨道交通图层：</p>
+ 	 <pre class="js" name="code">// 添加实时交通图层
+function addTileLayer_TRAFFIC() {
+    mapObj.clearOverlays();  
+    Trafficlay = new AMap.TileLayer({  
+      tileSize:256, //图像大小  
+      id:"traffic_layer",  
+      getTileUrl:function(x,y,z) {
+      	   //获取地图图层地址
+        return "http://tm.mapabc.com/trafficengine/mapabc/traffictile?v=1.1&t=1&zoom="+(17-z)+"&x="+x+"&y="+y;
+      }
+    });  
+    mapObj.addLayer(Trafficlay);  
+}
+
+// 添加轨道交通图层
+function addTileLayer_SUBWAY() {
+mapObj.clearOverlays();  
+subwaylay = new AMap.TileLayer({  
+ tileSize:256, //图像大小  
+id:"subway_layer",  
+getTileUrl:function(x,y,z) {
+//获取地图图层地址
+return "http://emap0.is.autonavi.com/appmaptile?layer=subway&v=1.1&t=1&zoom="+(17-z)+"&x="+x+"&y="+y;
+       }
+    });
+    mapObj.addLayer(subwaylay);
+}
+</pre>
+ 	 	<p class="bold">删除图层</p>
+ 	 	<p>删除叠加在地图上的图层，需要调用地图对象的removeLayer()方法，传入需要删除的叠加图层的id 就可将叠加在地图上的图层删除。如下代码所示：</p>
+ 	  <pre class="js" name="code">&lt;!DOCTYPE HTML&gt;
+//删除实时交通图层
+function removeTileLayer_TRAFFIC() {
+    mapObj.removeLayer("traffic_layer");
+}
+
+//删除轨道交通图层
+function removeTileLayer_SUBWAY() {
+    mapObj.removeLayer("subway_layer");
+}
+</pre>	
+<h4 id="selflayer">自定义图层</h4>
+<p class="bold">地图坐标系及图块编号</p>
+<p>在使用自定义图层前，需要先了解高德地图JavaScript API 的坐标系，包括以下坐标系：</p>
+<ul>
+	<li><span>900913 坐标系</span></li>
+	<li><span>4326 坐标系</span></li>
+	<li><span>BeiJing54 坐标系</span></li>
+</ul>
+<p>经纬度是一种利用三维空间的球面来定义地球上的空间的球面坐标系，它能够标示地球上任何一个位置。通过伦敦格林尼治天文台原址的经线为0 度经线，从0 度经线向东、向西各分180 度。赤道为0 度纬线，赤道以北的纬线称为北纬、以南的称为南纬。在高德地图JavaScript API 中，规定经度在前，纬度在后中，东经和北纬用正数标示，西经和南纬用负数标示。例如北京的位置大约是北纬39.9 度，东经116.4 度，那么用数值标示就是经度116.6，纬度39.9。在高德地图JavaScript API 地图中，规定经度在前，纬度在后，例如：</p>
+ <pre class="js" name="code">var lnglat=new AMap.LngLat(116.39825820922851, 36.904600759441024);</pre>
+<p>由于高德地图是显示在平面上的，因此在地图内部系统中需要将球面坐标转换为平面坐标，这个转换过程称为投影。高德地图使用的是墨卡托投影，采用900913标准。图块原点始终位于地图的西北角，x 值从西向东逐步增大，y 值从北向南逐步增大。图块使用相对于该原点的 x,y 坐标进行索引。高德地图在每个级别将整个地图划分成若干个图块，通过编号系统将整个图块整合在一起以便显示完整的地图。例如，在缩放级别 2，如果地球被分割为 16 个图块，则每个图块都可通过唯一的 x,y 对引用，如下图所示。当地图被拖动或者级别发生变化时，地图API将会根据平面坐标计算出当前视野内所需显示的图块的编号。</p>
+ <img src="__APP__/Home/Tpl/default/Public/Images/tileCoordinates.png">
+ <p>从平面坐标原点开始的方向图块编号为（0,0），以此类推。在最低的缩放级别（级别 1）中，整个地球由 4 张图块组成。随着级别的增长，地图所使用的图块个数也随之增多。</p>
+ <p class="bold">自定义取图规则</p>
+ <p>通过TileLayer 类开发者可以实现自定义图层。其中，TileLayer 实例的getTilesUrl() 方法需要被实现，用来告诉API 取图规则。getTilesUrl()方法的参数包括x、y 和z，其中x、y 表示图块的编号信息，z为图块的级别，每当地图需要显示特定级别的特定位置的图块时就会自动调用此方法，并提供这两个参数。使用者需要通过getTilesUrl()方法告知API 特定编号和级别所对应的图块的地址，这样API 就能正常显示自定义的图层了。</p>
+ <p>以下代码显示了在地图所有缩放级别上添加一个自定义图层，需要将tileUrl 的地址设置为想要显示的图层地址。</p>
+ <pre class="js" name="code">var selfTileLayer = new AMap.TileLayer({
+		tileSize: "64*64",
+		id: "selfTileLayer", // 图层唯一ID
+		tileUrl: “http://119.167.194.139:9090/webapi/static/Images/0.png” // 此时地址是一张图片
+});
+mapObj.addLayer(selfTileLayer);
+</pre>
+<p>也可以使用getTileUrl() 方法自定义取图规则来获取图层地址，如下代码显示将SOSO 地图图层添加到地图上。</p>
+ <pre class="js" name="code">var soso = new AMap.TileLayer({
+   id:"soso",//图层唯一ID
+   getTileUrl:function(x,y,z){  //自定义取图规则
+   var s = [0,1,2,3];
+   var t = [];
+   t.push("http://pic"+s[Math.floor(Math.random()*s.length)]+".map.soso.com");
+   t.push(z);
+   t.push(Math.floor(x/10));
+   t.push(Math.floor(y/10));
+   t.push(x+"_"+y+".gif");
+   return t.join("/");
+		}
+	});
+	mapObj.addLayer(soso);
+</pre>
+<p>具体请查看JavaScript示例中心的叠加自定义图层。</p>
+ </div>
+</div><!-- #maplayer : end -->				
+				<div id="server">
+					<h3>服务</h3>
+					<div class="sec1">
+						<h4 id="service_gaishu">概述</h4>
+<p>服务是指提供数据信息的接口，比如POI 查询、公交换乘、地理编码等等。高德地图JavaScript API 通过云平台来提供数据信息。提供的服务种类有：</p>
+<ul><li>
+<span>PoiSearch：本地搜索，提供某一特定地区的位置搜索服务，比如在北京市搜索“酒店”。</span> </li>
+<li><span>BusSearch： 公交换乘查询，提供某一特定地区的公交出行方案的查询服务。</span></li> 
+<li><span>RouteSearch： 驾车导航，提供驾车出行方案的查询服务。 </span></li>
+<li><span>Geocoder： 地址解析，提供将地址信息转换为坐标点信息的服务。</span></li>
+<li><span>RoadSearch： 道路查询服务，根据提供的道路名称，查询道路详细信息。</span> </li>
+<li><span>Partition： 行政区划查询服务，可查询所有省份、城市、区县的详细信息。</span></li>
+</ul>
+<h4 id="poisearch">POI 搜索</h4>
+<p>AMap. PoiSearch 提供兴趣点搜索服务，Amap.PoiSearch 的构造函数的参数是可选的，是PoiSearchOption 类型的对象，可以对搜索目标库、搜索的数据类别、搜索范围、查询范围、每页显示结果数量等进行设置。在构造一个兴趣点搜索对象之后，可以调用该搜索对象的各种方法进行搜索，例如POI 查询、根据中心点关键字进行周边查询、根据中心点经纬度进行周边查询、根据PGUID（全局索引库ID）查询兴趣点的详细信息等兴趣点相关搜索服务、拉框查询关键字等。</p>
+<p>在北京搜索关键字为“中关村”的代码如下：</p>
+ <pre class="js" name="code">var poiSearchOption = {  
+	srctype: "POI", // 数据来源  
+	type: "", // 数据类别  
+	number: 10, // 每页数量,默认10  
+	batch: 1, // 请求页数，默认1  
+	range: 3000, // 查询范围，默认3000米  
+	ext: "" // 扩展字段  
+};
+var poiSearch = new AMap.PoiSearch(poiSearchOption);  
+poiSearch.byKeywords("中关村","010", function(result) {
+   console.log(result);  // 输出查询结果                                                     
+});
+</pre>
+<div id="poisearchresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+{
+    "bounds": "116.297791,39.952722;116.335432,40.052499",
+    "total": "5312",
+    "record": "10",
+    "time": "0.023",
+    "count": "5312",
+    "status": "E0",
+    "list": [{
+        "distance": "0",
+        "pguid": "BV00A02778",
+        "address": "",
+        "tel": "",
+        "name": "中关村(地铁站)",
+        "ename": "Zhongguancun (Subway Station)",
+        "match": "14",
+        "srctype": "basepoi",
+        "type": "交通设施服务;地铁站;地铁站",
+        "y": "39.98391",
+        "eaddress": "",
+        "x": "116.316488"
+    }
+   ],
+    "server": "AN_Nanjing_64_94",
+    "type": "list",
+    "version": "v2.0.1"
+}
+</pre>
+<p>返回结果字段说明： </p>
+<table   border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js">
+  <tr>
+    <td width="76" bgcolor="#FFFFFF">bounds</td>
+    <td colspan="3" bgcolor="#FFFFFF">bounds 值，当前返回的POI点统一在一个矩形框内，bounds 为矩形框的左下、右上点对应坐标对</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">total</td>
+    <td colspan="3" bgcolor="#FFFFFF">返回的记录集总数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">record</td>
+    <td colspan="3" bgcolor="#FFFFFF">此页返回的记录数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">time</td>
+    <td colspan="3" bgcolor="#FFFFFF">查询时间，单位：毫秒</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">count</td>
+    <td colspan="3" bgcolor="#FFFFFF">权限允许返回的记录数。默认最大结果集为20000，可联系管理员通过Key权限修改</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">status</td>
+    <td colspan="3" bgcolor="#FFFFFF">错误代码，E0 表示成功</td>
+  </tr>
+  <tr>
+    <td rowspan="11" bgcolor="#FFFFFF">list</td>
+    <td width="177" rowspan="11" bgcolor="#FFFFFF">POI 数据列表</td>
+    <td width="147" bgcolor="#FFFFFF">distance</td>
+    <td width="147" bgcolor="#FFFFFF">距离中心点的直线距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">pguid</td>
+    <td bgcolor="#FFFFFF">POI 的唯一标识，即全局索引库的ID </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">address</td>
+    <td bgcolor="#FFFFFF">地址</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">tel</td>
+    <td bgcolor="#FFFFFF">联系电话</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">POI的名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">POI的英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">srctype</td>
+    <td bgcolor="#FFFFFF">数据源类型</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td bgcolor="#FFFFFF">数据分类类别</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td bgcolor="#FFFFFF">纬度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">eaddress</td>
+    <td bgcolor="#FFFFFF">英文地址</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">server</td>
+    <td colspan="3" bgcolor="#FFFFFF">服务器</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td colspan="3" bgcolor="#FFFFFF">数据类型，list表示数据列表</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">version</td>
+    <td colspan="3" bgcolor="#FFFFFF">版本</td>
+  </tr>
+</table>
+</div>
+<p>用户可根据返回的结果进行各种显示，可参考JavaScript示例中心的POI 查询。</p>
+<h4 id="searcharound">周边查询</h4>
+<p>当需要查询某个中心点周边一定范围内的POI 信息时，可以使用周边查询API。周边查询API 有两种类型：根据中心点关键字查询和根据中心点经纬度查询，这两种方法的参数不一样：</p>
+
+ <pre class="js" name="code">// 中心点经纬度查询，需要中心点坐标（AMap.LngLat类型），查询关键字，回调函数三个参数：
+poiSearch.byCenPoi(centXY, keywords, cenPoiSearch_func);
+</pre>
+<div id="roundsearchresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+AMap.MAjaxResult[27011] = {
+    "bounds": "116.405705,39.903381;116.410144,39.911229",
+    "total": "1200",
+    "record": "10",
+    "time": "0.091",
+    "count": "1200",
+    "status": "E0",
+    "list": [{
+        "distance": "198",
+        "pguid": "B000A7BLUQ",
+        "address": "东长安街35号",
+        "tel": "010-65137788",
+        "name": "北京贵宾楼饭店",
+        "ename": "Grand Hotel Beijing",
+        "srctype": "basepoi",
+        "type": "住宿服务;宾馆酒店;五星级宾馆",
+        "y": "39.908887",
+        "eaddress": "No.35 East Chang'an Avenue",
+        "x": "116.407272"
+    },
+    ...
+   ],
+    "server": "AN_Qingdao_231_167",
+    "type": "list",
+    "version": "v2.0.1"
+}
+</pre>
+<p>返回结果字段说明： </p>
+<table   border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js">
+  <tr>
+    <td width="76" bgcolor="#FFFFFF">bounds</td>
+    <td colspan="3" bgcolor="#FFFFFF">bounds 值，当前返回的POI 点统一在一个矩形框内，bounds 为矩形框的左下、右上点对应坐标对</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">total</td>
+    <td colspan="3" bgcolor="#FFFFFF">返回的记录集总数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">record</td>
+    <td colspan="3" bgcolor="#FFFFFF">此页返回的记录数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">time</td>
+    <td colspan="3" bgcolor="#FFFFFF">查询时间，单位：毫秒</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">count</td>
+    <td colspan="3" bgcolor="#FFFFFF">权限允许返回的记录数。默认最大结果集为20000，可联系管理员通过Key权限修改</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">status</td>
+    <td colspan="3" bgcolor="#FFFFFF">错误代码，E0表示成功</td>
+  </tr>
+  <tr>
+    <td rowspan="11" bgcolor="#FFFFFF">list</td>
+    <td width="177" rowspan="11" bgcolor="#FFFFFF">POI 数据列表</td>
+    <td width="147" bgcolor="#FFFFFF">distance</td>
+    <td width="147" bgcolor="#FFFFFF">距离中心点的直线距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">pguid</td>
+    <td bgcolor="#FFFFFF">POI 的唯一标识，即全局索引库的ID </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">address</td>
+    <td bgcolor="#FFFFFF">地址</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">tel</td>
+    <td bgcolor="#FFFFFF">联系电话</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">POI的名称</td>
+  </tr>
+   <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td bgcolor="#FFFFFF">POI的英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">srctype</td>
+    <td bgcolor="#FFFFFF">数据源类型</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td bgcolor="#FFFFFF">数据分类类别</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td bgcolor="#FFFFFF">纬度</td>
+  </tr>
+   <tr>
+    <td bgcolor="#FFFFFF">eaddress</td>
+    <td bgcolor="#FFFFFF">英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">server</td>
+    <td colspan="3" bgcolor="#FFFFFF">服务器</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td colspan="3" bgcolor="#FFFFFF">数据类型，list 表示数据列表</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">version</td>
+    <td colspan="3" bgcolor="#FFFFFF">版本</td>
+  </tr>
+</table></div>
+<p>用户可根据返回的结果进行各种显示，可参考JavaScript示例中心的POI 查询。</p>
+
+
+ <pre class="js" name="code">// 中心点关键字查询，需要中心点关键字，查询关键字，查询地区，回调函数四个参数
+poiSearch.byCenKeywords(CentKeyword, keywords, city, cenKeywordSearch_CallBack);
+</pre>
+<div id="centkeyresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+AMap.MAjaxResult[98701] = {
+    "bounds": "116.314368,39.98309;116.317623,39.984254",
+    "total": "2174",
+    "record": "10",
+    "time": "0.09",
+    "count": "2174",
+    "status": "E0",
+    "cenpoi": {
+        "pguid": "BV00A02778",
+        "address": "",
+        "tel": "",
+        "name": "中关村(地铁站)",
+        "ename": "Zhongguancun (Subway Station)",
+        "srctype": "basepoi",
+        "type": "交通设施服务;地铁站;地铁站",
+        "y": "39.98391",
+        "eaddress": "",
+        "x": "116.316488"
+    },
+    "list": [{
+        "distance": "37",
+        "pguid": "B000A84YH1",
+        "address": "中关村大街",
+        "tel": "",
+        "name": "苏氏牛肉面(黄庄店)",
+        "ename": "Sushi Beef Noodles (Huangzhuang Shop)",
+        "srctype": "basepoi",
+        "type": "餐饮服务;中餐厅;中餐厅",
+        "y": "39.983687",
+        "eaddress": "Zhongguancun Street",
+        "x": "116.316155"
+    }
+    ...
+    ],
+    "server": "AN_Qingdao_231_158",
+    "type": "list",
+    "version": "v2.0.1"
+}
+</pre>
+<p>返回结果字段说明： </p>
+<table   border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js">
+  <tr>
+    <td width="76" bgcolor="#FFFFFF">bounds</td>
+    <td colspan="3" bgcolor="#FFFFFF">bounds值，当前返回的POI点统一在一个矩形框内，bounds为矩形框的左下、右上点对应坐标对</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">total</td>
+    <td colspan="3" bgcolor="#FFFFFF">返回的记录集总数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">record</td>
+    <td colspan="3" bgcolor="#FFFFFF">此页返回的记录数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">time</td>
+    <td colspan="3" bgcolor="#FFFFFF">查询时间，单位：毫秒</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">count</td>
+    <td colspan="3" bgcolor="#FFFFFF">权限允许返回的记录数。默认最大结果集为20000，可联系管理员通过Key权限修改</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">status</td>
+    <td colspan="3" bgcolor="#FFFFFF">错误代码，E0表示成功</td>
+  </tr>
+  <tr>
+    <td rowspan="11" bgcolor="#FFFFFF">list</td>
+    <td width="177" rowspan="11" bgcolor="#FFFFFF">POI数据列表</td>
+    <td width="147" bgcolor="#FFFFFF">distance</td>
+    <td width="147" bgcolor="#FFFFFF">距离中心点的直线距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">pguid</td>
+    <td bgcolor="#FFFFFF">POI的唯一标识，即全局索引库的ID </td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">address</td>
+    <td bgcolor="#FFFFFF">地址</td>
+  </tr>
+  
+  <tr>
+    <td bgcolor="#FFFFFF">tel</td>
+    <td bgcolor="#FFFFFF">联系电话</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">POI的名称</td>
+  </tr>
+   <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">POI的英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">srctype</td>
+    <td bgcolor="#FFFFFF">数据源类型</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td bgcolor="#FFFFFF">数据分类类别</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td bgcolor="#FFFFFF">纬度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">eaddress</td>
+    <td bgcolor="#FFFFFF">英文地址</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">server</td>
+    <td colspan="3" bgcolor="#FFFFFF">服务器</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td colspan="3" bgcolor="#FFFFFF">数据类型，list表示数据列表</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">version</td>
+    <td colspan="3" bgcolor="#FFFFFF">版本</td>
+  </tr>
+</table>
+</div>
+<p>用户可根据返回的结果进行各种显示，可参考JavaScript示例中心的POI 查询。</p>
+<h4 id="rangesearch">范围查询</h4>
+<p>当用户需要查询某个多边形范围内的POI 时，可以使用范围查询服务。</p>
+ <pre class="js" name="code">// 指定范围查询，需要指定组成多边形的点坐标数组，查询关键字，回调函数三个参数，
+poiMSearch.byRegion(array, keywords, searchResult_CallBack);
+</pre>
+
+<h4 id="keywordinfo">关键字提示</h4>
+<p>为了开发出用户体验更好的应用，使用搜索功能时，往往要使用查询关键字下拉列表提示的功能，以加快用户输入速度。</p>
+ <pre class="js" name="code">// 搜索关键字提示功能，需要指定关键字，查询地区，回调函数三个参数，例如：
+poiSearch.inputPrompt(keywords, city, keywordSearch_CallBack);
+</pre>
+<div id="tishiresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+	AMap.MAjaxResult[20012] = {
+    "time": "0.01",
+    "count": "10",
+    "status": "E0",
+    "list": ["中关村", "中关村南", "中关村图书大厦", "中关村西", "中关村医院", "中关村南大街", "中关村一街", "中关村软件园", "中关村鼎好", "中关村e世界"],
+    "server": "AN_Qingdao_231_158",
+    "type": "list",
+    "version": "v2.0.1"
+}
+</pre>
+<p>返回结果说明：</p>
+<table  border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js">
+  <tr>
+    <td width="66" bgcolor="#FFFFFF">time</td>
+    <td width="606" bgcolor="#FFFFFF">查询时间，单位：毫秒</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">count</td>
+    <td bgcolor="#FFFFFF">本页结果记录数</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">status</td>
+    <td bgcolor="#FFFFFF">错误代码，E0 表示成功</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">list</td>
+    <td bgcolor="#FFFFFF">输入信息列表</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">server</td>
+    <td bgcolor="#FFFFFF">服务器</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td bgcolor="#FFFFFF">数据类型，list 表示数据列表</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">version</td>
+    <td bgcolor="#FFFFFF">版本</td>
+  </tr>
+</table></div>
+<h4 id="buschange">公交换乘查询服务</h4>
+<p>AMap. BusSearch 提供公交换乘查询服务，在使用相关的方法前，需要调用该类的构造函数，构造函数参数为BusSearchOption 类型。获得BusSearch 对象后，就可以调用相关的方法来实现公交换乘查询，公交线路信息等的查询。</p>							
+<p>当需要指定出发点，目的地，然后计算出公交换乘方案时，要调用BusSearch 的byTwoPoi 方法，需要指定起始、终止点坐标数组，城市代码,以下是调用例子：</p>
+ <pre class="js" name="code">var arr=new Array(); // 经纬度坐标数组
+arr.push(new AMap.LngLat("116.36890411376953 ","39.913423004886866"));
+arr.push(new AMap.LngLat("116.38212203979492","39.9011768955094"));
+var busSearch=new AMap.BusSearch();
+busSearch.byTwoPoi(arr, "010", function(data) {
+console.log(data); // 此处替换为解析代码
+});
+</pre>
+<div id="busroutesearchresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+	AMap.MAjaxResult[17834] = {
+    "time": "0.084",
+    "count": "10",
+    "status": "E0",
+    "list": [{
+        "bounds": "116.316488;39.907189;116.401565;39.98391",
+        "footEndLength": "491",
+        "segmentList": [{
+            "busName": "地铁4号线(安河桥北--公益西桥)",
+            "startName": "中关村",
+            "driverLength": "12304",
+            "footLength": "0",
+            "passDepotCoordinate": "116.317529,39.976001;...116.373743,39.916092",
+            "coordinateList": "116.316488,39.983910...116.374258,39.907422",
+            "passDepotName": "海淀黄庄 人民大学 魏公村 国家图书馆 动物园 西直门 新街口 平安里 西四 灵境胡同",
+            "endName": "西单",
+            "passDepotCount": "10"
+        },
+        {
+            "busName": "地铁1号线(苹果园--四惠东)",
+            "startName": "西单",
+            "driverLength": "2475",
+            "footLength": "227",
+            "passDepotCoordinate": "116.391715,39.907495",
+            "coordinateList": "116.376383,39.907189...116.401565,39.907792",
+            "passDepotName": "天安门西",
+            "endName": "天安门东",
+            "passDepotCount": "1"
+        }],
+        "type": "list"
+    }
+   ],
+    "server": "AN_Qingdao_231_158",
+    "type": "list",
+    "version": "v2.0.1"
+}
+</pre>
+<p>返回结果说明：</p>
+<table  border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js"  font-size=12px>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">time</td>
+    <td colspan="4" bgcolor="#FFFFFF">搜索时间，单位：毫秒</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">count</td>
+    <td colspan="4" bgcolor="#FFFFFF">换乘方案数</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">status</td>
+    <td colspan="4" bgcolor="#FFFFFF">错误代码，E0表示成功</td>
+  </tr>
+  <tr>
+    <td width="51" rowspan="12" bgcolor="#FFFFFF">list</td>
+    <td width="109" rowspan="12" bgcolor="#FFFFFF">换乘方案列表</td>
+    <td colspan="2" bgcolor="#FFFFFF">bounds</td>
+    <td colspan="2" bgcolor="#FFFFFF">坐标范围，矩形西南、东北角坐标</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">footEndLength</td>
+    <td colspan="2" bgcolor="#FFFFFF">换乘方案结束后，步行到终点距离</td>
+  </tr>
+  <tr>
+    <td width="83" rowspan="9" bgcolor="#FFFFFF">segmentList</td>
+    <td width="92" rowspan="9" bgcolor="#FFFFFF">路段列表</td>
+    <td width="115" bgcolor="#FFFFFF"> busName</td>
+    <td width="214" bgcolor="#FFFFFF">路线名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">startName</td>
+    <td bgcolor="#FFFFFF">起点名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">driverLength</td>
+    <td bgcolor="#FFFFFF" class="javascript">行驶距离，单位：米</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">footLength</td>
+    <td bgcolor="#FFFFFF">步行距离，单位：米</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">passDepotCoordinate</td>
+    <td bgcolor="#FFFFFF">途经站点名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">coordinateList</td>
+    <td bgcolor="#FFFFFF">途经站点坐标</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">passDepotName</td>
+    <td bgcolor="#FFFFFF">步行经过点坐标</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">endName</td>
+    <td bgcolor="#FFFFFF">终点名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">passDepotCount</td>
+    <td bgcolor="#FFFFFF">途经站点数量</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">type</td>
+    <td colspan="2" bgcolor="#FFFFFF">数据类型，list表示数据列表</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">server</td>
+    <td colspan="4" valign="middle" bgcolor="#FFFFFF">服务器</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">type</td>
+    <td colspan="4" bgcolor="#FFFFFF">数据类型，list表示数据列表</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">version</td>
+    <td colspan="4" bgcolor="#FFFFFF">版本</td>
+  </tr>
+</table>
+</div>
+<h4 id="routesearch">驾车导航查询</h4>
+<p>AMap. RouteSearch 类提供了驾车导航查询方法。在使用该类的方法之前需要调用该类的构造函数初始化该类，构造函数参数为RouteSearchOption类型。如下代码所示：</p>
+ <pre class="js" name="code">var arr=new Array();//经纬度坐标数组   
+    arr.push(new AMap.LngLat("116.36890411376953 ","39.913423004886866"));
+    arr.push(new AMap.LngLat("116.38212203979492","39.9011768955094"));
+    arr.push(new AMap.LngLat("116.38727188110351","39.91250133090293"));
+    arr.push(new AMap.LngLat("116.39825820922851 ","39.904600759441024"));
+
+var routeSearchOption ={
+	routeType:0,//计算规则
+	avoidName:"学院路",//避让名称
+	avoidRegion:arr//避让区域，多边形范围
+    };
+
+var routeSearch = new AMap.RouteSearch(routeSearchOption);
+
+</pre>
+<p>给定起点和终点的经纬度坐标，使用已经实例化的routeSearch的getNaviPath() 方法进行驾车导航的查询。如下代码所示：</p>
+ <pre class="js" name="code">var arr1 = new Array();
+	arr1.push(new MMap.LngLat(116.30470204166,39.982688558444));
+	arr1.push(new MMap.LngLat(116.40778469851,39.990777394536));
+
+routeSearch.getNaviPath(arr1,function(data){
+		console.log(data);
+	});
+
+</pre>
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明:</p>
+<div id="routesearchresult">
+<pre class="js" name="code"><searchresult version="v2.0.1" server="AN_Qingdao_231_167">
+<status>E0</status>
+<time>0.203</time>
+<count>20</count>
+<bounds>116.31604,39.240643;117.180435,39.969547</bounds>
+<coors>
+116.316,39.96491;…;117.159,39.24534
+</coors>
+<list type="list">
+<segment>
+<roadName>北三环西路辅路</roadName>
+<locationCode/>
+<direction>东</direction>
+<roadLength>867米</roadLength>
+<action>向左前方行驶</action>
+<accessorialInfo>进入主路</accessorialInfo>
+<driveTime>2分钟</driveTime>
+<grade>主要道路</grade>
+<form>辅路</form>
+<textInfo>沿北三环西路辅路向东行驶867米向左前方行驶进入主路</textInfo>
+<coor>
+116.31604,39.96491…116.32587,39.96703
+</coor>
+</segment>
+</list>
+</searchresult>
+
+</pre>
+
+
+
+<p>返回结果说明如下：</p>
+<table width="704" border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js">
+  <tr bgcolor="#FFFFFF">
+    <td width="63">bounds</td>
+    <td colspan="3">导航起始点范围</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>time</td>
+    <td colspan="3">搜索时间，单位：毫秒</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>count</td>
+    <td colspan="3">导航路径的段数</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>status</td>
+    <td colspan="3">错误代码，E0表示成功</td>
+  </tr>
+ 
+  <tr bgcolor="#FFFFFF">
+    <td rowspan="10">list</td>
+    <td width="128" rowspan="10">路段导航信息列表</td>
+    <td width="186">form</td>
+    <td width="187">道路性质描述</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">coor</td>
+    <td bgcolor="#FFFFFF">行驶路段坐标</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">direction</td>
+    <td bgcolor="#FFFFFF">行驶方向</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">roadLength</td>
+    <td bgcolor="#FFFFFF">行驶距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">action</td>
+    <td bgcolor="#FFFFFF">辅助动作</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">grade</td>
+    <td bgcolor="#FFFFFF">道路等级</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">textInfo</td>
+    <td bgcolor="#FFFFFF">此段道路行使文字描述</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">accessorialInfo</td>
+    <td bgcolor="#FFFFFF">动作</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">roadName</td>
+    <td bgcolor="#FFFFFF">道路名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">driveTime</td>
+    <td bgcolor="#FFFFFF">行驶时间</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>server</td>
+    <td colspan="3">服务器</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>type</td>
+    <td colspan="3">数据类型，list表示数据列表</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>coors</td>
+    <td colspan="3">区域范围坐标串</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td>version</td>
+    <td colspan="3">版本</td>
+  </tr>
+</table></div>
+<h4 id="geocode">地址解析</h4>
+<p>地理编码能够将地址信息和地理坐标点信息进行相互转化，包括将地址信息转换为地理坐标点的编码和将地理坐标点转化为地址信息的逆地理编码。</p>
+<p>高德地图JavaScript API 提供了Geocoder 类进行地址解析，您可以使用geocoderOption 来设置各个参数选项，例如查询的范围，交叉口数量，线记录数，返回的兴趣点数量等。</p>
+ <pre class="js" name="code">var geocoderOption = {
+    range:300, // 范围
+    crossnum:2, // 道路交叉口数
+    roadnum :3, // 路线记录数
+    poinum:2 // POI点数
+   };
+var geocoder = new AMap.Geocoder(geocoderOption);
+</pre>
+<h4 id="geocode+">地理编码</h4>
+<p>地理编码是将地址信息转换为地理坐标点信息，你可以使用此项功能在指定位置添加一个点或是定位地图上的某个位置。</p>
+ <pre class="js" name="code">geocoder.geocode("北京市海淀区苏州街3号",function(data){
+ console.log(data);  //输出地理编码的结果
+});
+</pre>
+<div id="geocoderresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+	AMap.MAjaxResult[82512] = {
+    "time": "0.014",
+    "count": "1",
+    "status": "E0",
+    "list": [{
+        "level": "GL_LINE",
+        "name": "北京市海淀区苏州街",
+        "province": "北京市",
+        "district": "海淀区",
+        "y": "39.977298",
+        "x": "116.306224"
+    }],
+    "server": "AN_Qingdao_231_159",
+    "type": "list",
+    "version": "v2.0.1"
+}
+</pre>
+<p>返回结果字段说明：</p>
+<table  border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js" >
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">time</td>
+    <td colspan="2">查询时间，单位：毫秒</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">count</td>
+    <td colspan="2">返回记录总数</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">status</td>
+    <td colspan="2">错误代码，E0表示成功</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td width="43" rowspan="7">list</td>
+    <td width="124" rowspan="7">POI信息列表</td>
+    <td width="221">level</td>
+    <td width="311">匹配级别</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"> name</td>
+    <td bgcolor="#FFFFFF">名称</td>
+  </tr>
+   <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td bgcolor="#FFFFFF">POI的英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">province</td>
+    <td bgcolor="#FFFFFF">省级行政区、直辖市</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">district</td>
+    <td bgcolor="#FFFFFF">区域</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td bgcolor="#FFFFFF">纬度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">server</td>
+    <td colspan="2">服务器</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">type</td>
+    <td colspan="2">数据类型，list表示数据列表</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td colspan="2">version</td>
+    <td colspan="2">版本</td>
+  </tr>
+</table></div>
+<p>补充说明：</p>
+<p>返回结果中，匹配级别（level）字段的说明如下：</p>
+<table  border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js" >
+  <tr bgcolor="#F2F2F2">
+    <td >匹配级别</td>
+    <td >级别定义</td>
+    <td >示例</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_COUNTRY</td>
+    <td >国家级行政区划</td>
+    <td >中国</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_PROVINCE</td>
+    <td >省级行政区划</td>
+    <td >重庆市</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_CITY</td>
+    <td >市级行政区划</td>
+    <td >宁波</td>
+  </tr>
+
+  <tr bgcolor="#FFFFFF">
+    <td >GL_DISTRICT</td>
+    <td >区县级行政区划</td>
+    <td >上海市黄浦区</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_SUBDISTRICT</td>
+    <td >热点商圈</td>
+    <td >上海市黄浦区老西门</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_BUS</td>
+    <td >公交站台、地铁站</td>
+    <td >海淀黄庄站A1西北口</td>
+  </tr>
+    <tr bgcolor="#FFFFFF">
+    <td >GL_ROAD</td>
+    <td >不带点集的道路</td>
+    <td >黄浦区蔑竹路附近（不带点集）</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_LINE</td>
+    <td >带点集的道路（道路级别精准度比GL_ROAD高）</td>
+    <td >黄浦区尚文路附近（带点集）</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_NUMBER</td>
+    <td >门牌号</td>
+    <td >上海市黄浦区外马路1588号</td>
+  </tr>
+
+  <tr bgcolor="#FFFFFF">
+    <td >GL_POI</td>
+    <td >兴趣点</td>
+    <td >人民大道221号迪美购物中心</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_OTHER</td>
+    <td >未确认类型级别</td>
+    <td >北京市海淀区北三环西路,联想桥东侧路北,太阳园小区南侧</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_INTER</td>
+    <td >插值的结果</td>
+    <td >上海市黄浦区复兴东路601号（本地址是通过地址区间计算得出的，在数据中不存在，而GL_NUMBER是真实地址数据。）</td>
+  </tr>
+    <tr bgcolor="#FFFFFF">
+    <td >GL_NEARBY</td>
+    <td >附近的门牌</td>
+    <td >上海市黄浦区大兴路15号（因为已有数据中，“上海市黄浦区大兴路”的最小门牌为17号，所以匹配结果为“上海市黄浦区大兴路17号”，）</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_SUB</td>
+    <td >方位、小区、多个数字表示的楼层</td>
+    <td >陆家浜路1332号南开大厦21层D</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_TOWN</td>
+    <td >乡镇</td>
+    <td >回龙观镇</td>
+  </tr>
+
+  <tr bgcolor="#FFFFFF">
+    <td >GL_VILLAGE</td>
+    <td >村庄</td>
+    <td >三元村</td>
+  </tr>
+  <tr bgcolor="#FFFFFF">
+    <td >GL_ROADINTER</td>
+    <td >道路交叉路口</td>
+    <td >北四环西路辅路/善缘街</td>
+  </tr>
+
+  <tr bgcolor="#FFFFFF">
+    <td colspan="3"><p>注：将匹配级别按照精度从高到低排序，则GL_NUMBER、GL_ROADINTER、GL_SUB、GL_POI、GL_INTER基本属于1公里范围内；GL_SUBDISTRICT、GL_BUS、GL_NEARBY、GL_LINE、GL_ROAD、GL_OTHER、GL_VILLAGE、GL_TOWN基本属于1到10公里范围内；GL_DISTRICT、GL_CITY、GL_PROVINCE、GL_COUNTRY基本属于10公里范围以上。
+      
+    </p>
+    <p>某些比较精确地址有可能会匹配到较低级别。例如“江苏省南京市上浮桥13号”，如果在引擎索引中没有“上浮桥”，而后面的“13号”不是一个独立级别，那么匹配结果的匹配级别会降低到“江苏省南京市”，即GL_CITY级别。</p></td>
+  </tr>
+</table>
+<h4 id="regeocode">逆地理编码</h4>
+<p>逆地理编码又称位置描述或地址解析，即从已知的经纬度坐标到对应的地址描述（如省市、街区、楼层、房间等）的转换。</p>
+ <pre class="js" name="code">geocoder.regeocode(new AMap.LngLat("116.3591194152832","39.972121232368345"),
+function(data) {
+console.log(data); //输出逆地理编码的结果
+}
+);
+</pre>
+<div id="regeocoderresult">
+<p>下面给出一个一般性JSON 格式的返回结果，并进行说明: </p>
+<pre class="js" name="code">
+	AMap.MAjaxResult[58711] = {
+    "time": "0.065",
+    "count": "1",
+    "status": "E0",
+    "list": [{
+        "crosslist": [{
+            "distance": "72.8009",
+            "direction": "West",
+            "road1": {
+                "id": "010J50F00101916793",
+                "level": "45000",
+                "width": "4",
+                "name": "中关村路",
+                "ename": "Zhongguancun Road"
+            },
+            "road2": {
+                "id": "中关村东路",
+                "level": "44000",
+                "width": "20",
+                "name": "中关村东路",
+                "ename": "Zhongguancun East Road"
+            },
+            "y": "39.98744583",
+            "x": "116.3332081"
+        },
+       ],
+        "poilist": [{
+            "distance": "12.3762",
+            "typecode": "120201",
+            "pguid": "B000A3513F",
+            "address": "北四环西路9",
+            "direction": "East",
+            "tel": "010-62650088;010-62650066",
+            "name": "银谷大厦",
+            "type": "商务住宅;楼宇;商务写字楼",
+            "y": "39.9872066667",
+            "x": "116.334145"
+        },
+      ],
+        "province": {
+            "name": "北京市",
+            "ename": "Beijing City",
+            "code": "110000"
+        },
+        "roadlist": [{
+            "id": "中关村路",
+            "distance": "31.9975",
+            "level": "45000",
+            "direction": "North",
+            "width": "4",
+            "name": "中关村路",
+            "ename": "Zhongguancun Road",
+            "y": "39.9875",
+            "x": "116.334"
+        },
+       ],
+        "type": "list",
+        "district": {
+            "name": "海淀区",
+            "ename": "Haidian District",
+            "code": "110108"
+        },
+        "near_districts": "",
+        "city": {
+            "citycode": "010",
+            "tel": "010",
+            "name": "",
+            "ename": "",
+            "code": ""
+        }
+    }],
+    "server": "AN_Qingdao_231_159",
+    "type": "list",
+    "version": "v2.0.1"
+}
+
+
+</pre>
+<p>返回结果字段说明：</p>
+<table  border="0"  cellpadding="0"  cellspacing="1"  bgcolor="#999999" class="js"  >
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">time</td>
+    <td colspan="6" bgcolor="#FFFFFF">查询时间，单位：毫秒</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">count</td>
+    <td colspan="6" bgcolor="#FFFFFF">返回记录总数</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">status</td>
+    <td colspan="6" bgcolor="#FFFFFF">错误代码，E0表示成功</td>
+  </tr>
+  <tr>
+    <td width="67" rowspan="45" bgcolor="#FFFFFF">list</td>
+    <td width="95" rowspan="45" bgcolor="#FFFFFF">数据列表</td>
+    <td width="65" rowspan="14" bgcolor="#FFFFFF">crosslist</td>
+    <td width="98" rowspan="14" bgcolor="#FFFFFF">交叉口数据列表</td>
+    <td width="70" bgcolor="#FFFFFF">distance</td>
+    <td colspan="3" bgcolor="#FFFFFF">距离查询点的距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">direction</td>
+    <td colspan="3" bgcolor="#FFFFFF">方位</td>
+  </tr>
+  <tr>
+    <td rowspan="5" bgcolor="#FFFFFF">road1</td>
+    <td width="140" rowspan="5" bgcolor="#FFFFFF">道路1信息描述</td>
+    <td width="101" bgcolor="#FFFFFF">id</td>
+    <td width="78" bgcolor="#FFFFFF">ID</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">level</td>
+    <td bgcolor="#FFFFFF">道路等级</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">width</td>
+    <td bgcolor="#FFFFFF">道路宽度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td bgcolor="#FFFFFF">英文名字</td>
+  </tr>
+  <tr>
+    <td rowspan="5" bgcolor="#FFFFFF">road2</td>
+    <td rowspan="5" bgcolor="#FFFFFF">道路2信息描述</td>
+    <td bgcolor="#FFFFFF">id</td>
+    <td bgcolor="#FFFFFF">ID</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">level</td>
+    <td bgcolor="#FFFFFF">道路等级</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">width</td>
+    <td bgcolor="#FFFFFF">道路宽度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td bgcolor="#FFFFFF">英文名字</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td colspan="3" bgcolor="#FFFFFF">纬度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td colspan="3" bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr>
+    <td rowspan="10" bgcolor="#FFFFFF">poilist</td>
+    <td rowspan="10" bgcolor="#FFFFFF">兴趣点数据列表</td>
+    <td bgcolor="#FFFFFF">distance</td>
+    <td colspan="3" bgcolor="#FFFFFF">距离查询点的距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">typecode</td>
+    <td colspan="3" bgcolor="#FFFFFF">地理编码</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">pguid</td>
+    <td colspan="3" bgcolor="#FFFFFF">全局索引ID</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">address</td>
+    <td colspan="3" bgcolor="#FFFFFF">地址</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">direction</td>
+    <td colspan="3" bgcolor="#FFFFFF">方位</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">tel</td>
+    <td colspan="3" bgcolor="#FFFFFF">电话</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td colspan="3" bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td colspan="3" bgcolor="#FFFFFF">数据分类类别</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td colspan="3" bgcolor="#FFFFFF">纬度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td colspan="3" bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr>
+    <td rowspan="3" bgcolor="#FFFFFF">province</td>
+    <td rowspan="3" bgcolor="#FFFFFF">省信息描述</td>
+    <td bgcolor="#FFFFFF">name</td>
+    <td colspan="3" bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td colspan="3" bgcolor="#FFFFFF">英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">code</td>
+    <td colspan="3" bgcolor="#FFFFFF">地址编码</td>
+  </tr>
+  <tr>
+    <td rowspan="9" bgcolor="#FFFFFF">roadlist</td>
+    <td rowspan="9" bgcolor="#FFFFFF">道路数据列表</td>
+    <td bgcolor="#FFFFFF">id</td>
+    <td colspan="3" bgcolor="#FFFFFF">ID</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">distance</td>
+    <td colspan="3" bgcolor="#FFFFFF">距查询点的距离</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">level</td>
+    <td colspan="3" bgcolor="#FFFFFF">道路等级</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">direction</td>
+    <td colspan="3" bgcolor="#FFFFFF">道路方向</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">width</td>
+    <td colspan="3" bgcolor="#FFFFFF">道路宽度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td colspan="3" bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td colspan="3" bgcolor="#FFFFFF">英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">y</td>
+    <td colspan="3" bgcolor="#FFFFFF">纬度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">x</td>
+    <td colspan="3" bgcolor="#FFFFFF">经度</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">type</td>
+    <td colspan="5" bgcolor="#FFFFFF">数据类型，list表示数据列表</td>
+  </tr>
+  <tr>
+    <td rowspan="3" bgcolor="#FFFFFF">district</td>
+    <td rowspan="3" bgcolor="#FFFFFF">地区信息描述</td>
+    <td bgcolor="#FFFFFF">name</td>
+    <td colspan="3" bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td colspan="3" bgcolor="#FFFFFF">英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">code</td>
+    <td colspan="3" bgcolor="#FFFFFF">地址编码</td>
+  </tr>
+  <tr>
+    <td rowspan="5" bgcolor="#FFFFFF">city</td>
+    <td rowspan="5" bgcolor="#FFFFFF">城市信息描述</td>
+    <td bgcolor="#FFFFFF">citycode</td>
+    <td colspan="3" bgcolor="#FFFFFF">城市编码</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">tel</td>
+    <td colspan="3" bgcolor="#FFFFFF">电话区号</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">name</td>
+    <td colspan="3" bgcolor="#FFFFFF">名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">ename</td>
+    <td colspan="3" bgcolor="#FFFFFF">英文名称</td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF">code</td>
+    <td colspan="3" bgcolor="#FFFFFF">地址编码</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">server</td>
+    <td colspan="6" bgcolor="#FFFFFF">服务器</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">type</td>
+    <td colspan="6" bgcolor="#FFFFFF">数据类型，list表示数据列表</td>
+  </tr>
+  <tr>
+    <td colspan="2" bgcolor="#FFFFFF">version</td>
+    <td colspan="6" bgcolor="#FFFFFF">版本</td>
+  </tr>
+</table></div>
+</div>
+</div><!-- #server : end -->
+	</div><!-- .wrapper : end -->
+		</div>
+	</div><!-- #content : end -->
+	
+</div><!-- #md : end -->
+
+
+</div>
+
+</body>
+</html>

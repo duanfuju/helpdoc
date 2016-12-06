@@ -1,0 +1,108 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    <html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>行政区划查询-省份查询</title>  
+    <!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+    <script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>  
+    <script language="javascript">  
+      
+    var mapObj,toolbar,overview,scale;
+    var date, startTime;
+    function showTime() {
+        var date = new Date();
+        document.getElementById("textSearchTime").value = date.getTime() - startTime + "毫秒";
+    }
+
+    function initTimer() {
+        date = new Date();
+        startTime = date.getTime();
+    }
+
+    function mapInit()  
+    {  
+        var opt = {  
+          level:13, //设置地图缩放级别  
+          center:new AMap.LngLat(116.397428,39.90923), //设置地图中心点   
+          doubleClickZoom:true, //双击放大地图  
+          scrollWheel:true //鼠标滚轮缩放地图  
+        }  
+        mapObj = new AMap.Map("iCenter",opt);AMap.Conf.network = 1;  
+        mapObj.plugin(["AMap.ToolBar","AMap.OverView","AMap.Scale"],function()  
+        {   
+          toolbar = new AMap.ToolBar();  
+        toolbar.autoPosition=false; //加载工具条   
+          mapObj.addControl(toolbar);     
+          overview = new AMap.OverView(); //加载鹰眼  
+          mapObj.addControl(overview);        
+          scale = new AMap.Scale(); //加载比例尺  
+          mapObj.addControl(scale);  
+        });   
+    }  
+    function byProvince(){  
+         var partition = new AMap.Partition();  
+         partition.byProvince(byProvince_CallBack);
+        initTimer();
+    }  
+    function byProvince_CallBack(data){
+        showTime();document.getElementById("textUniqId").value = data.uniqid;
+        var resultStr="";  
+        if(data.status=="E0")  
+        {  
+            var lineNum = data.province_list.length; //返回总数.  
+            resultCount=lineNum;  
+            var content="";  
+                for(var i=0;i<lineNum;i++){  
+                    content += "<div onmouseover=openMarkerTipById1(this) onmouseout=clearbackground(this) style=\"cursor:pointer;\" onclick=\"province('"+data.province_list[i].bounds+"')\"><dl>";  
+                      
+                    content +="<dt>"+(i+1)+".省份名称："+data.province_list[i].name+"<dd>简称："+data.province_list[i].ename+"</dd>"+"<dd>英文名称："+data.province_list[i].englishname+"</dd>"+"<dd>城市编号："+data.province_list[i].code+"</dd></dt>";  
+                  
+                    content +="</dl></div>";  
+            }  
+                resultStr+=content;  
+            }  
+        else if(data.status=="E1")  
+        {  
+             resultStr = "未查找到任何结果!<br />建议：<br />1.请确保所有字词拼写正确。<br />2.尝试不同的关键字。<br />3.尝试更宽泛的关键字。";     
+        }  
+        else  
+        {  
+             resultStr= "错误信息："+data.state+"请对照API Server v2.0.0 简明提示码对照表查找错误类型";  
+        }  
+        document.getElementById("result").innerHTML = resultStr;  
+        }  
+    function province(bounds){  
+      var xys = bounds.split(";");  
+      var a = xys[0].split(",");  
+      var b = xys[1].split(",");  
+      var southwest = new AMap.LngLat(a[0],a[1]); 
+      var northeast = new AMap.LngLat(b[0],b[1]);   
+      var provinceBounds = new AMap.Bounds(southwest,northeast);   
+      mapObj.setBounds(provinceBounds);  
+    }  
+    function openMarkerTipById1(thiss)
+    {thiss.style.background='#CAE1FF'; }
+     function clearbackground(thiss)
+    {thiss.style.background=''; }
+    </script>  
+    </head>  
+    <body onload="mapInit();">  
+    <table width="661px"  border="0" cellpadding="0" cellspacing="0">  
+        <tr>  
+            <td><div id="iCenter" style="height:300px; width:661px"></div></td>  
+            <tr><td>  
+            <div style="padding:2px 0px 0px 2px;font-size:12px">
+                <br><b>端到端往返延迟（round-trip delay）：</b>
+                <input type="text" id="textSearchTime" readonly="yes" style="border: 0px;width:60%"/><br><b>本次请求 ID：</b><input type="text" id="textUniqId" readonly="yes" style="border: 0px;width:60%" /></input>
+                <div><a href="javascript:byProvince();">查询省份信息</a></div>  
+              </td></tr> 
+    <tr><td><div style="padding:0px 0 4px 2px; background-color:#D1EEEE"><b>搜索结果:</b></div></td></tr> 
+            <tr><td><div id="result" name="result" style="overflow:auto;margin-top:5px;width:661px;height:255px"></div>  
+           </div></td>
+       </tr> 
+    </table>  
+    </body>  
+    </html>  

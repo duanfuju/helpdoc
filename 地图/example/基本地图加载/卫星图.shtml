@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>卫星图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=false">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="apple-touch-icon" href="http://apiv3.test.mapabc.com/Images/apple-touch-icon.png" />
+    <style>
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font: 12px/16px Verdana,Helvetica,Arial,sans-serif;
+            overflow: hidden;
+        }
+        div.map
+        {
+            width: 659px;
+            height: 400px;
+            border: #F6F6F6 solid 1px;
+        }
+    </style>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+    <script type="text/javascript">
+        var obj, satellite;
+
+        function mapInit() {
+            obj = new AMap.Map("map", {
+                //修改地图默认图层，就在这里撒
+                defaultTileLayer: new AMap.TileLayer.Satellite({
+                    id: "self", //图层唯一ID
+                    zIndex: 5
+                })
+            });
+        }
+        function pageInit() {
+            var size = AMap.Util.pageSize(document.body);
+            document.getElementById("map").style.cssText = "width:" + size.width + "px;height:" + size.height + "px";
+        }
+    </script>
+</head>
+<body onload="mapInit()">
+    <div id="map" class="map">
+    </div>
+</body>
+</html>

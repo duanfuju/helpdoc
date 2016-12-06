@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>绘制多边形覆盖物</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map",{
+		center:new AMap.LngLat(116.382122,39.901176)
+	});
+}
+
+function addPolygon(){
+	var arr = new Array();//经纬度坐标数组   
+	arr.push(new AMap.LngLat("116.403322","39.920255")); 
+	arr.push(new AMap.LngLat("116.410703","39.897555")); 
+	arr.push(new AMap.LngLat("116.402292","39.892353")); 
+	arr.push(new AMap.LngLat("116.389846","39.891365")); 	
+
+	var polygon=new AMap.Polygon({
+		id:"polygon01",//多边形ID
+		path:arr,//多边形顶点经纬度数组
+		strokeColor:"#0000ff",//线颜色
+		strokeOpacity:0.2,//线透明度
+		strokeWeight:3,	//线宽
+		fillColor: "#f5deb3",//填充色
+		fillOpacity: 0.35 //填充透明度
+	});
+	mapObj.addOverlays(polygon);
+	
+	//调整视野到合适的位置及级别
+	mapObj.setFitView();
+}
+</script>
+</head>
+
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:addPolygon()">绘制多边形覆盖物</a>
+<div>注：在新版引擎中取消了矩形覆盖物，因为多边形覆盖物已经可以做到；</div>
+</body>
+</html>

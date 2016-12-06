@@ -1,0 +1,96 @@
+CSS层叠样式表
+
+	语法：
+		selector{
+			propert:value;
+		}
+
+	多个selector用 ,  分隔
+	多个propert用  ;  分隔
+
+选择器
+	派生选择器：通过标签元素嵌套的位置来定义标签元素的属性
+	id选择器：以 # 来定义
+	类选择器：以 . 来定义
+	标签选择器：直接使用标签元素进行定义
+	属性选择器：以 [] 来定义;例：[title=zhi](ie6等不支持此写法)
+
+
+背景
+	background-image:url(""):定义背景图片
+	background-repeat：是否允许重复
+	background-position：定义背景图的位置
+	background-attachment：fixed（固定）；背景图像是否固定或者随着页面的其余部分滚动
+	background-size：规定背景图片的尺寸
+
+文本
+	color：文本颜色
+	direction:文本方向
+	line-height：行高
+	letler-spacing：字符间距
+	text-align：对齐元素中的文本
+	text-decoraction：向文本添加修饰
+	text-indent：缩进元素中文本的首行
+	text-transform：元素中的字母（格式化，统一英文的大小写）
+	unicode-bidi：设置文本方向
+	white-space：元素中空白的处理方式
+	word-spacing：字间距
+	text-shadow：文字阴影效果
+		例：text-shadow:5px 5px 1px red;
+		说明：第一个参数代表左边距的长度，第二个参数代表上边距的长度，第三个参数代表清晰度，第四个参数代表颜色
+	text-wrap：文本的换行的规则，一般与width合用；英文整体不拆
+
+
+
+字体
+	font-family：设置字体系列
+	font-size：设置字体的尺寸
+	font-style：设置字体的风格
+	font-variant：以小型大写字体或正常字体显示文本
+	fint-weight：设置字体的粗细
+
+	定义自定义的字体
+	@font-face{
+		font-family:myfont;
+		src:url();
+	}
+
+
+
+链接(a标签的伪类)
+	link：普通的、未被访问的链接
+	visited：用户已访问的链接
+	hover：鼠标指针位于链接的上方
+	active：链接被点击的时刻
+	first-child：第一个子元素
+	text-decoraction：是否去除a标签的下划线
+
+列表
+	list-style：简写列表项
+	list-style-iamge：列表项图像
+	list-style-position：列表标志位置
+	list-style-type：列表类型
+表格
+	border-collapse：collapse；折叠边框（表格单线）
+	隔行变色：odd奇数行、even偶数行、也可以直接指定数字
+	tr:nth-child(even){
+		color: #CCC
+	}
+	隔列变色：需要在table的子标签的下增加标签<col>
+	table col:nth-child(2n+2) {background: #CCC}
+
+轮廓
+	outline：设置轮廓属性
+	outline-color：设置轮廓的颜色
+	outline-style：设置轮廓的样式
+	outline-width：设置轮廓的宽度
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+//checkbox单选
+	function checkCanel(Obj){   
+		$('[type="checkbox"]').each(function(){
+			window.xunChaXinTouId=$(this).val();
+			$(this).attr("checked",false);
+		});  
+		Obj.checked=true;
+	}
+
+
+
+//checkbox选中获取值
+var vals = $("input[name=checkbox]:checked") .map(function() { 
+        return this.value; 
+    }).get().join();
+
+
+//获取长度
+var total=$("input[name='checkIds']").length;
+var num=$("input[name='checkIds']:checked").length;
+
+
+
+//计算选中维修数和所占百分比	
+function calcCheckedCount(){
+	var total=$("input[name='checkIds']").length;
+	var num=$("input[name='checkIds']:checked").length;
+	$("#ts_chu").text(num);
+	var per=((num/total)*100).toFixed(2);
+	$("#ts_percent").text(per);
+	if(total==num){
+		$("#checkAll").prop("checked", true);
+	}else{
+		$("#checkAll").prop("checked", false);
+	}
+}	

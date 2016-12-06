@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>获取覆盖物对象信息</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+
+var mapObj,toolbar,overview,scale;
+function mapInit()
+{
+	var opt = {
+	level:13,//设置地图缩放级别
+	center:new AMap.LngLat(116.397428,39.90923),//设置地图中心点	
+	doubleClickZoom:true,//双击放大地图
+	scrollWheel:true//鼠标滚轮缩放地图
+	}
+	mapObj = new AMap.Map("iCenter",opt);
+	mapObj.plugin(["AMap.ToolBar","AMap.OverView","AMap.Scale"],function()
+	{ 
+	toolbar = new AMap.ToolBar();
+	toolbar.autoPosition=false; //加载工具条 
+	mapObj.addControl(toolbar);  	
+	overview = new AMap.OverView(); //加载鹰眼
+	mapObj.addControl(overview);  	
+	scale = new AMap.Scale(); //加载比例尺
+	mapObj.addControl(scale);
+	}); 
+}
+var Mmarker,polyline,polygon;
+function addAllOverlays(){
+mapObj.clearMap();
+	//添加点
+    Mmarker=new AMap.Marker({
+	id:"marker",						  
+	icon:"http://api.amap.com/webapi/static/Images/0.png",
+	position:new AMap.LngLat(116.405467,39.907761),
+	draggable:true,
+	visible:true
+	});
+	//添加线
+  var arr=new Array();//经纬度坐标数组 
+   arr.push(new AMap.LngLat("116.368904","39.913423")); 
+   arr.push(new AMap.LngLat("116.382122","39.901176")); 
+   arr.push(new AMap.LngLat("116.387271","39.912501")); 
+   arr.push(new AMap.LngLat("116.398258","39.904600")); 
+   polyline=new AMap.Polyline({ 
+   id:"polyline01", //id
+   path :arr, //线经纬度数组
+   strokeColor:"#F00", //线颜色
+   strokeOpacity:0.4, //线透明度 
+   strokeWeight:3, //线宽
+   strokeStyle:"dashed", //线样式
+   strokeDasharray:[10,5] //补充线样式 
+   }); 
+  
+	//添加多边形
+   var arr1=new Array();//经纬度坐标数组 
+   arr1.push(new AMap.LngLat("116.403322","39.920255")); 
+   arr1.push(new AMap.LngLat("116.410703","39.897555")); 
+   arr1.push(new AMap.LngLat("116.402292","39.892353")); 
+   arr1.push(new AMap.LngLat("116.389846","39.891365")); 
+   polygon=new AMap.Polygon({ 
+   id:"polygon01", //id
+   path:arr1,//面经纬度数字
+   strokeColor:"#0000ff", //线颜色
+   strokeOpacity:0.2, //线透明度 
+   strokeWeight:3,    //线宽 
+   fillColor: "#f5deb3", //填充色
+   fillOpacity: 0.35 ,//填充透明度
+  }); 
+	var arr= new Array();
+	arr.push(Mmarker);
+	arr.push(polyline);
+	arr.push(polygon);
+	mapObj.addOverlays(arr);
+}
+function getPoint() {
+	var str="点的id："+Mmarker.id+"<br />"+"点的图标："+Mmarker.icon+"<br />点的坐标："+Mmarker.position.lng+","+Mmarker.position.lat+"<br />点是否可被拖拽："+Mmarker.draggable+"<br />点是否可见："+Mmarker.visible;
+	document.getElementById("result1").innerHTML=str;}
+ function getLine() {
+	var lineInfor="<div style=\"width:661px;overflow:hidden;padding:0px 0px 0px 0px\">经纬度数组:<br />";
+	for (var i=0;i<polyline.path.length ;i++ )
+	{lineInfor+= polyline.path[i].lng+","+polyline.path[i].lat+";";}
+	lineInfor+="</div>";
+	var str="线的id："+polyline.id+lineInfor+"线的颜色："+polyline.strokeColor+"<br />线的透明度："+polyline.strokeOpacity+"<br />线的宽度:"+polyline.strokeWeight+"<br />线的样式："+ polyline.strokeStyle+"<br />线的补充样式："+polyline.strokeDasharray;
+	document.getElementById("result1").innerHTML=str;
+}
+function getPolygon() {
+	var polygonInfor="<div style=\"width:661px;overflow:hidden;padding:0px 0px 0px 0px\">经纬度数组:<br />";
+	for (var i=0;i<polygon.path.length ;i++)
+	{polygonInfor += polygon.path[i].lng+","+polygon.path[i].lat+";";}
+	polygonInfor += "</div>";
+	var str="面的id："+polygon.id+"<br />"+polygonInfor+"面的边框颜色："+polygon.strokeColor+"<br />面边框的透明度："+polygon.strokeOpacity+"<br />面边框宽度："+polygon.strokeWeight+"<br />面填充颜色:"+polygon.fillColor+"<br />面填充颜色透明度:"+polygon.fillOpacity;
+	document.getElementById("result1").innerHTML=str;
+}
+
+</script>
+</head>
+<body onload="mapInit();">
+<div id="iCenter" style="width:659px;height:400px"></div>
+<table>
+<tr>
+	<td colspan="3"><a href="javascript:addAllOverlays()">添加所有覆盖物</a></td>
+</tr>
+<tr>
+	<td><a href="javascript:getPoint()">获取点</a>
+</td>
+	<td><a href="javascript:getLine()">获取线</a></td>
+	<td><a href="javascript:getPolygon()">获取面</a></td>
+</tr>
+<tr><td colspan="3"><div name="result1" id="result1" style="width:661px;height:300px;overflow:auto"></div></td></tr>
+</table>
+
+</body>
+</html>

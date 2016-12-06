@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>地图基本展示</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map");
+	mapObj.plugin(["AMap.ToolBar","AMap.OverView,AMap.Scale"],function(){
+		//加载工具条
+		tool = new AMap.ToolBar({
+			direction:false,
+			ruler:false
+			//autoPosition:false//禁止自动定位
+		});
+		mapObj.addControl(tool);
+		//加载鹰眼
+		view = new AMap.OverView({visible:false});
+		mapObj.addControl(view);
+		//加载比例尺
+		scale = new AMap.Scale();
+		mapObj.addControl(scale);
+	});
+}
+//设置地图视野范围
+function setBounds(){
+	var swx = document.getElementById("swx").value;
+	var swy = document.getElementById("swy").value;
+	var nex= document.getElementById("nex").value;
+	var ney = document.getElementById("ney").value;
+	var sw = new AMap.LngLat(swx,swy);
+	var ne = new AMap.LngLat(nex,ney);
+	mapObj.setBounds(new AMap.Bounds(sw,ne));
+}
+</script>
+</head>
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+SouthWest: <input type="text" id="swx" value="109.358081"/> , <input type="text" id="swy" value="24.306427" /><br />
+NorthEast &nbsp;: <input type="text" id="nex" value="109.471378"/>  , <input type="text" id="ney" value="24.351788" /><br />
+<a href="javascript:setBounds();">设置视野范围</a>  
+<div id="c" style="height:30px;margin-top:5px;"></div>
+</body>
+</html>

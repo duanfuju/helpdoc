@@ -1,0 +1,4 @@
+1.dataset只是一个容器，没有固定的属性，只要是数据就可以传递，在值传递的时候可以无视dataType的属性
+2.export2ReportAction控件所绑定的dataset的属性中dataProvider属性一定要是有用的服务
+	2.1 export2ReportAction的执行机制是通过所要导出的datagrid找到datagrid的属性中dataset，再到dataset属性中的dataProvider的属性的服务，执行查询数据后再将其数据导出到excel中
+	2.2 export2ReportAction可以绑定多个的datagrid的，用逗号分隔(英文的)

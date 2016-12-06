@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="./jquery-1.6.2.js"></script>
+<script type="text/javascript">
+$(window).load(function(){
+	var UNIT = 20;
+	var ROWS = $("#icons").width() / UNIT;
+	var COLS = $("#icons").height() / UNIT;
+	var x1, y1, x2, y2;
+	for (i = 0; i < COLS; i++) {
+		for (j = 0; j < ROWS; j++) {
+			x1 = i * UNIT;
+			y1 = j * UNIT;
+			x2 = x1 + UNIT;
+			y2 = y1 + UNIT;
+			var offset = " " + x1 * (-1) + "px" + " " + y1
+					* (-1) + "px";
+			var bgStyle = "url(" + $('#icons').attr('src')
+					+ ")" + offset;
+			var title = "url(>skin>common/icons.gif)"
+					+ offset;
+			$("<area/>",{
+					shape : "rect",
+					coords : x1 + "," + y1 + "," + x2
+							+ "," + y2,
+					title : title,
+					href : "javascript:$('#code').html('"
+							+ title
+							+ "');$('#icon').css('background','"
+							+ bgStyle + "');"
+				}).appendTo($('#coordmap'));
+		}
+	}
+					});
+</script>
+</head>
+<body  title="Click a icon to get the expression...">
+	<table border="1" cellpadding="0" cellspacing="0">
+		<tr>
+			<th align="right">Icon:</th>
+			<td width="400px;"><span id='icon'
+				style="width: 20px; height: 20px; display: block;"></span></td>
+		</tr>
+		<tr>
+			<th>Expression:</th>
+			<td><span id="code"></span></td>
+		</tr>
+		<tr>
+			<th valign="top">Select:</th>
+			<td>
+				<img id="icons" src="icons.gif" usemap="#coordmap">
+				<map id="coordmap" name="coordmap"></map>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

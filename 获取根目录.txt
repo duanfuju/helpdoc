@@ -1,0 +1,5 @@
+1. 在jsp文件或Servlet中，可以通过getServletContext().getRealPath("/")来获取项目根目录的绝对路径。
+
+2. Java桌面程序中，可以通过(new File("")).getAbsolutePath()获取项目根目录(非Tomcat下)。
+
+3. 在Tomcat下运行的类中，(new File("")).getAbsolutePath()获得的路径是Tomcat安装路径下的bin文件夹下，将获得的路径字符串去掉最后的"bin"再添上"webapps\\项目文件夹名"即可。

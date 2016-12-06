@@ -1,0 +1,7 @@
+@echo off 
+
+title=¶þÎ¬Âë×ª»»³ÌÐò  by dfj
+
+java -jar QR_Code.jar
+
+PAUSE

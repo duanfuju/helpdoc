@@ -1,0 +1,107 @@
+jQuery
+	它是一个JavaScript函数库
+	功能：
+		html元素选取
+		html元素操作
+		css操作
+		html事件函数
+		javaScript特效和动画
+		html dom遍历和修改
+		ajax
+		utilities
+引入方式
+	1.下载到本地引入
+	2.从CDN中载入，就是直接引入网上的jQuery库
+帮助文档
+	http://api.jquery.com/
+
+语法：
+	在帮助文档上有所有的案例
+
+向下遍历
+	children()和find()的区别:
+		①children([parameter])只适用于本元素的儿子辈
+		②find(parameter)可以通过传递参数的方式找到本元素下的任何元素
+		③find的参数是必须的，children的参数是可选的
+向上遍历
+	parent()、parents()和parentsUntil(parameter)的区别
+		①parent()是本元素的上一级
+		②parents()是本元素的以上的所有元素
+		③parentsUntil(parameter)是本元素到上级某一元素的区间内的元素
+
+同级遍历
+	sibings()		：同级元素全部修改（不包括本身）
+	next()			：下一个同级元素修改（不包括本身）
+	nextAll()		：下面所有同级元素修改（不包括本身）
+	nextUntil(parameter)	：下面元素的区间修改（不包括本身）
+	与next方向相反：
+		prev()
+		prevAll()
+		preUntil()
+
+过滤
+	first()
+	last()
+	eq()
+	filter(parameter)
+	not(parameter)
+	提示：filter与not的作用是相反的，parameter可以是元素也可以是class或id
+
+jQuery的扩展
+	①导入jQuery的js文件
+	②导入扩展的myJQuery.js文件
+		$.fn.myjq=function(){
+			//逻辑代码
+		}
+	③在html中直接调用，与调用普通jQuery的方式一样
+		
+noConflict
+	当前的$被其他的框架覆盖
+	在js文件中
+		$.noConflict();
+	调用此方法放所有的$应当覆盖为jQuery
+
+	也可以在js文件中
+		var myJquery=$.noConflict();
+	这样写之后所有的$应当覆盖为myJquery
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

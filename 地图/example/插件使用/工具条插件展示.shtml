@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>地图基本展示</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map");
+	//加载工具条插件
+	mapObj.plugin(["AMap.ToolBar"],function(){
+		//加载工具条
+		tool = new AMap.ToolBar({
+			//初始化定义配置
+			direction:false,//隐藏方向导航
+			ruler:false//隐藏视野级别控制尺
+			//autoPosition:false//禁止自动定位
+		});
+		mapObj.addControl(tool);
+	});
+}
+</script>
+</head>
+
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:tool.showDirection()">显示方向导航键盘</a>  <a href="javascript:tool.hideDirection()">隐藏方向导航键盘</a>  
+<a href="javascript:tool.showRuler()">显示级别控制尺</a>  <a href="javascript:tool.hideRuler()">隐藏级别控制尺</a>  
+<a href="javascript:tool.show()">显示工具条</a>  <a href="javascript:tool.hide()">隐藏工具条</a>  <a href="javascript:tool.doLocation();void(0)">位置定位</a>
+</body>
+</html>

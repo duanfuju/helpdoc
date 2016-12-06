@@ -1,0 +1,18 @@
+获取当前选中的值
+/** @Bind #lddZhlx.onValueSelect  */
+!function(lddZhlx,dsbzid,arg){
+	var zhlx = arg.selectedValue;
+	dsbzid.set("parameter",zhlx);
+	dsbzid.flushAsync();
+};
+
+
+
+
+
+
+http://wiki.bsdn.org/pages/viewpage.action?pageId=3670336
+
+1.编写获取主外键表中的主键表的数据集合
+2.在DropDownMappingDao中遍历添加Mapping
+3.在文件模型文件中调用mapping的方法${dorado.getDataProvider("dropDownMappingDao#getLevelMapping").getResult()}

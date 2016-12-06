@@ -1,0 +1,8 @@
+//checkboxµ¥Ñ¡
+	function checkCanel(Obj){   
+		$('[type="checkbox"]').each(function(){
+			window.xunChaXinTouId=$(this).val();
+			$(this).attr("checked",false);
+		});  
+		Obj.checked=true;
+	}

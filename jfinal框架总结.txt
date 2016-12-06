@@ -1,0 +1,74 @@
+如何修改eclipse中的jetty容器参数(80 port is alreay use!):http://my.oschina.net/bloghu/blog/198970
+
+JFinal框架：
+	render方法系列（包含却不仅限）：方法覆盖，只显示最后一个
+	PropKit：用来操作外部文件
+
+
+
+phpmyadmin
+	web端就可以完全对数据库进行操作，例如建立、复制/删除数据等等。 
+
+
+
+FreeMarker介绍
+http://demojava.iteye.com/blog/800204
+
+FreeMarker的模板文件并不比HTML页面复杂多少,FreeMarker模板文件主要由如下4个部分组成: 
+1,文本:直接输出的部分 
+2,注释:<#-- ... -->格式部分,不会输出 
+3,插值:即${...}或#{...}格式的部分,将使用数据模型中的部分替代输出 
+4,FTL指令:FreeMarker指定,和HTML标记类似,名字前加#予以区分,不会输出 
+
+
+
+http://git.oschina.net/dongcb678/JfinalUIB
+
+http://yuedu.baidu.com/ebook/3fc54b55d5bbfd0a7956739f?pn=1&click_type=10010002
+
+
+Java模板引擎:http://ibeetl.com/guide/beetl.html 
+属性查询：http://ibeetl.com:8080/beetlonline/
+beetl
+	2.13.1for-in:
+		<%
+		for(user in userList){
+		        print(userLP.index);
+		        print(user.name);
+
+		}
+		%>
+		第三行代码userLP是Beetl隐含定义的变量，能在循环体内使用。其命名规范是item名称后加上LP，他提供了当前循环的信息，如
+
+		userLP.index :当前的索引，从1开始
+
+		userLP.size:集合的长度
+
+		userLP.first 是否是第一个
+
+		userLP.last 是否是最后一个
+
+		userLP.even 索引是否是偶数
+
+		userLP.odd 索引是否是奇数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

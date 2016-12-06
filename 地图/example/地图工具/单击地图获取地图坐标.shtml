@@ -1,0 +1,60 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    <html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />  
+    <title>单击地图获取地图坐标</title>  
+    <script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>  
+    <script language="javascript">  
+      
+    var mapObj,toolbar,overview,scale;  
+    function mapInit()  
+    {  
+        var opt = {  
+        level:13,//设置地图缩放级别  
+        center:new AMap.LngLat(116.397428,39.90923),//设置地图中心点     
+        doubleClickZoom:true,//双击放大地图  
+        scrollWheel:true//鼠标滚轮缩放地图  
+        }  
+        mapObj = new AMap.Map("iCenter",opt);  
+        mapObj.plugin(["AMap.ToolBar","AMap.OverView","AMap.Scale"],function()  
+        {   
+        toolbar = new AMap.ToolBar();  
+        toolbar.autoPosition=false; //加载工具条   
+        mapObj.addControl(toolbar);       
+        overview = new AMap.OverView(); //加载鹰眼  
+        mapObj.addControl(overview);      
+        scale = new AMap.Scale(); //加载比例尺  
+        mapObj.addControl(scale);  
+        });       
+    }  
+    function mapclick()  
+    {  
+        mapObj.bind(mapObj,"click",function(e){  
+        document.getElementById("mapX").value=e.lnglat.lng;  
+        document.getElementById("mapY").value=e.lnglat.lat;   
+        });  
+    }  
+    function mapclick_unbind()  
+    {  
+        mapObj.unbind(mapObj,"click",function(e){  
+        document.getElementById("mapX").value=e.lnglat.lng;  
+        document.getElementById("mapY").value=e.lnglat.lat;   
+        });  
+        document.getElementById("mapX").value="";  
+        document.getElementById("mapY").value="";     
+    }  
+    </script>  
+    </head>  
+    <body onload="mapInit();">  
+    <div id="iCenter" style="width:659px; height:400px"></div>  
+    在地图上单击及可获取地图坐标:<br />  
+    X：<input type="text" name="mapX" id="mapX" value=""> Y：</td><td width="86%"><input type="text" name="mapY" id="mapY" value="">  
+    <a href="javascript:mapclick()">注册地图单击事件</a>
+    <a href="javascript:mapclick_unbind()">注销地图单击事件</a>
+    </body>  
+    </html>  
+

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>叠加自定义图层</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map");
+}
+//添加GOOGLE地图图层
+function addGoogle(){
+	var google = new AMap.TileLayer({
+		id:"google",//图层唯一ID
+		tileUrl:"http://mt{1,2,3,0}.google.cn/vt/lyrs=m@142&hl=zh-CN&gl=cn&x=[x]&y=[y]&z=[z]&s=Galil"//普通取图规则
+	});
+	mapObj.addLayer(google);
+}
+//移出GOOGLE地图图层
+function removeGoogle(){
+	mapObj.removeLayer("google");
+}
+//添加SOSO地图图层
+function addSoSo(){
+	var soso = new AMap.TileLayer({
+		id:"soso",//图层唯一ID
+		getTileUrl:function(x,y,z){ //自定义取图规则
+			var s = [0,1,2,3];
+			var t = [];
+			t.push("http://pic"+s[Math.floor(Math.random()*s.length)]+".map.soso.com");
+			t.push(z);
+			t.push(Math.floor(x/10));
+			t.push(Math.floor(y/10));
+			t.push(x+"_"+y+".gif");
+			return t.join("/");
+		}
+	});
+	mapObj.addLayer(soso);
+}
+//移出SOSO地图图层
+function removeSoSo(){
+	mapObj.removeLayer("soso");
+}
+</script>
+</head>
+
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:addGoogle()">叠加google图层</a> 
+<a href="javascript:removeGoogle()">移出google图层</a> 
+<a href="javascript:addSoSo()">叠加SOSO图层</a> 
+<a href="javascript:removeSoSo()">移出SOSO图层</a>
+</body>
+</html>

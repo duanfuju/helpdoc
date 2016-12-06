@@ -1,0 +1,3 @@
+$('#filePicker .webuploader-pick').on('click tap',function(){
+	$('#filePicker input').trigger('click');
+});

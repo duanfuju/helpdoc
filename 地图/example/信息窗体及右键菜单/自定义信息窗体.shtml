@@ -1,0 +1,185 @@
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+    <html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
+div.map {
+	width: 800px;
+	height: 500px;
+}
+div.info {
+	position: relative;
+	z-index: 100;
+	border: 1px solid #BCBCBC;
+	box-shadow: 0 0 10px #B7B6B6;
+	border-radius: 8px;
+	background-color: rgba(255,255,255,0.9);
+	transition-duration: 0.25s;
+}
+div.info:hover {
+	box-shadow: 0px 0px 15px #0CF;
+}
+
+div.info-top {
+	position: relative;
+	background: none repeat scroll 0 0 #F9F9F9;
+    border-bottom: 1px solid #CCC;
+	border-radius:5px 5px 0 0;
+}
+div.info-top div {
+	display: inline-block;
+    color: #333333;
+	font-size:14px;
+	font-weight:bold;
+	line-height:31px;
+	padding:0 10px;
+}
+div.info-top img {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	transition-duration: 0.25s;
+}
+div.info-top img:hover{
+	box-shadow: 0px 0px 5px #000;
+}
+div.info-middle {
+	font-size:12px;
+	padding:10px;
+	line-height:21px;
+}
+div.info-bottom {
+	height:0px;
+	width:100%;
+	clear:both;
+	text-align:center;
+}
+div.info-bottom img{
+	position: relative;
+	z-index:104;
+}
+</style>
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+    <title>自定义信息窗体</title>  
+    <script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>  
+    <script language="javascript">  
+      
+   var obj,tool,view;
+function mapInit(){
+	obj = new AMap.Map("iCenter");
+	
+	obj.plugin(["AMap.ToolBar","AMap.OverView"],function(){
+		//加载工具条
+		tool = new AMap.ToolBar({autoPosition:false});
+		obj.addControl(tool);
+		//加载鹰眼
+		view = new AMap.OverView();
+		obj.addControl(view);
+		
+	});
+	
+	marker = new AMap.Marker({
+		id:"m23",//唯一ID
+		//draggable:true, //是否可拖动
+		position:new AMap.LngLat(116.373881,39.907409),//基点位置
+		icon:"http://api.amap.com/webapi/static/Images/marker_sprite.png",//marker图标，直接传递地址url
+		offset:new AMap.Pixel(-8,-34)//相对于基点的位置
+	});
+	obj.addOverlays(marker);
+	
+	//自定义信息窗体示例
+	var inforWindow = new AMap.InfoWindow({
+		isCustom:true,
+		content:InfoWindow('方恒假日酒店&nbsp;&nbsp;<span style="font-size:11px;color:#F00;">价格:318</span>',"<img src='http://tpc.googlesyndication.com/simgad/5843493769827749134' style='float:left;margin:0 5px 5px 0;'>地址：北京市朝阳区阜通东大街6号院3号楼 东北 8.3 公里<br/>电话：010 64733333"),
+		size:new AMap.Size(300, 0),
+		offset:new AMap.Pixel(-132, -47)//-113, -140
+	});
+	
+	obj.bind(marker, 'click', function(){
+		inforWindow.open(obj, marker.getPosition());
+	})
+	
+	var marker2 = new AMap.Marker({
+		id:"m24",//唯一ID
+		//draggable:true, //是否可拖动
+		position:new AMap.LngLat(116.433448,39.911052),//基点位置
+		icon:"http://api.amap.com/webapi/static/Images/marker_sprite.png",//marker图标，直接传递地址url
+		offset:new AMap.Pixel(-8,-34)//相对于基点的位置
+	});
+	obj.addOverlays(marker2);
+	
+	//自定义信息窗体示例
+	var inforWindow2 = new AMap.InfoWindow({
+		isCustom:true,
+		content:InfoWindow('这里是标题123',"<div>4567ssdfdf:分析师们认为，iPhone5缺货是苹果股价最近下跌的主要原因用的新显示屏供应不足。</div>"),
+		size:new AMap.Size(300, 0),
+		offset:new AMap.Pixel(-132, -47)//-113, -140
+	});
+	
+	obj.bind(marker2, 'click', function(){
+		inforWindow2.open(obj, marker2.getPosition());
+	})
+	
+}
+
+window.onload = function(){
+	mapInit();
+};
+
+function closeInfoWindow(){
+	obj.clearInfoWindow();
+}
+
+// 自定义信息窗体实现
+function InfoWindow(title,content){
+	var info = document.createElement("div");
+	info.className = "info";
+	// 定义顶部标题
+	var top = document.createElement("div");
+	top.className = "info-top";
+	  var titleD = document.createElement("div");
+	  titleD.innerHTML = title;
+	  var closeX = document.createElement("img");
+	  closeX.src = "http://api.amap.com/webapi/static/Images/close2.gif";
+	  closeX.onclick = closeInfoWindow;
+	  
+	top.appendChild(titleD);
+	top.appendChild(closeX);
+	info.appendChild(top);
+	// 定义中部内容
+	var middle = document.createElement("div");
+	middle.className = "info-middle";
+	middle.innerHTML = content;
+	info.appendChild(middle);
+	
+	// 定义底部内容
+	var bottom = document.createElement("div"), sharp;
+	bottom.className = "info-bottom";
+	sharp = document.createElement("img");
+	sharp.src = "http://api.amap.com/webapi/static/Images/sharp.png";
+	bottom.appendChild(sharp);	
+	info.appendChild(bottom);
+	return info;
+}
+    </script>  
+    </head>  
+    <body onload="mapInit()">  
+    <table width="661px"  border="0" cellpadding="0" cellspacing="0">  
+        <tr>  
+            <td><div id="iCenter" style="height:300px;width:661px"> </div></td></tr>
+      
+         <tr><td><div style="padding:0px 0 4px 2px; background-color:#D1EEEE"><b>基点调校方法:</b></div></td></tr>
+       <tr> <td><div id="result" name="result" style="overflow:auto;margin-top:5px"> 1、将信息窗体内所以可变动的部分清空（一般为文字部分），仅留下空的结构；<br />
+2、将offset 设置new Pixel(0,0);<br />
+3、设置信息窗体size属性;<br />
+4、此时，信息窗体左上角即对应了需要展示的位置，此位置称之为“基点”;<br />
+5、用QQ截图的方式，Ctrl+Alt+A 来查看信息窗体左上角与箭头位置的像素，假设为（100，20）;<br />
+6、设置offset 为 new Pixel(-100,-20);<br />
+7、填充内容即可准确的对应。</div></td></tr>
+    </table>  
+    </body>  
+    </html>  

@@ -1,0 +1,13 @@
+/** @Bind #dataSetDropDown1.onValueSelect */
+!function(dsList,hcShow,txtContraces,dgShow){
+	var entity = dsList.getData().current;
+	var contraces=entity.get("contraces");
+	var phone=entity.get("phone");
+	var dataset =dgShow.get("dataSet");
+	var row = dataset.getData("#");
+	row.set({
+		contraces:contraces,
+		phone:phone
+	});
+	
+};

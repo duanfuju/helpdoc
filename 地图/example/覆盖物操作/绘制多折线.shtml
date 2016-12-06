@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>绘制多折线</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map",{
+		center:new AMap.LngLat(116.382122,39.901176)
+	});
+}
+
+function addPolyline(){
+	var arr = new Array();//经纬度坐标数组   
+    arr.push(new AMap.LngLat("116.368904","39.913423")); 
+    arr.push(new AMap.LngLat("116.382122","39.901176")); 
+    arr.push(new AMap.LngLat("116.387271","39.912501")); 
+    arr.push(new AMap.LngLat("116.398258","39.904600")); 
+	
+	polyline = new AMap.Polyline({
+		id:"polyline",
+		path:arr,
+		strokeColor:"#F00",//线颜色
+		strokeOpacity:0.4,//线透明度
+		strokeWeight:3,//线宽
+		strokeStyle:"dashed",//线样式
+		strokeDasharray:[10,5]//补充线样式
+	});
+	mapObj.addOverlays(polyline);
+	
+	//调整视野到合适的位置及级别
+	//mapObj.setFitView();
+}
+</script>
+</head>
+
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:addPolyline()">绘制多折线</a>
+</body>
+</html>

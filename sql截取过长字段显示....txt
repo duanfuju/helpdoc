@@ -1,0 +1,8 @@
+SELECT
+	CASE 
+		WHEN len(content) >10 THEN
+			SUBSTRING(content, 0, 10) + '...' 
+		ELSE content 
+	END as content
+FROM
+	DMS_LH_yangHuDay

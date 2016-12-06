@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>覆盖物自定义信息窗体</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"> </script>
+<script language="javascript">
+
+var mapObj,toolbar,overview,scale;
+function mapInit()
+{
+	var opt = {
+	  level:13,//设置地图缩放级别
+	  center:new AMap.LngLat(116.397428,39.90923),//设置地图中心点	
+	  doubleClickZoom:true,//双击放大地图
+	  scrollWheel:true//鼠标滚轮缩放地图
+	}
+	mapObj = new AMap.Map("iCenter",opt);
+	mapObj.plugin(["AMap.ToolBar","AMap.OverView","AMap.Scale"],function()
+	{ 
+	  toolbar = new AMap.ToolBar();
+	toolbar.autoPosition=false; //加载工具条 
+	  mapObj.addControl(toolbar);  	
+	  overview = new AMap.OverView(); //加载鹰眼
+	  mapObj.addControl(overview);  	
+	  scale = new AMap.Scale(); //加载比例尺
+	  mapObj.addControl(scale);
+	}); 
+}
+var infoWindow = new AMap.InfoWindow({
+		isCustom:true,
+		content:InfoWindow('这里是标题',"<div>这是一个自定义信息窗体示例！</div><div>this is ok!</div>"),
+		size:new AMap.Size(300,0),
+		offset:{x:-110,y:-90}
+	});
+function InfoWindow(title,content){
+	var bg = "http://api.amap.com/webapi/static/Images/info_01.png";
+	var m = [];
+	m.push('<div style="width:300px;height:30px;position:relative;z-index:104;overflow:hidden;">');
+		m.push('<div style="width:8px;height:30px;background:url('+bg+') 0px 0px;position:absolute;left:0;top:0;overflow:hidden;"></div>');
+		//信息窗体头部样式更改
+		m.push('<div style="position:relative;height:29px;border-top:#BBCCD3 solid 1px;margin:0px 8px 1px 8px;background-color:#BBCCD3;overflow:hidden;font-size:14px;line-height:29px;color:#333333">'+title+'</div>');
+		m.push('<div style="width:8px;height:30px;background:url('+bg+') -8px 0px;position:absolute;right:0;top:0;overflow:hidden;"></div>');
+		m.push('<div style="position:absolute;width:7px;height:7px;background:url('+bg+') -25px -35px;right:8px;top:11px;cursor:hand;cursor:pointer;" onclick="infoWindow.close()"></div>');
+	m.push('</div>');
+	//信息窗体内部样式更改
+	m.push('<div style="padding:0 2px;border-left:#BBCCD3 solid 1px;border-right:#BBCCD3 solid 1px; background-color:#F8F8F8;word-break:break-all;font-size:12px;overflow:hidden;">');
+		m.push(content);
+	m.push('</div>');
+	m.push('<div style="height:8px;position:relative;z-index:104;">');
+	m.push('<div style="width:8px;height:8px;background:url('+bg+') 0px -38px;position:absolute;left:0;top:0;overflow:hidden;"></div>');
+	m.push('<div style="height:7px;border-bottom:#BBCCD3 solid 1px;margin:0px 8px;background-color:#F8F8F8;overflow:hidden;"></div>');
+	m.push('<div style="width:8px;height:8px;background:url('+bg+') -8px -38px;position:absolute;right:0;top:0;overflow:hidden;"></div>');
+	m.push('</div>');
+	m.push('<div style="height:0;position:relative;z-index:104;">');
+	for(var i=0;i<5;i++){
+		m.push("<div style=\"position:absolute;width:"+(26-i*5)+"px;height:5px;background:url("+bg+") -"+(22-i)+"px "+(-i*5)+"px;left:"+(120-i)+"px;top:"+(-1+i*5)+"px;\"></div>");
+	}
+	m.push('</div>');
+	return m.join("");
+}
+function addMarkerInfoWindow(){
+   mapObj.clearMap();
+   var marker = new AMap.Marker({ 					 
+   id:"marker01", //marker id 					 
+   position:new AMap.LngLat(116.405467,39.907761), //位置 
+   icon:"http://api.amap.com/webapi/static/Images/0.png", //复杂图标
+   draggable:true, //可拖动 
+   visible:true //可见
+   }); 
+  mapObj.addOverlays(marker);
+  mapObj.bind(marker,"click",function(e)
+  {
+	  infoWindow.open(mapObj,marker.getPosition());	
+  });	
+}
+function addPolylineInfoWindow(){
+	mapObj.clearMap();
+	var arr=new Array();
+	arr.push(new AMap.LngLat("116.368904","39.913423"));
+	arr.push(new AMap.LngLat("116.382122","39.901176"));
+	arr.push(new AMap.LngLat("116.387271","39.912501"));
+	arr.push(new AMap.LngLat("116.398258","39.904600"));
+	 var polyline=new AMap.Polyline({ 
+	 id:"polyline01", 
+	 path:arr, 
+	 strokeColor:"#F00",  //线颜色 
+	 strokeOpacity:0.4,  //线透明度 
+	 strokeWeight:3,  //线宽 
+	 strokeStyle:"dashed",//线样式 
+	 strokeDasharray:[10,5]  //补充线样式 
+	 }); 
+     mapObj.addOverlays(polyline);
+    mapObj.bind(polyline,"click",function(e)
+  {
+	  infoWindow.open(mapObj,e.lnglat);	
+  });	
+}
+function addPolygonInfoWindow(){
+	mapObj.clearMap();
+	var arr=new Array();//由多边形顶点组成的经纬度数组
+	arr.push(new AMap.LngLat("116.370620","39.895118"));
+	arr.push(new AMap.LngLat("116.386241","39.886557"));
+	arr.push(new AMap.LngLat("116.397571","39.894196"));
+	 var polygon=new AMap.Polygon({ 
+	 id:"polygon01", 
+	 path:arr, //线经纬度数组
+	 editable:false, //是否可编辑 
+	 strokeColor:"#0000ff", //线颜色
+	 strokeOpacity:0.2, //线透明度   
+	 strokeWeight:3, //线宽 
+	 fillColor: "#f5deb3", //填充色
+	 fillOpacity: 0.35 ,//填充透明度 
+	 }); 
+	 mapObj.addOverlays(polygon);
+   	mapObj.bind(polygon,"click",function(e){
+	infoWindow.open(mapObj,e.lnglat);
+	});
+}
+function addMapInfoWindow(){
+	mapObj.clearMap();
+   	mapObj.bind(mapObj,"click",function(e){
+	infoWindow.open(mapObj,mapObj.getCenter());
+	});
+}
+</script>
+</head>
+<body onload="mapInit();">
+<div id="iCenter" style="width:661px;height:300px"> </div>
+覆盖物自定义信息窗体，仅支持点、线、面、地图：<br/>
+<a href="javascript:addMarkerInfoWindow()">点的信息窗体</a> 
+<a href="javascript:addPolylineInfoWindow()">线的信息窗体</a> 
+<a href="javascript:addPolygonInfoWindow()">面的信息窗体</a> 
+<a href="javascript:addMapInfoWindow()">地图的信息窗体</a> 
+</body>
+</html>

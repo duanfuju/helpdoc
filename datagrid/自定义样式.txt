@@ -1,0 +1,41 @@
+http://wiki.bsdn.org/pages/viewpage.action?pageId=10354878
+
+
+//@Bind #dtgGrid.#description.onRenderCell
+!function(arg) {
+	var entity = arg.data;
+	arg.dom.innerText = entity.get("description") +  entity.get("quantity") + entity.get("unit");
+};
+
+
+$(arg.dom).empty().xCreate({
+	tagName: "A",
+	//href: $url("cn.com.oking.em.view.storeDetail.d?parameter="+arg.data.get('storenum')),
+	//target: "_blank",
+	content: "物资明细",
+	onclick:function(){
+		window.open("cn.com.oking.em.view.storeDetail.d?parameter="+arg.data.get('storenum'));
+	}
+});
+如果想要一列多个控件可以使用[],中间以‘,’相隔
+
+
+
+
+
+自定义datagrid的列的checkbox样式的设置
+// @Bind #grid.onCreate
+!function(self, arg) {
+    MyCheckBoxCellRenderer = $extend(dorado.widget.grid.CheckBoxCellRenderer,{
+            createSubControl: function(arg) {
+                var checkbox = $invokeSuper.call(this, arguments);
+                checkbox.set({
+                    offValue: "N",
+                    onValue: "Y",
+                    triState: true
+                });
+                return checkbox;
+            }
+    });
+    self.getColumn("ga").set("renderer", new MyCheckBoxCellRenderer());
+}

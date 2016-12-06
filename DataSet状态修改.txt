@@ -1,0 +1,4 @@
+var entity = view.get("#dsDuanshi").getData();
+		entity.setState(dorado.Entity.STATE_MODIFIED);
+		var action = view.get("#delAction");
+		action.execute();

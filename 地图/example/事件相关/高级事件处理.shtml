@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>高级事件处理</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map");
+	mapObj.plugin(["AMap.ToolBar","AMap.OverView,AMap.Scale"],function(){
+		//加载工具条
+		tool = new AMap.ToolBar({
+			direction:false,
+			ruler:false
+			//autoPosition:false//禁止自动定位
+		});
+		mapObj.addControl(tool);
+		//加载鹰眼
+		view = new AMap.OverView({visible:false});
+		mapObj.addControl(view);
+		//加载比例尺
+		scale = new AMap.Scale();
+		mapObj.addControl(scale);
+	});
+}
+//定义事件回调函数
+var fn = function(e){
+	document.getElementById("c").innerHTML = e.type+" : "+e.lnglat.lng+","+e.lnglat.lat;
+};
+//事件绑定的方法
+function bind(){
+	//第一个参数，地图对象或覆盖物对象
+	//第二个参数，插件的事件类型
+	//第三个参数，事件被触发时需要执行的回调函数
+	//第四个参数，定义事件级别，默认级别："default"，插件级别："plugin"，系统级别："system"
+	mapObj.bind(mapObj,"click",fn);
+	mapObj.bind(mapObj,"mouseout",fn,"plugin");
+	mapObj.bind(mapObj,"mouseover",fn,"system");
+	document.getElementById("c").innerHTML = "绑定成功，click(普通级别)，mouseout(插件级别)，mouseover(系统级别)";
+}
+//clearbind 方法，默认参数为"default"，可不传递；当参数为default时，仅删除普通级别的事件；当参数为plugin时，仅删除plugin级别的事件，system级别的事件不可被此方法销毁，仅可使用unbind方法解绑。
+</script>
+</head>
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:bind();">绑定多个事件</a>    
+<a href="javascript:mapObj.clearbind();">清除普通级别事件</a>    
+<a href="javascript:mapObj.clearbind('plugin');">清除插件级别事件</a>
+<div id="c" style="margin-top:10px;width:661px;">注：clearbind 方法，默认参数为"default"，可不传递；当参数为default时，仅删除普通级别的事件，当参数为plugin时，仅删除plugin级别的事件，system级别的事件不可被此方法销毁，仅可使用unbind方法解绑。</div>
+</body>
+</html>

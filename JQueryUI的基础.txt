@@ -1,0 +1,95 @@
+JQuery UI
+	介绍
+		①是以JQuery为基础的JavaScript网页用户界面的开源库，
+		  包含底层用户互交。动画、特效和更换主题的可视控件。
+		  我们可以直接用它来构建巨涌很好交互性的web应用程序。
+		②包含了许多维持状态的小部件(widget)，因此，它与典型的
+		 JQuery插件使用模式略有不同。所有的JQuery UI小部件(widget)
+		  使用相同的模式，所以，只要您学会使用其中一个，您就知道如何
+		  使用其他的小部件(widget)。
+
+JQuery UI主要分为3个部分：交互、小部件和效果库。
+	1.交互（Interactions）
+		交互部件是一些与鼠标交互相关的内容，包括Draggable、Droppable、
+		Resizable、Selectable和Sortable(脚本需要写在需要排序的标签元素之下)等
+	2.小部件（Widgets）
+		主要是一些界面的扩展，包括:Add Class、Color Animation、Toggle等
+			用于提供丰富的动画效果，包括：Add Class、Color Animation、Toggle等
+	3.效果
+
+
+
+帮助文档和案例（每一个weight的页面的底部有简单的案例）：
+	http://api.jqueryui.com/
+
+API Documentation
+	|
+	|__Widgets
+
+Accordion	手风琴
+AutoComplete	索引补全
+Datepicker	日期控件
+Dialog		弹出框
+progressbar	进度条（需要注意option、value、max参数）
+menu		菜单
+slider		滑块
+spinner		微调器
+tabs		页签
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

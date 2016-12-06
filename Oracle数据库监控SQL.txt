@@ -1,0 +1,251 @@
+常规信息
+	数据库版本号、操作系统
+		select * from product_component_version;
+	数据库名称、创建时间
+		select * from v$database;
+
+	运行时间
+		select to_char(startup_time,'DD-MON-YYYY HH24:MI:SS') started_at,
+TRUNC(sysdate - (startup_time))||'day(s),'||TRUNC(24*((sysdate-startup_time) -TRUNC(sysdate-startup_time)))
+||'hour(s),'||MOD(TRUNC(1440*((SYSDATE-startup_time)-
+TRUNC(sysdate-startup_time))),60)
+||'minutes(s),'||MOD(TRUNC(86400*((SYSDATE-STARTUP_TIME)-
+TRUNC(SYSDATE-startup_time))),60)
+||'seconds' uptime
+from v$instance;
+
+
+
+
+
+
+
+
+
+
+
+
+系统信息
+	主机cpu利用率
+		select * from v$osstat
+		AVG_BUSY_TIME/(AVG_IDLE_TIME+AVG_BUSY_TIME)
+	Oracle DB cpu利用率
+	
+
+
+
+
+
+
+
+
+Oracle DB
+	数据库允许的最大连接数
+		select value from v$parameter where name = 'processes'
+	当前的数据库连接数
+		select count(*) from v$process 
+
+
+
+
+
+
+
+
+
+会话
+
+	当前连接的会话数
+		select count(*) from v$session 
+	当前打开的游标数
+		select count(*) from v$open_cursor; 
+	并发连接数
+		select count(*) from v$session where status='ACTIVE'
+
+
+
+
+
+
+
+
+SGA
+	select * from v$parameter;
+	日志缓冲区：	log_buffer
+		sga_max_size
+		pre_page_sga
+	高速缓冲区：	db_block_size
+	大型池：	large_pool_size
+	共享池：	shared_pool_size
+	java池：	java_pool_size
+
+	数据缓冲区命中率：select 1 - ((physical.value - direct.value - lobs.value) / logical.value)
+ "Buffer Cache Hit Ratio" 
+from v$sysstat physical,v$sysstat direct,v$sysstat lobs,v$sysstat logical
+where physical.name = 'physical reads'
+      and direct.name='physical reads direct'
+      and lobs.name='physical reads direct (lob)'
+      and logical.name='session logical reads';
+
+	oracle的PGA、SGA和process count：
+	select 'SGA' AS NAME,ROUND(sum(value)/1024/1024,2)||'M' AS "SIZE(M)" from v$sga UNION select 'PGA' AS NAME,ROUND(value/1024/1024,2)||'M' AS "SIZE(M)" from v$pgastat where name='total PGA allocated' UNION select 'TOTAL' AS NAME,((SELECT ROUND(sum(value)/1024/1024,2) from v$sga)+(select ROUND(value/1024/1024,2) from v$pgastat where name='total PGA allocated'))||'M' AS "SIZE(M)" FROM DUAL UNION SELECT NAME,TO_CHAR(VALUE) FROM V$PGASTAT WHERE NAME='process count';
+
+
+
+
+
+
+表空间使用率
+	select a.tablespace_name,a.bytes/1024/1024 "Sum MB",(a.bytes-b.bytes)/1024/1024 "used MB",b.bytes/1024/1024 "free MB",round(((a.bytes-b.bytes)/a.bytes)*100,2) "percent_used" 
+from 
+(select tablespace_name,sum(bytes) bytes from dba_data_files group by tablespace_name) a, 
+(select tablespace_name,sum(bytes) bytes,max(bytes) largest from dba_free_space group by tablespace_name) b 
+where a.tablespace_name=b.tablespace_name 
+order by ((a.bytes-b.bytes)/a.bytes) desc
+
+
+
+
+
+
+
+
+查询所有的物理文件
+select a.file#, a.name, a.status, a.bytes,b.phyrds, b.phywrts from  v$datafile a, v$filestat b where a.file# = b.file#;
+
+
+
+
+
+
+监控表空间的 I/O 比例
+      select   df.tablespace_name name,df.file_name "file",f.phyrds pyr,
+        f.phyblkrd pbr,f.phywrts pyw, f.phyblkwrt pbw
+       from  v$filestat f, dba_data_files df
+       where  f.file# = df.file_id
+       order by df.tablespace_name;
+  
+监控文件系统的 I/O 比例
+      select   substr(a.file#,1,2) "#", substr(a.name,1,30) "Name", 
+        a.status, a.bytes, b.phyrds, b.phywrts 
+       from  v$datafile a, v$filestat b 
+       where  a.file# = b.file#; 
+
+
+
+dba_开头
+   dba_users     数据库用户信息
+   dba_segments  表段信息
+   dba_extents    数据区信息
+   dba_objects    数据库对象信息
+   dba_tablespaces   数据库表空间信息
+   dba_data_files    数据文件设置信息
+   dba_temp_files   临时数据文件信息
+   dba_rollback_segs   回滚段信息
+   dba_ts_quotas   用户表空间配额信息
+   dba_free_space  数据库空闲空间信息
+   dba_profiles   数据库用户资源限制信息
+   dba_sys_privs   用户的系统权限信息
+   dba_tab_privs  用户具有的对象权限信息
+   dba_col_privs  用户具有的列对象权限信息
+   dba_role_privs  用户具有的角色信息
+   dba_audit_trail  审计跟踪记录信息
+   dba_stmt_audit_opts  审计设置信息
+   dba_audit_object   对象审计结果信息
+   dba_audit_session  会话审计结果信息
+   dba_indexes  用户模式的索引信息
+user_开头
+   user_objects   用户对象信息
+   user_source   数据库用户的所有资源对象信息
+   user_segments   用户的表段信息
+   user_tables    用户的表对象信息
+   user_tab_columns   用户的表列信息
+   user_constraints   用户的对象约束信息
+   user_sys_privs   当前用户的系统权限信息
+   user_tab_privs   当前用户的对象权限信息
+   user_col_privs   当前用户的表列权限信息
+   user_role_privs   当前用户的角色权限信息
+   user_indexes   用户的索引信息
+   user_ind_columns  用户的索引对应的表列信息
+   user_cons_columns   用户的约束对应的表列信息
+   user_clusters   用户的所有簇信息
+  user_clu_columns  用户的簇所包含的内容信息
+  user_cluster_hash_expressions   散列簇的信息
+v$开头
+   v$database    数据库信息
+   v$datafile   数据文件信息
+   v$controlfile  控制文件信息
+   v$logfile   重做日志信息
+   v$instance   数据库实例信息
+   v$log   日志组信息
+   v$loghist  日志历史信息
+   v$sga   数据库SGA信息
+   v$parameter  初始化参数信息
+   v$process   数据库服务器进程信息
+   v$bgprocess   数据库后台进程信息
+   v$controlfile_record_section   控制文件记载的各部分信息
+   v$thread   线程信息
+   v$datafile_header   数据文件头所记载的信息
+   v$archived_log  归档日志信息
+   v$archive_dest   归档日志的设置信息
+   v$logmnr_contents   归档日志分析的DML DDL结果信息
+   v$logmnr_dictionary   日志分析的字典文件信息
+   v$logmnr_logs   日志分析的日志列表信息
+   v$tablespace   表空间信息
+   v$tempfile   临时文件信息
+   v$filestat   数据文件的I/O统计信息
+   v$undostat   Undo数据信息
+   v$rollname   在线回滚段信息
+   v$session   会话信息
+   v$transaction  事务信息
+   v$rollstat    回滚段统计信息
+   v$pwfile_users   特权用户信息
+   v$sqlarea     当前查询过的sql语句访问过的资源及相关的信息
+   v$sql           与v$sqlarea基本相同的相关信息
+   v$sysstat    数据库系统状态信息
+all_开头
+   all_users   数据库所有用户的信息
+   all_objects   数据库所有的对象的信息
+   all_def_audit_opts   所有默认的审计设置信息
+   all_tables   所有的表对象信息
+   all_indexes  所有的数据库对象索引的信息
+session_开头
+     session_roles   会话的角色信息
+     session_privs   会话的权限信息
+index_开头
+    index_stats   索引的设置和存储信息
+伪表
+   dual   系统伪列表信息
+
+oracle最重要的9个动态性能视图
+v$session + v$session_wait (在10g里功能被整合,凑合算1个吧.)
+v$process
+v$sql
+v$sqltext
+v$bh (更宁愿是x$bh)
+v$lock
+v$latch_children
+v$sysstat
+v$system_event
+按组分的几组重要的性能视图
+
+1. System 的 over view
+v$sysstat , v$system_event , v$parameter
+
+2. 某个session 的当前情况
+v$process , v$session , v$session_wait ,v$session_event , v$sesstat
+
+3. SQL 的情况
+v$sql , v$sqlarea , v$SQL_PLAN , V$SQL_PLAN_STATISTICS, v$sqltext_with_newlines
+
+3. Latch / lock /ENQUEUE
+v$latch , v$latch_children , v$latch_holder , v$lock ,V$ENQUEUE_STAT ,V$ENQUEUE_LOCK
+
+4. IO 方面的
+v$segstat , v$filestat , v$tempstat ,v$datafile , v$tempfile
+
+5. shared pool / Library cache
+v$Librarycache , v$rowcache , x$ksmsp
+
+6. 几个advice也不错
+v$db_cache_advice , v$PGA_TARGET_ADVICE, v$SHARED_POOL_ADVICE

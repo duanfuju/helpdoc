@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>鼠标工具展示</title>
+<!--<style>
+body{ margin:0; padding:0;font:12px/16px Verdana, Helvetica, Arial, sans-serif;}
+</style>-->
+<link rel="stylesheet" href="__APP__/Public/Css/demo.Default.css" type="text/css" />
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.1&key=<用户key>"></script>
+<script language="javascript">
+var mapObj,tool,view,scale;
+function mapInit(){
+	mapObj = new AMap.Map("map");
+}
+</script>
+</head>
+
+<body onLoad="mapInit()">
+<div id="map" style="width:659px;height:400px;border:#F6F6F6 solid 1px;"></div>
+<a href="javascript:mapObj.setMouseTool('marker');">加点</a>
+<a href="javascript:mapObj.setMouseTool('polyline');">画线</a>
+<a href="javascript:mapObj.setMouseTool('circle');">绘圆</a>
+<a href="javascript:mapObj.setMouseTool('rectangle');">绘矩形</a>
+<a href="javascript:mapObj.setMouseTool('polygon');">绘多边形</a>
+<a href="javascript:mapObj.setMouseTool('rule');">测距</a>
+<a href="javascript:mapObj.setMouseTool('measureArea');">测量面积</a>
+<a href="javascript:mapObj.setMouseTool('rectZoomIn');">拉框放大</a>
+<a href="javascript:mapObj.setMouseTool('rectZoomOut');">拉框缩小</a>
+<a href="javascript:mapObj.setMouseTool('panWheelZoom');">鼠标移图</a>
+</body>
+</html>
