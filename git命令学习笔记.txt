@@ -1,0 +1,207 @@
+DMS的手机app接口
+git@github.com:duanfuju/App.git
+https://duanfuju.github.io/App/
+
+DMS管理系统
+git@github.com:duanfuju/DMS.git
+https://duanfuju.github.io/DMS/
+
+智慧气象业务平台
+git@github.com:duanfuju/zhqxDefaultFrame.git
+https://duanfuju.github.io/zhqxDefaultFrame/
+
+
+浦口气象集成平台
+git@github.com:duanfuju/IntegrationPlatform.git
+https://duanfuju.github.io/IntegrationPlatform/
+
+雷电灾害风险评估业务信息管理系统
+git@github.com:duanfuju/LightningProtection.git
+https://duanfuju.github.io/LightningProtection/
+
+总结的文档
+git@github.com:duanfuju/helpdoc.git
+https://duanfuju.github.io/helpdoc/
+
+
+
+https://github.com/alidaibi/demo
+https://alidaibi.github.io/demo/
+
+想要直接的访问远程仓库的资源：
+	1.首先要在repositories中选择你要访问的项目
+	2.页面跳转后会默认选择显示code选项卡，然后你选择Settings选项卡（和code同行，在最右边）
+	3.页面跳转后会默认选择options的菜单下，往下拉（在分组名称为GitHub Pages的地方停下）
+	4.在“Source”的加大加粗的英文下有下拉框，选择master branch，点击右边的save按钮
+	5.在GitHub Pages分组名称下会有高亮的部分(可能重新刷新页面，没有高亮显示，没关系，地址位置不变)，其中就有你远程仓库的地址
+
+
+//配置用户名和邮箱
+git config  --global  user.name "duanfuju"
+git config  --global  user.email "913500680@qq.com"
+
+//创建版本库
+//进入指定的目录
+cd D:\gitPhantomDream
+//命令是用于显示当前的目录。
+pwd
+//初始化仓库（.git是隐藏文件夹，不可删除，是仓库的标示）
+git init
+
+//添加文件
+git add readme.txt
+//提交文件（重要的是注释不能省略，否则会出错）
+git commit -m "注释"
+//查看仓库的状态（查看文件是否已经提交）
+git status
+
+
+
+//查看提交的历史记录（如果要退出的话，只输入q）
+git log
+//变成一行
+git log --pretty=oneline
+//查看提交过的版本号（这个是可以查看到分支合并的）
+git log --graph --pretty=oneline --abbrev-commit
+//查看版本转换的历史（如使用中突然关闭机器时使用）
+git reflog
+
+
+
+//退回版本(一般和日志命令合用)
+//退回上一个版本（“^”几个这个符号就是几个版本）
+git reset  --hard HEAD^
+//退回之前的版本(100这个数字就是多少)
+git reset  --hard HEAD~100
+//退回指定版本（需配合git reflog查看版本号）
+git reset  --hard 35faa32
+
+
+//撤销指定文件的修改（20161203.txt，未被放在暂存区的，也可以用来回复文件（前提是没有commit））
+$ git checkout -- 20161203.txt
+
+
+//查看文本的内容(20161203.txt是文本)
+cat 20161203.txt
+
+
+//创建SSH Key，在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果有的话，直接跳过此如下命令，如果没有的话，打开命令行，输入如下命令：
+ssh-keygen -t rsa -C"913500680@qq.com"
+//找到.ssh文件夹（C:\Users\Administrator\.ssh），打开文件id_rsa.pub复制粘贴到github官网中的指定位置（https://github.com/settings/profile，点击SSH and GPG keys菜单项点击New SSH key按钮，title随便填，Key中粘贴之前id_rsa.pub的密钥，填写完毕后点击Add SSH key）
+
+
+
+//增加远程的仓库
+git remote add origin git@github.com:duanfuju/phantomDream.git
+
+//将本地仓库分支master内容同步到远程仓库
+git push -u origin master
+//将本地仓库强行推送到远程仓库
+git push -f
+
+
+
+
+
+
+//创建分支（dev为分支的名字）
+git checkout –b dev	
+//上述命令等效于以下命令
+git branch dev
+git checkout dev
+//切换分支（master是主分支，我上边创建了一个dev的分支并切换到了dev分支上，现在是切换回来）
+git checkout master
+//合并分支内容（当前在master分支，合并指定dev）
+git merge dev
+//删除分支(删除指定的分支)
+$ git branch -D dev
+
+//要查看远程库的信息
+git remote
+//要查看远程库的详细信息
+git remote –v
+
+
+
+
+ps：
+分支策略：
+	首先master主分支应该是非常稳定的，也就是用来发布新版本，一般情况下不允许在上面干活，干活一般情况下在新建的dev分支上干活，
+	干完后，比如上要发布，或者说dev分支代码稳定后可以合并到主分支master上来。
+
+
+
+问题：
+①$ git remote add origin git@github.com:duanfuju/phantomDream.git
+fatal: remote origin already exists.
+
+解决方案：
+1、先删除远程 Git 仓库
+git remote rm origin
+2、再添加远程 Git 仓库
+git remote add origin git@github.com:duanfuju/phantomDream.git
+
+git remote add origin https://github.com/duanfuju/phantomDream.git
+
+
+
+②中文乱码
+解决方案：
+此问题较为坑爹，应为git/mysysgit  版本越新，对于支持中文越不行，反正本来就没好过，
+经过几个版本的实验
+Git_V2.5.1_64_bit_setup.1441791170.exe
+Git-2.11.0-64-bit.exe
+git-1.9.2-1401875809633.exe
+Git-1.7.3.2-utf8-20110213.exe https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/utf8-git-on-windows/Git-1.7.3.2-utf8-20110213.exe
+
+对于中文支持最好的还是被高手改版过的（改版的主要解决的问题是提交文件中的中文乱码，但还是小不足的：没有高版本的粘贴复制功能，即便改配置文件也不能输入中文的注释）
+
+安装完后需要修改几个文件（解决查看目录时中文的乱码）
+	文件					增加的部分
+				
+	etc/gitconfig				[gui]     encoding = utf-8
+						[i18n]     commitencoding = gbk 
+						[svn]     pathnameencoding = gbk
+
+	etc/git-completion.bash			alias ls='ls --show-control-chars --color=auto'
+
+	etc/inputrc				set output-meta on set convert-meta off
+
+③使用git log无法退出的问题
+解决方案：
+按下q键即可
+
+④无法提交的问题
+解决方案：
+多半是远程仓库和本地仓库的版本冲突了，先　git pull，再进入到本地仓库进行修改并提交
+
+
+⑤Git Bash命令窗口无法编辑的问题
+解决方案：
+	1.右击命令窗口的标题栏（就是命令窗口的上边框），会弹出标题为"Git Bash"属性的弹出窗口
+	2.点击弹出窗口的名称为“选项”的选项卡
+	3.勾选页面中右侧的分组名称为“编辑选项”里面的多选框为“快速编辑模式”的选择项
+	4.点击确定，保存设置
+
+
+⑥  ! [rejected]        master -> master (non-fast-forward)
+error: failed to push some refs to 'git@github.com:duanfuju/phantomDream.git'
+To prevent you from losing history, non-fast-forward updates were rejected
+Merge the remote changes (e.g. 'git pull') before pushing again.  See the
+'Note about fast-forwards' section of 'git push --help' for details.
+问题的原因：本地仓库和远程仓库不一致
+解决方案：
+	1.强推，意思就是强行将本地仓库覆盖远程仓库	git push -f
+	2.先将远程仓库更新下来，修改后再提交		git fetch
+
+⑦git push后出现 everything up-to-date 报错
+问题原因：检查是否是在master分支上，
+	git branch命令不会检查输入的是否是空格，
+	空格也算是分支名称
+解决方案：
+	删除分支（git branch -d  ），在master主分支上修改提交就行
+
+
+
+
+教学网址: http://blog.csdn.net/free_wind22/article/details/50967723    很全面
