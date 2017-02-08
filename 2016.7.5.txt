@@ -1,25 +1,25 @@
-1.´´½¨¼òµ¥µÄmaven µÄwebÏîÄ¿
+1.åˆ›å»ºç®€å•çš„maven çš„webé¡¹ç›®
     mvn archetype:create 
-    ¾ÙÀı£ºmvn archetype:create  -DgroupId=com.demo.app -DartifactId=demo-app  -DarchetypeArtifactId=maven-archetype-webapp
+    ä¸¾ä¾‹ï¼šmvn archetype:create  -DgroupId=com.demo.app -DartifactId=demo-app  -DarchetypeArtifactId=maven-archetype-webapp
 
-2.Éú³ÉºÍÇå³ıEclipseÏîÄ¿½á¹¹£º
-   mvn eclipse:eclipse ½«mavenÏîÄ¿±ä³Éeclipse,ÆäÊµÊÇÔÚÏîÄ¿ÖĞÉú³É .project ºÍ .classpath Á½¸öÎÄ¼ş
-   mvn eclipse:clean ÇåÀí£¨É¾³ıtargetÄ¿Â¼ÏÂ±àÒëÄÚÈİ£©
-   mvn clean ´ò°ü·¢²¼
+2.ç”Ÿæˆå’Œæ¸…é™¤Eclipseé¡¹ç›®ç»“æ„ï¼š
+   mvn eclipse:eclipse å°†mavené¡¹ç›®å˜æˆeclipse,å…¶å®æ˜¯åœ¨é¡¹ç›®ä¸­ç”Ÿæˆ .project å’Œ .classpath ä¸¤ä¸ªæ–‡ä»¶
+   mvn eclipse:clean æ¸…ç†ï¼ˆåˆ é™¤targetç›®å½•ä¸‹ç¼–è¯‘å†…å®¹ï¼‰
+   mvn clean æ‰“åŒ…å‘å¸ƒ
 
 
 
-svn¿âÎ»ÖÃ£ºhttps://JLServer/svn/xzyhpt/
-ÕË»§£ºduanfuju
-ÃÜÂë£º123456
+svnåº“ä½ç½®ï¼šhttps://JLServer/svn/xzyhpt/
+è´¦æˆ·ï¼šduanfuju
+å¯†ç ï¼š123456
 
 
 http://dms.roadkeeper.net/demo
 
-ÕÊºÅÃÜÂë
-ÒµÖ÷µ¥Î»£ºzx    zx
+å¸å·å¯†ç 
+ä¸šä¸»å•ä½ï¼šzx    zx
 
-Î¬ĞŞµ¥Î»£º wxlg     wxlg
+ç»´ä¿®å•ä½ï¼š wxlg     wxlg
 
 
 

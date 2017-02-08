@@ -1,6 +1,6 @@
 <script type="text/javascript">
 jQuery(document).ready(function() {
-	//²¡º¦»òÈ±ÏİÀàĞÍ(²¡º¦Ö¸±ê)	ºÍ 	Ô¤¹À¹¤³ÌÁ¿µ¥Î»  Áª¶¯
+	//ç—…å®³æˆ–ç¼ºé™·ç±»å‹(ç—…å®³æŒ‡æ ‡)	å’Œ 	é¢„ä¼°å·¥ç¨‹é‡å•ä½  è”åŠ¨
 	$("#binghaiOrQueXianType").change(function(){
 		var value = $(this).find("option:selected").attr("p");
 		$("#yuGuGongChengLiangDw").attr("value",value);

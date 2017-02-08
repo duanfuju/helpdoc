@@ -1,17 +1,17 @@
 <div class="form-group" modehide="2">
 						<label class="col-sm-2 control-label" for="form-field-1">
-							Î¬ĞŞÏî
+							ç»´ä¿®é¡¹
 							<input type="hidden" name="buJian" id="buJian"/>
 							<input type="hidden" name="num" id="num"/>
 						</label>
 						<div class="col-sm-9">
 							<table id="fzhl_table" border="1" style="width:100%;background:#fff;text-align: center ">
 								<tr  id="fzhl_top">
-									<td>±àºÅ</td>
-									<td>ÏîÄ¿</td>
-									<td>ÊıÁ¿</td>
+									<td>ç¼–å·</td>
+									<td>é¡¹ç›®</td>
+									<td>æ•°é‡</td>
 									<td>
-										²Ù×÷
+										æ“ä½œ
 									</td>
 								</tr>
 								<tr  id="fzhl_top1">
@@ -19,7 +19,7 @@
 									<td><input style="border:none;width:100%;" id="buJian_1" type="text"/></td>
 									<td><input style="border:none;width:100%;" class="NumText" id="num_1" type="text" /></td>
 									<td>
-										<a style='cursor:pointer;' onclick='fzhlAdd()'>ĞÂÔö</a>
+										<a style='cursor:pointer;' onclick='fzhlAdd()'>æ–°å¢</a>
 									</td>
 								</tr>
 							</table>
@@ -28,24 +28,24 @@
 
 
 <script type="text/javascript">
-					//jquery¶¯Ì¬Éú³ÉÔªËØÌí¼Óµã»÷ÊÂ¼ş	Ö»ÔÊĞíÊäÈëÊı×Ö
+					//jqueryåŠ¨æ€ç”Ÿæˆå…ƒç´ æ·»åŠ ç‚¹å‡»äº‹ä»¶	åªå…è®¸è¾“å…¥æ•°å­—
 					$(document).on('keyup', '.NumText', function() {
 						 $(this).val($(this).val().replace(/\D/g,""));  
-					}).bind("paste",'.NumText', function(){  //CTR+VÊÂ¼ş´¦Àí    
+					}).bind("paste",'.NumText', function(){  //CTR+Väº‹ä»¶å¤„ç†    
 					    $(this).val($(this).val().replace(/D|^0/g,""));     
 					});
-					//Î¬ĞŞÏî±í¸ñµÄĞÂÔö
+					//ç»´ä¿®é¡¹è¡¨æ ¼çš„æ–°å¢
 					function fzhlAdd(){
 						var row=$("#fzhl_table tr").length;
 						 var tr="<tr id='tr_"+row+"'>"
 								+"<td>"+row+"</td>"
 								+"<td><input id='buJian_"+row+"' style='border:none;width:100%;' type='text'/></td>"
 								+"<td><input id='num_"+row+"' style='border:none;width:100%;'  class='NumText' type='text'/></td>"
-								+"<td><a style='cursor:pointer;' onclick='fzhlAdd()'>ĞÂÔö</a>|<a style='cursor:pointer;' id='del_"+row+"' onclick='fzhlDel("+row+")'>É¾³ı</a></td>"
+								+"<td><a style='cursor:pointer;' onclick='fzhlAdd()'>æ–°å¢</a>|<a style='cursor:pointer;' id='del_"+row+"' onclick='fzhlDel("+row+")'>åˆ é™¤</a></td>"
 								+"</tr>";
 						$("#fzhl_table").append(tr); 
 					}
-					//Î¬ĞŞÏî±í¸ñµÄÉ¾³ı
+					//ç»´ä¿®é¡¹è¡¨æ ¼çš„åˆ é™¤
 					function fzhlDel(rowId){
 						$("#tr_"+rowId).remove();
 						var i=2;
@@ -53,14 +53,14 @@
 							var id=$(this).attr("id");
 							var split_str=id.split("_");
 							if(split_str[0]=="tr"){
-								//ÖØĞÂÉèÖÃĞĞÊı
+								//é‡æ–°è®¾ç½®è¡Œæ•°
 								$(this).attr("id","tr_"+i);
-								//ÖØĞÂÉèÖÃ±àºÅ
+								//é‡æ–°è®¾ç½®ç¼–å·
 								$(this).find("td:eq(0)").text(i);
-								//ÖØĞÂÉèÖÃ²¿¼ş¼°ÊıÁ¿µÄinputÖĞµÄid
+								//é‡æ–°è®¾ç½®éƒ¨ä»¶åŠæ•°é‡çš„inputä¸­çš„id
 								$(this).find("td:eq(1)").find("input").attr("id","buJian_"+i);
 								$(this).find("td:eq(2)").find("input").attr("id","num_"+i);
-								//ÉèÖÃÉ¾³ı±àºÅ
+								//è®¾ç½®åˆ é™¤ç¼–å·
 								$(this).find("td:eq(3)").find("a:eq(1)").attr("id","del_"+i);
 								$(this).find("td:eq(3)").find("a:eq(1)").attr("onclick","fzhlDel("+i+")");
 								i++;
@@ -70,17 +70,17 @@
 					
 					var array_buJian=[];
 					var array_num=[];
-					//Î¬ĞŞÏî²»Îª¿Õ
+					//ç»´ä¿®é¡¹ä¸ä¸ºç©º
 					function validateFzhl(){
-						//»ñÈ¡·À×²»¤À¸Êı¾İµÄÊıÁ¿
+						//è·å–é˜²æ’æŠ¤æ æ•°æ®çš„æ•°é‡
 						var row=$("#fzhl_table tr").length;
 						
-						//¶¨ÒåÊÇ·ñ·ûºÏÒªÇó
+						//å®šä¹‰æ˜¯å¦ç¬¦åˆè¦æ±‚
 						var flag=true;
 						for(var i=1;i<row;i++){
 							var bujian=$("#buJian_"+i).val();
 							var num=$("#num_"+i).val();
-							//ÑéÖ¤ÊÇ·ñÎª¿Õ
+							//éªŒè¯æ˜¯å¦ä¸ºç©º
 							if(bujian==""||bujian==null){
 								flag=false;
 							}

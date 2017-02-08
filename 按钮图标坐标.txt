@@ -1,16 +1,16 @@
-新增	url(>skin>common/icons.gif) -120px -0px
+鏂板	url(>skin>common/icons.gif) -120px -0px
 
-删除	url(>skin>common/icons.gif) -140px -0px
+鍒犻櫎	url(>skin>common/icons.gif) -140px -0px
 
-保存	url(>skin>common/icons.gif) -140px -20px
-
-
-修改	url(>skin>common/icons.gif) -200px -0px
+淇濆瓨	url(>skin>common/icons.gif) -140px -20px
 
 
-查询	url(>skin>common/icons.gif) -40px -100px
+淇敼	url(>skin>common/icons.gif) -200px -0px
 
 
-确认	url(>skin>common/icons.gif) -20px 0px
+鏌ヨ	url(>skin>common/icons.gif) -40px -100px
 
-取消	url(>skin>common/icons.gif) -40px 0px
+
+纭	url(>skin>common/icons.gif) -20px 0px
+
+鍙栨秷	url(>skin>common/icons.gif) -40px 0px

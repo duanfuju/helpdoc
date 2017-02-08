@@ -1,8 +1,8 @@
-1.Ê±¼äÄ¬ÈÏÖµ
-2.ÉÏÏßÀëÏßÍ³¼Æ
+1.æ—¶é—´é»˜è®¤å€¼
+2.ä¸Šçº¿ç¦»çº¿ç»Ÿè®¡
 
 
-Êı¾İ¿âÎÄ¼ş ÔÚDÅÌ20160518.dmp
+æ•°æ®åº“æ–‡ä»¶ åœ¨Dç›˜20160518.dmp
 
 
 select * from PUSH_SERVICE_TER_LOG t where t.edit_date>sysdate -1  order by t.edit_date desc 

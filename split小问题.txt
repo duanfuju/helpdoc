@@ -1,6 +1,6 @@
-��ʱ��split�ᱨis not a function
-ȷ�ϴ��벻û���߼��Ժͻ����ԵĴ���
-�������ַ����м�һ��level+="";�Ĵ���
+有时候split会报is not a function
+确认代码不没有逻辑性和基础性的错误
+尝试在字符串中加一个level+="";的代码
 
 
-//ת�����ַ�����level+="";�Ǳ�Ҫ��
+//转换成字符串，level+="";是必要的
