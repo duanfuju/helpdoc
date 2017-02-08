@@ -1,4 +1,4 @@
-//checkboxµ¥Ñ¡
+//checkboxå•é€‰
 	function checkCanel(Obj){   
 		$('[type="checkbox"]').each(function(){
 			window.xunChaXinTouId=$(this).val();

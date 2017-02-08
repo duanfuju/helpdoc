@@ -10,7 +10,7 @@
 
 
 
-»ñÈ¡µ±Ç°µÄÈÕÆÚÊ±¼ä ¸ñÊ½¡°yyyy-MM-dd HH:MM:SS¡±
+è·å–å½“å‰çš„æ—¥æœŸæ—¶é—´ æ ¼å¼â€œyyyy-MM-dd HH:MM:SSâ€
 function getNowFormatDate() {
     var date = new Date();
     var seperator1 = "-";
@@ -33,89 +33,89 @@ function getNowFormatDate() {
 
 
 
-CSS²»»»ĞĞ
+CSSä¸æ¢è¡Œ
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
 
 
-//»ñÈ¡5ÌìºóµÄÊ±¼ä
+//è·å–5å¤©åçš„æ—¶é—´
 Calendar c = Calendar.getInstance();  
 c.setTimeInMillis(new Date().getTime());
-c.add(Calendar.DATE, 5);//5ÌìºóµÄÈÕÆÚ
-Date date= new Date(c.getTimeInMillis()); //½«c×ª»»³ÉDate
+c.add(Calendar.DATE, 5);//5å¤©åçš„æ—¥æœŸ
+Date date= new Date(c.getTimeInMillis()); //å°†cè½¬æ¢æˆDate
 
 
 
-//»ñÈ¡µÇÂ¼µÄÈË
+//è·å–ç™»å½•çš„äºº
 IUser user = ContextHolder.getLoginUser();
 
 
 
-Ç°Ì¨»ñÈ¡session£º'${session.getAttribute("project_id")}';
+å‰å°è·å–sessionï¼š'${session.getAttribute("project_id")}';
 
-Ç°Ì¨»ñÈ¡request£º"${request.getParameter('p')}";
-
-
+å‰å°è·å–requestï¼š"${request.getParameter('p')}";
 
 
-ĞŞ¸ÄÈÕÆÚ¸ñÊ½µÄ½«ÖĞÎÄÈÕÆÚ×ª»»³É´øÊ±·ÖÃëµÄÈÕÆÚ
-	¢Ù½«modelsÖĞµÄÈÕÆÚµÄÆ¥ÅäÀàĞÍÓÉDate×ª»»³ÉDateTime
-	¢Ú½«ÊµÌåÀàÓ³ÉäµÄÈÕÆÚ×Ö¶ÎÖĞµÄ×¢½â¸Ä³ÉÏÂÁĞ
+
+
+ä¿®æ”¹æ—¥æœŸæ ¼å¼çš„å°†ä¸­æ–‡æ—¥æœŸè½¬æ¢æˆå¸¦æ—¶åˆ†ç§’çš„æ—¥æœŸ
+	â‘ å°†modelsä¸­çš„æ—¥æœŸçš„åŒ¹é…ç±»å‹ç”±Dateè½¬æ¢æˆDateTime
+	â‘¡å°†å®ä½“ç±»æ˜ å°„çš„æ—¥æœŸå­—æ®µä¸­çš„æ³¨è§£æ”¹æˆä¸‹åˆ—
 		@Temporal(TemporalType.TIMESTAMP)
 
 
 
 
-Ó¦¸Ã²ÉÓÃContextÀ´´«µİÈ«¾Ö²ÎÊı¡£ËüÔÚViewµÄÕû¸öÉúÃüÖÜÆÚÖĞÎŞÂÛÔÚBrowser»¹ÊÇÔÚServer¶Ë£¬¶¼¿ÉÒÔºÜ·½±ãµÄ·ÃÎÊºÍ´æ´¢³£ÓÃµÄÊÇÊı¾İ¡£
+åº”è¯¥é‡‡ç”¨Contextæ¥ä¼ é€’å…¨å±€å‚æ•°ã€‚å®ƒåœ¨Viewçš„æ•´ä¸ªç”Ÿå‘½å‘¨æœŸä¸­æ— è®ºåœ¨Browserè¿˜æ˜¯åœ¨Serverç«¯ï¼Œéƒ½å¯ä»¥å¾ˆæ–¹ä¾¿çš„è®¿é—®å’Œå­˜å‚¨å¸¸ç”¨çš„æ˜¯æ•°æ®ã€‚
 
-viewÖĞÅäÖÃ£ºhttp://wiki.bsdn.org/pages/viewpage.action?pageId=6947222
+viewä¸­é…ç½®ï¼šhttp://wiki.bsdn.org/pages/viewpage.action?pageId=6947222
 
-Ç°ºóÌ¨È¡Öµ£ºhttp://wiki.bsdn.org/pages/viewpage.action?pageId=10354826
+å‰åå°å–å€¼ï¼šhttp://wiki.bsdn.org/pages/viewpage.action?pageId=10354826
 
 
 
 *{  
-	  scrollbar-face-color:#01b9f6; /*Ãæ×Ó*/  
-	  scrollbar-arrow-color:#fff; /*¼ıÍ·*/  
-	  scrollbar-3dlight-color:#e9f1d2; /*×îÍâ×ó*/  
-	  scrollbar-highlight-color:#e9f1d2; /*×ó¶ş*/  
-	  scrollbar-shadow-color:#e9f1d2; /*ÓÒ¶ş*/  
-	  scrollbar-darkshadow-color:#e9f1d2; /*ÓÒÒ»*/  
-	  scrollbar-track-color:#e9f1d2; /*»¬µÀ*/  
+	  scrollbar-face-color:#01b9f6; /*é¢å­*/  
+	  scrollbar-arrow-color:#fff; /*ç®­å¤´*/  
+	  scrollbar-3dlight-color:#e9f1d2; /*æœ€å¤–å·¦*/  
+	  scrollbar-highlight-color:#e9f1d2; /*å·¦äºŒ*/  
+	  scrollbar-shadow-color:#e9f1d2; /*å³äºŒ*/  
+	  scrollbar-darkshadow-color:#e9f1d2; /*å³ä¸€*/  
+	  scrollbar-track-color:#e9f1d2; /*æ»‘é“*/  
 }
 
 
-/*¹ö¶¯ÌõÕûÌå*/  
+/*æ»šåŠ¨æ¡æ•´ä½“*/  
 ::-webkit-scrollbar{  
-    width:12px; /*¹ö¶¯Ìõ¿í¶È*/  
+    width:12px; /*æ»šåŠ¨æ¡å®½åº¦*/  
 }  
-/*¹ö¶¯Ìõ°´Å¥*/  
+/*æ»šåŠ¨æ¡æŒ‰é’®*/  
 ::-webkit-scrollbar-button {  
 
 }  
 ::-webkit-scrollbar-track{  
-    background-color: #e9f1d2;  /*»¬µÀÈ«²¿*/  
+    background-color: #e9f1d2;  /*æ»‘é“å…¨éƒ¨*/  
 }  
 ::-webkit-scrollbar-track-piece{  
-    background-color:#c7dce3;  /*»¬µÀ*/  
-    -webkit-border-radius:1px; /*»¬µÀÔ²½Ç¿í¶È*/  
+    background-color:#c7dce3;  /*æ»‘é“*/  
+    -webkit-border-radius:1px; /*æ»‘é“åœ†è§’å®½åº¦*/  
 }  
 ::-webkit-scrollbar-thumb{  
-   background:#01b9f6; /*»¬¶¯Ìõ±íÃæ*/  
-    /*»¬¶¯Ìõ±ß¿ò*/  
-    border-radius:8px;/*»¬¶¯ÌõÔ²½Ç¿í¶È*/ 
+   background:#01b9f6; /*æ»‘åŠ¨æ¡è¡¨é¢*/  
+    /*æ»‘åŠ¨æ¡è¾¹æ¡†*/  
+    border-radius:8px;/*æ»‘åŠ¨æ¡åœ†è§’å®½åº¦*/ 
 }  
-/*ºáÊú¹ö¶¯Ìõ½»½Ç*/  
+/*æ¨ªç«–æ»šåŠ¨æ¡äº¤è§’*/  
 ::-webkit-scrollbar-corner {  
     background-color: #0380f5;  
 }  
-/*ºáÊú¹ö¶¯Ìõ½»½ÇÍ¼°¸*/  
+/*æ¨ªç«–æ»šåŠ¨æ¡äº¤è§’å›¾æ¡ˆ*/  
 ::-webkit-resizer {  
     background-repeat: no-repeat;  
     background-position: bottom right;  
 }  
-/*Êó±ê»¬¹ı»¬¶¯Ìõ*/  
+/*é¼ æ ‡æ»‘è¿‡æ»‘åŠ¨æ¡*/  
 ::-webkit-scrollbar-thumb:hover{  
     background:#009dd2; 
 } 

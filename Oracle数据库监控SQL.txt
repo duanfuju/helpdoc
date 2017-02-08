@@ -1,10 +1,10 @@
-³£¹æĞÅÏ¢
-	Êı¾İ¿â°æ±¾ºÅ¡¢²Ù×÷ÏµÍ³
+å¸¸è§„ä¿¡æ¯
+	æ•°æ®åº“ç‰ˆæœ¬å·ã€æ“ä½œç³»ç»Ÿ
 		select * from product_component_version;
-	Êı¾İ¿âÃû³Æ¡¢´´½¨Ê±¼ä
+	æ•°æ®åº“åç§°ã€åˆ›å»ºæ—¶é—´
 		select * from v$database;
 
-	ÔËĞĞÊ±¼ä
+	è¿è¡Œæ—¶é—´
 		select to_char(startup_time,'DD-MON-YYYY HH24:MI:SS') started_at,
 TRUNC(sysdate - (startup_time))||'day(s),'||TRUNC(24*((sysdate-startup_time) -TRUNC(sysdate-startup_time)))
 ||'hour(s),'||MOD(TRUNC(1440*((SYSDATE-startup_time)-
@@ -25,11 +25,11 @@ from v$instance;
 
 
 
-ÏµÍ³ĞÅÏ¢
-	Ö÷»úcpuÀûÓÃÂÊ
+ç³»ç»Ÿä¿¡æ¯
+	ä¸»æœºcpuåˆ©ç”¨ç‡
 		select * from v$osstat
 		AVG_BUSY_TIME/(AVG_IDLE_TIME+AVG_BUSY_TIME)
-	Oracle DB cpuÀûÓÃÂÊ
+	Oracle DB cpuåˆ©ç”¨ç‡
 	
 
 
@@ -40,9 +40,9 @@ from v$instance;
 
 
 Oracle DB
-	Êı¾İ¿âÔÊĞíµÄ×î´óÁ¬½ÓÊı
+	æ•°æ®åº“å…è®¸çš„æœ€å¤§è¿æ¥æ•°
 		select value from v$parameter where name = 'processes'
-	µ±Ç°µÄÊı¾İ¿âÁ¬½ÓÊı
+	å½“å‰çš„æ•°æ®åº“è¿æ¥æ•°
 		select count(*) from v$process 
 
 
@@ -53,13 +53,13 @@ Oracle DB
 
 
 
-»á»°
+ä¼šè¯
 
-	µ±Ç°Á¬½ÓµÄ»á»°Êı
+	å½“å‰è¿æ¥çš„ä¼šè¯æ•°
 		select count(*) from v$session 
-	µ±Ç°´ò¿ªµÄÓÎ±êÊı
+	å½“å‰æ‰“å¼€çš„æ¸¸æ ‡æ•°
 		select count(*) from v$open_cursor; 
-	²¢·¢Á¬½ÓÊı
+	å¹¶å‘è¿æ¥æ•°
 		select count(*) from v$session where status='ACTIVE'
 
 
@@ -71,15 +71,15 @@ Oracle DB
 
 SGA
 	select * from v$parameter;
-	ÈÕÖ¾»º³åÇø£º	log_buffer
+	æ—¥å¿—ç¼“å†²åŒºï¼š	log_buffer
 		sga_max_size
 		pre_page_sga
-	¸ßËÙ»º³åÇø£º	db_block_size
-	´óĞÍ³Ø£º	large_pool_size
-	¹²Ïí³Ø£º	shared_pool_size
-	java³Ø£º	java_pool_size
+	é«˜é€Ÿç¼“å†²åŒºï¼š	db_block_size
+	å¤§å‹æ± ï¼š	large_pool_size
+	å…±äº«æ± ï¼š	shared_pool_size
+	javaæ± ï¼š	java_pool_size
 
-	Êı¾İ»º³åÇøÃüÖĞÂÊ£ºselect 1 - ((physical.value - direct.value - lobs.value) / logical.value)
+	æ•°æ®ç¼“å†²åŒºå‘½ä¸­ç‡ï¼šselect 1 - ((physical.value - direct.value - lobs.value) / logical.value)
  "Buffer Cache Hit Ratio" 
 from v$sysstat physical,v$sysstat direct,v$sysstat lobs,v$sysstat logical
 where physical.name = 'physical reads'
@@ -87,7 +87,7 @@ where physical.name = 'physical reads'
       and lobs.name='physical reads direct (lob)'
       and logical.name='session logical reads';
 
-	oracleµÄPGA¡¢SGAºÍprocess count£º
+	oracleçš„PGAã€SGAå’Œprocess countï¼š
 	select 'SGA' AS NAME,ROUND(sum(value)/1024/1024,2)||'M' AS "SIZE(M)" from v$sga UNION select 'PGA' AS NAME,ROUND(value/1024/1024,2)||'M' AS "SIZE(M)" from v$pgastat where name='total PGA allocated' UNION select 'TOTAL' AS NAME,((SELECT ROUND(sum(value)/1024/1024,2) from v$sga)+(select ROUND(value/1024/1024,2) from v$pgastat where name='total PGA allocated'))||'M' AS "SIZE(M)" FROM DUAL UNION SELECT NAME,TO_CHAR(VALUE) FROM V$PGASTAT WHERE NAME='process count';
 
 
@@ -95,7 +95,7 @@ where physical.name = 'physical reads'
 
 
 
-±í¿Õ¼äÊ¹ÓÃÂÊ
+è¡¨ç©ºé—´ä½¿ç”¨ç‡
 	select a.tablespace_name,a.bytes/1024/1024 "Sum MB",(a.bytes-b.bytes)/1024/1024 "used MB",b.bytes/1024/1024 "free MB",round(((a.bytes-b.bytes)/a.bytes)*100,2) "percent_used" 
 from 
 (select tablespace_name,sum(bytes) bytes from dba_data_files group by tablespace_name) a, 
@@ -110,7 +110,7 @@ order by ((a.bytes-b.bytes)/a.bytes) desc
 
 
 
-²éÑ¯ËùÓĞµÄÎïÀíÎÄ¼ş
+æŸ¥è¯¢æ‰€æœ‰çš„ç‰©ç†æ–‡ä»¶
 select a.file#, a.name, a.status, a.bytes,b.phyrds, b.phywrts from  v$datafile a, v$filestat b where a.file# = b.file#;
 
 
@@ -118,14 +118,14 @@ select a.file#, a.name, a.status, a.bytes,b.phyrds, b.phywrts from  v$datafile a
 
 
 
-¼à¿Ø±í¿Õ¼äµÄ I/O ±ÈÀı
+ç›‘æ§è¡¨ç©ºé—´çš„ I/O æ¯”ä¾‹
       select   df.tablespace_name name,df.file_name "file",f.phyrds pyr,
         f.phyblkrd pbr,f.phywrts pyw, f.phyblkwrt pbw
        from  v$filestat f, dba_data_files df
        where  f.file# = df.file_id
        order by df.tablespace_name;
   
-¼à¿ØÎÄ¼şÏµÍ³µÄ I/O ±ÈÀı
+ç›‘æ§æ–‡ä»¶ç³»ç»Ÿçš„ I/O æ¯”ä¾‹
       select   substr(a.file#,1,2) "#", substr(a.name,1,30) "Name", 
         a.status, a.bytes, b.phyrds, b.phywrts 
        from  v$datafile a, v$filestat b 
@@ -133,119 +133,119 @@ select a.file#, a.name, a.status, a.bytes,b.phyrds, b.phywrts from  v$datafile a
 
 
 
-dba_¿ªÍ·
-   dba_users     Êı¾İ¿âÓÃ»§ĞÅÏ¢
-   dba_segments  ±í¶ÎĞÅÏ¢
-   dba_extents    Êı¾İÇøĞÅÏ¢
-   dba_objects    Êı¾İ¿â¶ÔÏóĞÅÏ¢
-   dba_tablespaces   Êı¾İ¿â±í¿Õ¼äĞÅÏ¢
-   dba_data_files    Êı¾İÎÄ¼şÉèÖÃĞÅÏ¢
-   dba_temp_files   ÁÙÊ±Êı¾İÎÄ¼şĞÅÏ¢
-   dba_rollback_segs   »Ø¹ö¶ÎĞÅÏ¢
-   dba_ts_quotas   ÓÃ»§±í¿Õ¼äÅä¶îĞÅÏ¢
-   dba_free_space  Êı¾İ¿â¿ÕÏĞ¿Õ¼äĞÅÏ¢
-   dba_profiles   Êı¾İ¿âÓÃ»§×ÊÔ´ÏŞÖÆĞÅÏ¢
-   dba_sys_privs   ÓÃ»§µÄÏµÍ³È¨ÏŞĞÅÏ¢
-   dba_tab_privs  ÓÃ»§¾ßÓĞµÄ¶ÔÏóÈ¨ÏŞĞÅÏ¢
-   dba_col_privs  ÓÃ»§¾ßÓĞµÄÁĞ¶ÔÏóÈ¨ÏŞĞÅÏ¢
-   dba_role_privs  ÓÃ»§¾ßÓĞµÄ½ÇÉ«ĞÅÏ¢
-   dba_audit_trail  Éó¼Æ¸ú×Ù¼ÇÂ¼ĞÅÏ¢
-   dba_stmt_audit_opts  Éó¼ÆÉèÖÃĞÅÏ¢
-   dba_audit_object   ¶ÔÏóÉó¼Æ½á¹ûĞÅÏ¢
-   dba_audit_session  »á»°Éó¼Æ½á¹ûĞÅÏ¢
-   dba_indexes  ÓÃ»§Ä£Ê½µÄË÷ÒıĞÅÏ¢
-user_¿ªÍ·
-   user_objects   ÓÃ»§¶ÔÏóĞÅÏ¢
-   user_source   Êı¾İ¿âÓÃ»§µÄËùÓĞ×ÊÔ´¶ÔÏóĞÅÏ¢
-   user_segments   ÓÃ»§µÄ±í¶ÎĞÅÏ¢
-   user_tables    ÓÃ»§µÄ±í¶ÔÏóĞÅÏ¢
-   user_tab_columns   ÓÃ»§µÄ±íÁĞĞÅÏ¢
-   user_constraints   ÓÃ»§µÄ¶ÔÏóÔ¼ÊøĞÅÏ¢
-   user_sys_privs   µ±Ç°ÓÃ»§µÄÏµÍ³È¨ÏŞĞÅÏ¢
-   user_tab_privs   µ±Ç°ÓÃ»§µÄ¶ÔÏóÈ¨ÏŞĞÅÏ¢
-   user_col_privs   µ±Ç°ÓÃ»§µÄ±íÁĞÈ¨ÏŞĞÅÏ¢
-   user_role_privs   µ±Ç°ÓÃ»§µÄ½ÇÉ«È¨ÏŞĞÅÏ¢
-   user_indexes   ÓÃ»§µÄË÷ÒıĞÅÏ¢
-   user_ind_columns  ÓÃ»§µÄË÷Òı¶ÔÓ¦µÄ±íÁĞĞÅÏ¢
-   user_cons_columns   ÓÃ»§µÄÔ¼Êø¶ÔÓ¦µÄ±íÁĞĞÅÏ¢
-   user_clusters   ÓÃ»§µÄËùÓĞ´ØĞÅÏ¢
-  user_clu_columns  ÓÃ»§µÄ´ØËù°üº¬µÄÄÚÈİĞÅÏ¢
-  user_cluster_hash_expressions   É¢ÁĞ´ØµÄĞÅÏ¢
-v$¿ªÍ·
-   v$database    Êı¾İ¿âĞÅÏ¢
-   v$datafile   Êı¾İÎÄ¼şĞÅÏ¢
-   v$controlfile  ¿ØÖÆÎÄ¼şĞÅÏ¢
-   v$logfile   ÖØ×öÈÕÖ¾ĞÅÏ¢
-   v$instance   Êı¾İ¿âÊµÀıĞÅÏ¢
-   v$log   ÈÕÖ¾×éĞÅÏ¢
-   v$loghist  ÈÕÖ¾ÀúÊ·ĞÅÏ¢
-   v$sga   Êı¾İ¿âSGAĞÅÏ¢
-   v$parameter  ³õÊ¼»¯²ÎÊıĞÅÏ¢
-   v$process   Êı¾İ¿â·şÎñÆ÷½ø³ÌĞÅÏ¢
-   v$bgprocess   Êı¾İ¿âºóÌ¨½ø³ÌĞÅÏ¢
-   v$controlfile_record_section   ¿ØÖÆÎÄ¼ş¼ÇÔØµÄ¸÷²¿·ÖĞÅÏ¢
-   v$thread   Ïß³ÌĞÅÏ¢
-   v$datafile_header   Êı¾İÎÄ¼şÍ·Ëù¼ÇÔØµÄĞÅÏ¢
-   v$archived_log  ¹éµµÈÕÖ¾ĞÅÏ¢
-   v$archive_dest   ¹éµµÈÕÖ¾µÄÉèÖÃĞÅÏ¢
-   v$logmnr_contents   ¹éµµÈÕÖ¾·ÖÎöµÄDML DDL½á¹ûĞÅÏ¢
-   v$logmnr_dictionary   ÈÕÖ¾·ÖÎöµÄ×ÖµäÎÄ¼şĞÅÏ¢
-   v$logmnr_logs   ÈÕÖ¾·ÖÎöµÄÈÕÖ¾ÁĞ±íĞÅÏ¢
-   v$tablespace   ±í¿Õ¼äĞÅÏ¢
-   v$tempfile   ÁÙÊ±ÎÄ¼şĞÅÏ¢
-   v$filestat   Êı¾İÎÄ¼şµÄI/OÍ³¼ÆĞÅÏ¢
-   v$undostat   UndoÊı¾İĞÅÏ¢
-   v$rollname   ÔÚÏß»Ø¹ö¶ÎĞÅÏ¢
-   v$session   »á»°ĞÅÏ¢
-   v$transaction  ÊÂÎñĞÅÏ¢
-   v$rollstat    »Ø¹ö¶ÎÍ³¼ÆĞÅÏ¢
-   v$pwfile_users   ÌØÈ¨ÓÃ»§ĞÅÏ¢
-   v$sqlarea     µ±Ç°²éÑ¯¹ıµÄsqlÓï¾ä·ÃÎÊ¹ıµÄ×ÊÔ´¼°Ïà¹ØµÄĞÅÏ¢
-   v$sql           Óëv$sqlarea»ù±¾ÏàÍ¬µÄÏà¹ØĞÅÏ¢
-   v$sysstat    Êı¾İ¿âÏµÍ³×´Ì¬ĞÅÏ¢
-all_¿ªÍ·
-   all_users   Êı¾İ¿âËùÓĞÓÃ»§µÄĞÅÏ¢
-   all_objects   Êı¾İ¿âËùÓĞµÄ¶ÔÏóµÄĞÅÏ¢
-   all_def_audit_opts   ËùÓĞÄ¬ÈÏµÄÉó¼ÆÉèÖÃĞÅÏ¢
-   all_tables   ËùÓĞµÄ±í¶ÔÏóĞÅÏ¢
-   all_indexes  ËùÓĞµÄÊı¾İ¿â¶ÔÏóË÷ÒıµÄĞÅÏ¢
-session_¿ªÍ·
-     session_roles   »á»°µÄ½ÇÉ«ĞÅÏ¢
-     session_privs   »á»°µÄÈ¨ÏŞĞÅÏ¢
-index_¿ªÍ·
-    index_stats   Ë÷ÒıµÄÉèÖÃºÍ´æ´¢ĞÅÏ¢
-Î±±í
-   dual   ÏµÍ³Î±ÁĞ±íĞÅÏ¢
+dba_å¼€å¤´
+   dba_users     æ•°æ®åº“ç”¨æˆ·ä¿¡æ¯
+   dba_segments  è¡¨æ®µä¿¡æ¯
+   dba_extents    æ•°æ®åŒºä¿¡æ¯
+   dba_objects    æ•°æ®åº“å¯¹è±¡ä¿¡æ¯
+   dba_tablespaces   æ•°æ®åº“è¡¨ç©ºé—´ä¿¡æ¯
+   dba_data_files    æ•°æ®æ–‡ä»¶è®¾ç½®ä¿¡æ¯
+   dba_temp_files   ä¸´æ—¶æ•°æ®æ–‡ä»¶ä¿¡æ¯
+   dba_rollback_segs   å›æ»šæ®µä¿¡æ¯
+   dba_ts_quotas   ç”¨æˆ·è¡¨ç©ºé—´é…é¢ä¿¡æ¯
+   dba_free_space  æ•°æ®åº“ç©ºé—²ç©ºé—´ä¿¡æ¯
+   dba_profiles   æ•°æ®åº“ç”¨æˆ·èµ„æºé™åˆ¶ä¿¡æ¯
+   dba_sys_privs   ç”¨æˆ·çš„ç³»ç»Ÿæƒé™ä¿¡æ¯
+   dba_tab_privs  ç”¨æˆ·å…·æœ‰çš„å¯¹è±¡æƒé™ä¿¡æ¯
+   dba_col_privs  ç”¨æˆ·å…·æœ‰çš„åˆ—å¯¹è±¡æƒé™ä¿¡æ¯
+   dba_role_privs  ç”¨æˆ·å…·æœ‰çš„è§’è‰²ä¿¡æ¯
+   dba_audit_trail  å®¡è®¡è·Ÿè¸ªè®°å½•ä¿¡æ¯
+   dba_stmt_audit_opts  å®¡è®¡è®¾ç½®ä¿¡æ¯
+   dba_audit_object   å¯¹è±¡å®¡è®¡ç»“æœä¿¡æ¯
+   dba_audit_session  ä¼šè¯å®¡è®¡ç»“æœä¿¡æ¯
+   dba_indexes  ç”¨æˆ·æ¨¡å¼çš„ç´¢å¼•ä¿¡æ¯
+user_å¼€å¤´
+   user_objects   ç”¨æˆ·å¯¹è±¡ä¿¡æ¯
+   user_source   æ•°æ®åº“ç”¨æˆ·çš„æ‰€æœ‰èµ„æºå¯¹è±¡ä¿¡æ¯
+   user_segments   ç”¨æˆ·çš„è¡¨æ®µä¿¡æ¯
+   user_tables    ç”¨æˆ·çš„è¡¨å¯¹è±¡ä¿¡æ¯
+   user_tab_columns   ç”¨æˆ·çš„è¡¨åˆ—ä¿¡æ¯
+   user_constraints   ç”¨æˆ·çš„å¯¹è±¡çº¦æŸä¿¡æ¯
+   user_sys_privs   å½“å‰ç”¨æˆ·çš„ç³»ç»Ÿæƒé™ä¿¡æ¯
+   user_tab_privs   å½“å‰ç”¨æˆ·çš„å¯¹è±¡æƒé™ä¿¡æ¯
+   user_col_privs   å½“å‰ç”¨æˆ·çš„è¡¨åˆ—æƒé™ä¿¡æ¯
+   user_role_privs   å½“å‰ç”¨æˆ·çš„è§’è‰²æƒé™ä¿¡æ¯
+   user_indexes   ç”¨æˆ·çš„ç´¢å¼•ä¿¡æ¯
+   user_ind_columns  ç”¨æˆ·çš„ç´¢å¼•å¯¹åº”çš„è¡¨åˆ—ä¿¡æ¯
+   user_cons_columns   ç”¨æˆ·çš„çº¦æŸå¯¹åº”çš„è¡¨åˆ—ä¿¡æ¯
+   user_clusters   ç”¨æˆ·çš„æ‰€æœ‰ç°‡ä¿¡æ¯
+  user_clu_columns  ç”¨æˆ·çš„ç°‡æ‰€åŒ…å«çš„å†…å®¹ä¿¡æ¯
+  user_cluster_hash_expressions   æ•£åˆ—ç°‡çš„ä¿¡æ¯
+v$å¼€å¤´
+   v$database    æ•°æ®åº“ä¿¡æ¯
+   v$datafile   æ•°æ®æ–‡ä»¶ä¿¡æ¯
+   v$controlfile  æ§åˆ¶æ–‡ä»¶ä¿¡æ¯
+   v$logfile   é‡åšæ—¥å¿—ä¿¡æ¯
+   v$instance   æ•°æ®åº“å®ä¾‹ä¿¡æ¯
+   v$log   æ—¥å¿—ç»„ä¿¡æ¯
+   v$loghist  æ—¥å¿—å†å²ä¿¡æ¯
+   v$sga   æ•°æ®åº“SGAä¿¡æ¯
+   v$parameter  åˆå§‹åŒ–å‚æ•°ä¿¡æ¯
+   v$process   æ•°æ®åº“æœåŠ¡å™¨è¿›ç¨‹ä¿¡æ¯
+   v$bgprocess   æ•°æ®åº“åå°è¿›ç¨‹ä¿¡æ¯
+   v$controlfile_record_section   æ§åˆ¶æ–‡ä»¶è®°è½½çš„å„éƒ¨åˆ†ä¿¡æ¯
+   v$thread   çº¿ç¨‹ä¿¡æ¯
+   v$datafile_header   æ•°æ®æ–‡ä»¶å¤´æ‰€è®°è½½çš„ä¿¡æ¯
+   v$archived_log  å½’æ¡£æ—¥å¿—ä¿¡æ¯
+   v$archive_dest   å½’æ¡£æ—¥å¿—çš„è®¾ç½®ä¿¡æ¯
+   v$logmnr_contents   å½’æ¡£æ—¥å¿—åˆ†æçš„DML DDLç»“æœä¿¡æ¯
+   v$logmnr_dictionary   æ—¥å¿—åˆ†æçš„å­—å…¸æ–‡ä»¶ä¿¡æ¯
+   v$logmnr_logs   æ—¥å¿—åˆ†æçš„æ—¥å¿—åˆ—è¡¨ä¿¡æ¯
+   v$tablespace   è¡¨ç©ºé—´ä¿¡æ¯
+   v$tempfile   ä¸´æ—¶æ–‡ä»¶ä¿¡æ¯
+   v$filestat   æ•°æ®æ–‡ä»¶çš„I/Oç»Ÿè®¡ä¿¡æ¯
+   v$undostat   Undoæ•°æ®ä¿¡æ¯
+   v$rollname   åœ¨çº¿å›æ»šæ®µä¿¡æ¯
+   v$session   ä¼šè¯ä¿¡æ¯
+   v$transaction  äº‹åŠ¡ä¿¡æ¯
+   v$rollstat    å›æ»šæ®µç»Ÿè®¡ä¿¡æ¯
+   v$pwfile_users   ç‰¹æƒç”¨æˆ·ä¿¡æ¯
+   v$sqlarea     å½“å‰æŸ¥è¯¢è¿‡çš„sqlè¯­å¥è®¿é—®è¿‡çš„èµ„æºåŠç›¸å…³çš„ä¿¡æ¯
+   v$sql           ä¸v$sqlareaåŸºæœ¬ç›¸åŒçš„ç›¸å…³ä¿¡æ¯
+   v$sysstat    æ•°æ®åº“ç³»ç»ŸçŠ¶æ€ä¿¡æ¯
+all_å¼€å¤´
+   all_users   æ•°æ®åº“æ‰€æœ‰ç”¨æˆ·çš„ä¿¡æ¯
+   all_objects   æ•°æ®åº“æ‰€æœ‰çš„å¯¹è±¡çš„ä¿¡æ¯
+   all_def_audit_opts   æ‰€æœ‰é»˜è®¤çš„å®¡è®¡è®¾ç½®ä¿¡æ¯
+   all_tables   æ‰€æœ‰çš„è¡¨å¯¹è±¡ä¿¡æ¯
+   all_indexes  æ‰€æœ‰çš„æ•°æ®åº“å¯¹è±¡ç´¢å¼•çš„ä¿¡æ¯
+session_å¼€å¤´
+     session_roles   ä¼šè¯çš„è§’è‰²ä¿¡æ¯
+     session_privs   ä¼šè¯çš„æƒé™ä¿¡æ¯
+index_å¼€å¤´
+    index_stats   ç´¢å¼•çš„è®¾ç½®å’Œå­˜å‚¨ä¿¡æ¯
+ä¼ªè¡¨
+   dual   ç³»ç»Ÿä¼ªåˆ—è¡¨ä¿¡æ¯
 
-oracle×îÖØÒªµÄ9¸ö¶¯Ì¬ĞÔÄÜÊÓÍ¼
-v$session + v$session_wait (ÔÚ10gÀï¹¦ÄÜ±»ÕûºÏ,´ÕºÏËã1¸ö°É.)
+oracleæœ€é‡è¦çš„9ä¸ªåŠ¨æ€æ€§èƒ½è§†å›¾
+v$session + v$session_wait (åœ¨10gé‡ŒåŠŸèƒ½è¢«æ•´åˆ,å‡‘åˆç®—1ä¸ªå§.)
 v$process
 v$sql
 v$sqltext
-v$bh (¸üÄşÔ¸ÊÇx$bh)
+v$bh (æ›´å®æ„¿æ˜¯x$bh)
 v$lock
 v$latch_children
 v$sysstat
 v$system_event
-°´×é·ÖµÄ¼¸×éÖØÒªµÄĞÔÄÜÊÓÍ¼
+æŒ‰ç»„åˆ†çš„å‡ ç»„é‡è¦çš„æ€§èƒ½è§†å›¾
 
-1. System µÄ over view
+1. System çš„ over view
 v$sysstat , v$system_event , v$parameter
 
-2. Ä³¸ösession µÄµ±Ç°Çé¿ö
+2. æŸä¸ªsession çš„å½“å‰æƒ…å†µ
 v$process , v$session , v$session_wait ,v$session_event , v$sesstat
 
-3. SQL µÄÇé¿ö
+3. SQL çš„æƒ…å†µ
 v$sql , v$sqlarea , v$SQL_PLAN , V$SQL_PLAN_STATISTICS, v$sqltext_with_newlines
 
 3. Latch / lock /ENQUEUE
 v$latch , v$latch_children , v$latch_holder , v$lock ,V$ENQUEUE_STAT ,V$ENQUEUE_LOCK
 
-4. IO ·½ÃæµÄ
+4. IO æ–¹é¢çš„
 v$segstat , v$filestat , v$tempstat ,v$datafile , v$tempfile
 
 5. shared pool / Library cache
 v$Librarycache , v$rowcache , x$ksmsp
 
-6. ¼¸¸öadviceÒ²²»´í
+6. å‡ ä¸ªadviceä¹Ÿä¸é”™
 v$db_cache_advice , v$PGA_TARGET_ADVICE, v$SHARED_POOL_ADVICE

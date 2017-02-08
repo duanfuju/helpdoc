@@ -235,7 +235,7 @@ FROM
 									meteringNum,
 									disposeTime as weiXiuTime,
 									createUserId,
-									'ÌØÇÚ´¦Àí £º '+diseaseType as diseaseType
+									'ç‰¹å‹¤å¤„ç† ï¼š '+diseaseType as diseaseType
 								FROM	
 									DMS_WX_specialTreatment
 								

@@ -1,4 +1,4 @@
-Ö»ÔÊĞíÊäÈëÊı×Ö
-<input type="text" id="xunChaStartZHK2" onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')" name="xunChaTou.xunChaStartZHK2" value="${xunChaTou.xunChaStartZHK2!}"  placeholder="Ñ²²é¿ªÊ¼Ç§Ã×Î»"   class="form-control">
+åªå…è®¸è¾“å…¥æ•°å­—
+<input type="text" id="xunChaStartZHK2" onkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')" name="xunChaTou.xunChaStartZHK2" value="${xunChaTou.xunChaStartZHK2!}"  placeholder="å·¡æŸ¥å¼€å§‹åƒç±³ä½"   class="form-control">
 
-ÖØÒª²¿·Ö£ºonkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')" 
+é‡è¦éƒ¨åˆ†ï¼šonkeyup="this.value=this.value.replace(/\D/g,'')"onafterpaste="this.value=this.value.replace(/\D/g,'')" 

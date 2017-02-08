@@ -1,4 +1,4 @@
-//checkboxµ¥Ñ¡
+//checkboxå•é€‰
 	function checkCanel(Obj){   
 		$('[type="checkbox"]').each(function(){
 			window.xunChaXinTouId=$(this).val();
@@ -9,19 +9,19 @@
 
 
 
-//checkboxÑ¡ÖĞ»ñÈ¡Öµ
+//checkboxé€‰ä¸­è·å–å€¼
 var vals = $("input[name=checkbox]:checked") .map(function() { 
         return this.value; 
     }).get().join();
 
 
-//»ñÈ¡³¤¶È
+//è·å–é•¿åº¦
 var total=$("input[name='checkIds']").length;
 var num=$("input[name='checkIds']:checked").length;
 
 
 
-//¼ÆËãÑ¡ÖĞÎ¬ĞŞÊıºÍËùÕ¼°Ù·Ö±È	
+//è®¡ç®—é€‰ä¸­ç»´ä¿®æ•°å’Œæ‰€å ç™¾åˆ†æ¯”	
 function calcCheckedCount(){
 	var total=$("input[name='checkIds']").length;
 	var num=$("input[name='checkIds']:checked").length;
