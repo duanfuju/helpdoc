@@ -1,6 +1,6 @@
 JavaScript脚本语言：
 	JavaScript是一种轻量级的编程语言
-	JavaScript是可插入HTML页面的编程代码
+	JavaScript是可插入HTML页面的编程代码 
 	JavaScript插入HTML页面后，可由所有的浏览器执行
 
 输出（可包含标签）：document.write("内容");
