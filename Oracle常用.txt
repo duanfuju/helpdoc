@@ -1,0 +1,35 @@
+create tablespace meteorology datafile 'D:\oralce\dbf\meteorology.bdf' size 10m autoextend on next 30m maxsize unlimited;
+
+create user pkwz identified by 123456 default tablespace meteorology;
+
+grant connect,resource to pkwz;
+
+grant dba to pkwz;
+
+
+
+查看当前用户所在表空间
+
+select username,default_tablespace from user_users;
+
+
+
+
+
+D:\oralce\dbf\20151231.dmp
+
+drop tablespace pkwz including contents and datafiles;
+
+drop user pkwz cascade;
+
+
+
+
+create tablespace terminal datafile 'D:\oralce\dbf\terminal.bdf' size 10m autoextend on next 30m maxsize unlimited;
+create tablespace ctt_data datafile 'D:\oralce\dbf\ctt_data.bdf' size 10m autoextend on next 30m maxsize unlimited;
+
+create user terminal identified by 123456 default tablespace terminal;
+
+grant connect,resource to terminal;
+
+grant dba to terminal;

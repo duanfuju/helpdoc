@@ -1,0 +1,15 @@
+1.批量数据插入时（使用xlscopy时）	注意复制时不要把样式带到数据库
+2.创建表的时候注意指定编码方式和创建数据库时一致
+	主键	名称	状态	关联角色	显示顺序
+	id	name	status	roleid		sort
+
+
+	DROP TABLE IF EXISTS `ts_first_page_config`;
+	CREATE TABLE `ts_first_page_config` (
+	  `id` int NOT NULL AUTO_INCREMENT,
+	  `name` int DEFAULT NULL COMMENT '显示名称',
+	  `status` int DEFAULT NULL COMMENT '是否显示:0-不显示,1-显示',
+	  `role_id` varchar(64) DEFAULT NULL COMMENT '权限id',
+	  `sort` int DEFAULT NULL COMMENT '排序字段',
+	  PRIMARY KEY (`id`)
+	) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
