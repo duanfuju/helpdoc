@@ -1,97 +1,97 @@
 <div class="form-group" modehide="2">
-						<label class="col-sm-2 control-label" for="form-field-1">
-							维修项
-							<input type="hidden" name="buJian" id="buJian"/>
-							<input type="hidden" name="num" id="num"/>
-						</label>
-						<div class="col-sm-9">
-							<table id="fzhl_table" border="1" style="width:100%;background:#fff;text-align: center ">
-								<tr  id="fzhl_top">
-									<td>编号</td>
-									<td>项目</td>
-									<td>数量</td>
-									<td>
-										操作
-									</td>
-								</tr>
-								<tr  id="fzhl_top1">
-									<td>1</td>
-									<td><input style="border:none;width:100%;" id="buJian_1" type="text"/></td>
-									<td><input style="border:none;width:100%;" class="NumText" id="num_1" type="text" /></td>
-									<td>
-										<a style='cursor:pointer;' onclick='fzhlAdd()'>新增</a>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
+	<label class="col-sm-2 control-label" for="form-field-1">
+		维修项
+		<input type="hidden" name="buJian" id="buJian"/>
+		<input type="hidden" name="num" id="num"/>
+	</label>
+	<div class="col-sm-9">
+		<table id="fzhl_table" border="1" style="width:100%;background:#fff;text-align: center ">
+			<tr  id="fzhl_top">
+				<td>编号</td>
+				<td>项目</td>
+				<td>数量</td>
+				<td>
+					操作
+				</td>
+			</tr>
+			<tr  id="fzhl_top1">
+				<td>1</td>
+				<td><input style="border:none;width:100%;" id="buJian_1" type="text"/></td>
+				<td><input style="border:none;width:100%;" class="NumText" id="num_1" type="text" /></td>
+				<td>
+					<a style='cursor:pointer;' onclick='fzhlAdd()'>新增</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
 
 
 <script type="text/javascript">
-					//jquery动态生成元素添加点击事件	只允许输入数字
-					$(document).on('keyup', '.NumText', function() {
-						 $(this).val($(this).val().replace(/\D/g,""));  
-					}).bind("paste",'.NumText', function(){  //CTR+V事件处理    
-					    $(this).val($(this).val().replace(/D|^0/g,""));     
-					});
-					//维修项表格的新增
-					function fzhlAdd(){
-						var row=$("#fzhl_table tr").length;
-						 var tr="<tr id='tr_"+row+"'>"
-								+"<td>"+row+"</td>"
-								+"<td><input id='buJian_"+row+"' style='border:none;width:100%;' type='text'/></td>"
-								+"<td><input id='num_"+row+"' style='border:none;width:100%;'  class='NumText' type='text'/></td>"
-								+"<td><a style='cursor:pointer;' onclick='fzhlAdd()'>新增</a>|<a style='cursor:pointer;' id='del_"+row+"' onclick='fzhlDel("+row+")'>删除</a></td>"
-								+"</tr>";
-						$("#fzhl_table").append(tr); 
-					}
-					//维修项表格的删除
-					function fzhlDel(rowId){
-						$("#tr_"+rowId).remove();
-						var i=2;
-						$("#fzhl_table tr").each(function(){
-							var id=$(this).attr("id");
-							var split_str=id.split("_");
-							if(split_str[0]=="tr"){
-								//重新设置行数
-								$(this).attr("id","tr_"+i);
-								//重新设置编号
-								$(this).find("td:eq(0)").text(i);
-								//重新设置部件及数量的input中的id
-								$(this).find("td:eq(1)").find("input").attr("id","buJian_"+i);
-								$(this).find("td:eq(2)").find("input").attr("id","num_"+i);
-								//设置删除编号
-								$(this).find("td:eq(3)").find("a:eq(1)").attr("id","del_"+i);
-								$(this).find("td:eq(3)").find("a:eq(1)").attr("onclick","fzhlDel("+i+")");
-								i++;
-							}
-						});
-					}
-					
-					var array_buJian=[];
-					var array_num=[];
-					//维修项不为空
-					function validateFzhl(){
-						//获取防撞护栏数据的数量
-						var row=$("#fzhl_table tr").length;
-						
-						//定义是否符合要求
-						var flag=true;
-						for(var i=1;i<row;i++){
-							var bujian=$("#buJian_"+i).val();
-							var num=$("#num_"+i).val();
-							//验证是否为空
-							if(bujian==""||bujian==null){
-								flag=false;
-							}
-							if(num==""||num==null){
-								flag=false;
-							}
-							array_buJian.push(bujian);
-							array_num.push(num);
-						}
-						$("#buJian").val(array_buJian);
-						$("#num").val(array_num);
-						return flag;
-					}
+//jquery动态生成元素添加点击事件	只允许输入数字
+$(document).on('keyup', '.NumText', function() {
+	 $(this).val($(this).val().replace(/\D/g,""));  
+}).bind("paste",'.NumText', function(){  //CTR+V事件处理    
+    $(this).val($(this).val().replace(/D|^0/g,""));     
+});
+//维修项表格的新增
+function fzhlAdd(){
+	var row=$("#fzhl_table tr").length;
+	 var tr="<tr id='tr_"+row+"'>"
+			+"<td>"+row+"</td>"
+			+"<td><input id='buJian_"+row+"' style='border:none;width:100%;' type='text'/></td>"
+			+"<td><input id='num_"+row+"' style='border:none;width:100%;'  class='NumText' type='text'/></td>"
+			+"<td><a style='cursor:pointer;' onclick='fzhlAdd()'>新增</a>|<a style='cursor:pointer;' id='del_"+row+"' onclick='fzhlDel("+row+")'>删除</a></td>"
+			+"</tr>";
+	$("#fzhl_table").append(tr); 
+}
+//维修项表格的删除
+function fzhlDel(rowId){
+	$("#tr_"+rowId).remove();
+	var i=2;
+	$("#fzhl_table tr").each(function(){
+		var id=$(this).attr("id");
+		var split_str=id.split("_");
+		if(split_str[0]=="tr"){
+			//重新设置行数
+			$(this).attr("id","tr_"+i);
+			//重新设置编号
+			$(this).find("td:eq(0)").text(i);
+			//重新设置部件及数量的input中的id
+			$(this).find("td:eq(1)").find("input").attr("id","buJian_"+i);
+			$(this).find("td:eq(2)").find("input").attr("id","num_"+i);
+			//设置删除编号
+			$(this).find("td:eq(3)").find("a:eq(1)").attr("id","del_"+i);
+			$(this).find("td:eq(3)").find("a:eq(1)").attr("onclick","fzhlDel("+i+")");
+			i++;
+		}
+	});
+}
+
+var array_buJian=[];
+var array_num=[];
+//维修项不为空
+function validateFzhl(){
+	//获取防撞护栏数据的数量
+	var row=$("#fzhl_table tr").length;
+	
+	//定义是否符合要求
+	var flag=true;
+	for(var i=1;i<row;i++){
+		var bujian=$("#buJian_"+i).val();
+		var num=$("#num_"+i).val();
+		//验证是否为空
+		if(bujian==""||bujian==null){
+			flag=false;
+		}
+		if(num==""||num==null){
+			flag=false;
+		}
+		array_buJian.push(bujian);
+		array_num.push(num);
+	}
+	$("#buJian").val(array_buJian);
+	$("#num").val(array_num);
+	return flag;
+}
 </script>

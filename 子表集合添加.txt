@@ -1,36 +1,36 @@
 <div class="form-group">
-						<input type="text"  id="fzhlWeiXiuRelateListSize" style="display:none" value="0">
-						<table class="table table-striped table-bordered bootstrap-datatable " style="width:56.5%;margin-left:17.6%">
-							<thead>
-								<th width="15%">维修部件</th>
-								<th width="15%">矫正</th>
-								<th width="15%">更换</th>
-								<th width="40%">回收</th>
-								<th width="15%"><a href="#" onclick="addlist();">添加</a></th>
-							</thead>
-							<tbody id="tbody-list">
-						<tr id="clone-target">
-							<td>							
-								<input type="text"  name="fzhlWeiXiuRelateList[0].weiXiuBuJian" class="form-control">
-								
-							</td>
-							<td>
-								<input type="text"  name="fzhlWeiXiuRelateList[0].jiaoZheng" class="form-control">
-								
-							<td>
-								<input type="text"  name="fzhlWeiXiuRelateList[0].gengHuan" class="form-control">
-								
-							</td>
-							<td>
-								<input type="text" name="fzhlWeiXiuRelateList[0].huiShou" class="form-control">
-								
-							</td>
-							<td><a href="#" onclick="del(this);">删除</a></td>
-						</tr>
-					</tbody>
-						</table>
-						<span class="help-inline col-sm-2"> </span>
-					</div>
+	<input type="text"  id="fzhlWeiXiuRelateListSize" style="display:none" value="0">
+	<table class="table table-striped table-bordered bootstrap-datatable " style="width:56.5%;margin-left:17.6%">
+		<thead>
+			<th width="15%">维修部件</th>
+			<th width="15%">矫正</th>
+			<th width="15%">更换</th>
+			<th width="40%">回收</th>
+			<th width="15%"><a href="#" onclick="addlist();">添加</a></th>
+		</thead>
+		<tbody id="tbody-list">
+	<tr id="clone-target">
+		<td>							
+			<input type="text"  name="fzhlWeiXiuRelateList[0].weiXiuBuJian" class="form-control">
+			
+		</td>
+		<td>
+			<input type="text"  name="fzhlWeiXiuRelateList[0].jiaoZheng" class="form-control">
+			
+		<td>
+			<input type="text"  name="fzhlWeiXiuRelateList[0].gengHuan" class="form-control">
+			
+		</td>
+		<td>
+			<input type="text" name="fzhlWeiXiuRelateList[0].huiShou" class="form-control">
+			
+		</td>
+		<td><a href="#" onclick="del(this);">删除</a></td>
+	</tr>
+</tbody>
+	</table>
+	<span class="help-inline col-sm-2"> </span>
+</div>
 
 <script type="text/javascript">
 	
