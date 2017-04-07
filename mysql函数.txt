@@ -1,0 +1,19 @@
+--	获取当前节点下所有子节点（自联表）
+DROP FUNCTION IF EXISTS `getChildLst`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` FUNCTION `getChildLst`(rootId INT) RETURNS varchar(21845) CHARSET utf8
+BEGIN
+ DECLARE sTemp VARCHAR(21845);
+ DECLARE sTempChd VARCHAR(21845);
+
+ SET sTemp = '$';
+  SET sTempChd =cast(rootId as CHAR);
+
+ WHILE sTempChd is not null DO
+   SET sTemp = concat(sTemp,',',sTempChd);
+   SELECT group_concat(id) INTO sTempChd FROM ts_dev_category where FIND_IN_SET(cat_parent,sTempChd)>0;
+ END WHILE;
+  RETURN sTemp;
+ END
+;;
+DELIMITER ;
