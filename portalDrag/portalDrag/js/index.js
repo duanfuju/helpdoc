@@ -73,8 +73,7 @@ Index.prototype = {
                         arr.push($(dom).html());
                     }
                 });
-                console.log("---------------------arr")
-                console.log(arr)
+
                 for (var i = 0; i < arr.length; i++) {
                     var clone = function(name) {
                         var c = that.module.cloneModule(name);
@@ -82,8 +81,7 @@ Index.prototype = {
                         return c;
                     }('.insert')
                     var add = that.module.getAdd();
-                     console.log("---------------------add")
-                console.log(add)
+
                     $('#indexCon').append(clone);
                     that.hoverHeader();
                     that.module.addNewModule(clone, add);
