@@ -1,0 +1,18 @@
+DROP PROCEDURE IF EXISTS `genNode_menu`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` PROCEDURE `genNode_menu`()
+BEGIN  
+ DECLARE Level int ;  
+ Set Level=0 ;  
+ update ts_dev_category a inner join (SELECT id,Level,concat(',',ID,',') scort FROM ts_dev_category WHERE cat_parent is null) b on a.id=b.id 
+ set a.cat_level=b.level,a.scort=b.scort;  
+ WHILE FOUND_ROWS()>0 DO  
+  SET Level=Level+1;  
+update ts_dev_category a inner join (  
+   SELECT ID,Level,scort FROM ts_dev_category   
+    WHERE cat_level=Level-1) b on a.cat_parent=b.id  
+ set a.cat_level=b.level,a.scort=concat(b.sCort,a.ID,',');  
+ END WHILE;  
+END
+;;
+DELIMITER ;
