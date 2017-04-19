@@ -1,0 +1,17 @@
+第一步：
+	创建一个txt文件（也可以用cmd命令：notepad）
+	
+第二步:
+	在文件中输入		DIR /S/B >getFileListName.txt
+	
+第三步:
+	文件另存为*.bat的文件，或者直接修改txt文件的后缀
+
+第四步:
+	双击执行bat文件即可在当前的目录获取一个getFileListName.txt
+
+
+
+ps：
+	DIR /S/B >getFileListName.txt		带路径的文件名列表
+	DIR /B >getFileListName.txt			不带路径的文件名列表
