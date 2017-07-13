@@ -1,0 +1,4 @@
+[Err] 1221 - Incorrect usage of UNION and ORDER BY
+错误原因：连接多个查询时使用了不同的排序字段
+解决方案：删除查询中的排序，统一在查询的外部排序
+
