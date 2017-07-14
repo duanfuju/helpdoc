@@ -1,3 +1,6 @@
+防止sql注入：String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|(\\b(select|update|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";
+
+
 一、校验数字的表达式
  1 数字：^[0-9]*$
  2 n位的数字：^\d{n}$
