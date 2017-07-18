@@ -1,22 +1,22 @@
-bcdedit /set increaseuserva 4096
-£¨ÕâÀïµÄ4096Ö¸µ¥½ø³Ì¿ÉÔÊĞíµÄ×î´óÖµ£¬Èç¹û½ø³ÌËùĞèÄÚ´æ´óÓÚ4096MB£¬Ôò¸ÄÎª6144»ò8192¾ù¿É£©
+ï»¿bcdedit /set increaseuserva 4096
+ï¼ˆè¿™é‡Œçš„4096æŒ‡å•è¿›ç¨‹å¯å…è®¸çš„æœ€å¤§å€¼ï¼Œå¦‚æœè¿›ç¨‹æ‰€éœ€å†…å­˜å¤§äº4096MBï¼Œåˆ™æ”¹ä¸º6144æˆ–8192å‡å¯ï¼‰
 
 
 
-ÒÀ´ÎÊäÈë
+ä¾æ¬¡è¾“å…¥
 msiexec  /unregserver
 msiexec /regserver
 net start msiserver
-Ä¿µÄÊÇÖØÆôwindows°²×°·şÎñ
+ç›®çš„æ˜¯é‡å¯windowså®‰è£…æœåŠ¡
 
 
-msconfig	ÏµÍ³ÅäÖÃ
+msconfig	ç³»ç»Ÿé…ç½®
 
 
-mstsc		Ô¶³Ì¿ØÖÆ
+mstsc		è¿œç¨‹æ§åˆ¶
 
 
-services.msc	·şÎñ
+services.msc	æœåŠ¡
 
 
-notepad		ÎÄ±¾
+notepad		æ–‡æœ¬
