@@ -1,0 +1,11 @@
+https://jingyan.baidu.com/article/17bd8e525081be85ab2bb88c.html
+D:\ideaWorkspace\tsrdp
+D:\ideaWorkspace\test
+D:\ideaWorkspace\demo-eam
+
+robocopy  D:\ideaWorkspace\test  D:\ideaWorkspace\demo-eam  /purge
+
+
+
+
+IntelliJ IDEA 2017.1
