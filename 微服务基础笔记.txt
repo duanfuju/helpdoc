@@ -1,0 +1,107 @@
+﻿微服务(在GitHub上有例子，可以参考的说明文档很多)
+
+微服务的特点：“微”、“独”、“轻”、“松”等
+
+Docker：项目环境部署的镜像
+
+SpringBoot
+	定义：一个基础的框架
+	和微服务的关系：加入其它服务管理方面的组件,才可以被称为微服务
+
+属性配置
+	 @Value							赋值操作
+	 @Component						容器数据注入
+	 @ConfigurationProperties(prefix = "girl")		配置项选择
+	 @RestController					spring4之后新加的注解，等价 @Controller于+ @ResponseBody
+	 @RequestMapping					url路径映射
+
+启动方式：
+	直接在idea中启动
+	使用命令行
+
+命令行：
+	①编译：到制定项目目录 mvn install
+	②选择启动配置参数 java -jar target/(jar包名称)XX.jar --spring.profiles.active=prod
+
+
+Controller
+	@PathVariable	获取url中的数据
+	@RequestParam	获取请求参数的值
+	@GetMapping	组合注解
+	@PostMapping	新增
+	@PutMapping	修改
+	@DeleteMapping	删除
+
+SpringCloud
+	定义：微服务的工具包
+
+Eureka
+	定义：微服务的注册中心，服务管理，相当于管理多个服务器（ip+端口+服务实例名）
+
+网关 Zuul
+	定义：是系统的门户、城市的关隘、公园的检票口；是反向代理工具
+	作用：是为前台提供后台服务的聚合，提供一个统一的服务出口，解除它们之间的稠合，同时负责鉴权、认证、安全和跳转等
+	类似工具：Nginx
+	总结：
+		正向代理代理的是客户端，反向代理代理的是服务端；
+		正向代理，服务端不知道客户端是谁；
+		反向代理，客户端不知道服务端是谁。
+Ribbon
+	定义：提供客户端的软件负载均衡算法，将 Netflix 的中间层服务连接在一起。
+
+Hystrix
+	定义：容错管理工具
+	作用：是通过隔离、控制服务从而对延迟和故障提供更强大的容错能力，避免整个系统被拖垮。
+
+pagehelper
+	分页插件，在GitHub中有
+
+
+
+开发流程
+	①commons模块==>实体类存放，用于新增和修改
+	②provider模块==>数据提供和业务逻辑的编写
+		1.mybatis的xml的编写
+		2.和xml文件映射的java文件Mapper
+		3.方法接口service
+		4.方法实现imp，继承实现service，使用Mapper操作sql
+		5.编写控制器用于远程连接（微服务使用不同的远程客户端实现软件均衡负载），实现远程接口（feign模块中调取不同远程连接）
+	③feign模块==>用于调取不同模块的服务实现软件均衡负载
+		1.编写调取不用的服务接口接口文件，增加注解回调引用熔断器
+			(@FeignClient(path = "device", value = "demo", fallback = DeviceRemoteClientHystrix.class);
+				参数：
+					path		引用地址			
+					value		引用的模块名称
+					fallback 	回调引用的类（熔断器，在远程调取数据失败时调取）
+
+			)
+		2.编写熔断器，实现方法调取失败后抛出的异常以及提示信息
+	④consumer-freemarker模块==>前端页面模板制作以及路径的跳转的控制
+		1.编写*.ftl文件，前端页面用展示数据，新增，修改等
+		2.编写控制器，用于页面中跳转和数据的传输，使用feign模块的指定的远程服务接口类
+
+
+freemarker
+	定义：模板引擎
+	相似的：beetl（开发快捷；效率高；不易维护；jfinal的框架中使用的就是这个）
+
+
+Swagger
+	定义:接口可视化工具
+	作用:接口可视化，在线文档和 API 始终同步，以及可以对接口进行测试
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

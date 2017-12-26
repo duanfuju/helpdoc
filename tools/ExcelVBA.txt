@@ -1,31 +1,29 @@
-http://www.feiesoft.com/vba/excel/
+ï»¿http://www.feiesoft.com/vba/excel/
 http://www.51zxw.net/list.aspx?cid=392
 
-1A£¬2B, 3C, 4D, 5E, 6F, 7G, 8H, 9I, 10J, 11K, 12L, 13M, 14N, 15O, 16P, 17Q, 18R, 19S, 20T, 21U, 22V, 23W, 24X, 25Y, 26Z
+1Aï¼Œ2B, 3C, 4D, 5E, 6F, 7G, 8H, 9I, 10J, 11K, 12L, 13M, 14N, 15O, 16P, 17Q, 18R, 19S, 20T, 21U, 22V, 23W, 24X, 25Y, 26Z
 
-excelÏÞÖÆÐÐÊýµÄÊôÐÔÔÚVBAÖÐµÄScrollAreaÊôÐÔ£¬Ð´·¨ÊÇ$A$1:$X$5000;Ã°ºÅ´ú±íµÄÊÇÖµµÄ·¶Î§
+excelé™åˆ¶è¡Œæ•°çš„å±žæ€§åœ¨VBAä¸­çš„ScrollAreaå±žæ€§ï¼Œå†™æ³•æ˜¯$A$1:$X$5000;å†’å·ä»£è¡¨çš„æ˜¯å€¼çš„èŒƒå›´
 
+ 
 
-
-³£¼ûµÄµ¥Ôª¸ñÊý¾Ý¸ñÊ½£º
-Range("a1").NumberFormat = "0.00" '½«Êý×ÖÉèÖÃÎªÁ½Î»Ð¡Êý£»
-Range("a1").NumberFormat = "0.00%" '½«Êý×ÖÉèÖÃÎªÁ½Î»Ð¡ÊýµÄ°Ù·ÖÊý£»
-Range("a1").NumberFormat = "000000" '½«Êý×ÖÉèÖÃÎª6Î»ÕûÊý£¨ÓÊ±à£©£»
-Range("a1").NumberFormat = "@" '½«Êý×ÖÉèÖÃÎªÎÄ±¾£»
-RRange("a1").NumberFormat = "[DBNum2]" '½«Êý×ÖÉèÖÃÎªÖÐÎÄ´óÐ´£»
-RRange("a1").NumberFormatLocal = "(£¤#,##0.00_); [ºìÉ«] (£¤#,##0.00)" '½«Êý×ÖÉèÖÃÎªÈËÃñ±Ò£»
-Range("a1").NumberFormat = "yyyyÄêmÔÂdÈÕ" 'ÉèÖÃÎªÈÕÆÚ£»
-Range("a1").NumberFormat = "yyyyÄêmÔÂdÈÕaaaa" 'ÉèÖÃÎªÈÕÆÚÐÇÆÚ¼¸£»
-Range("a1").NumberFormat = "yyyy-m-d dddd" 'ÉèÖÃÎªÈÕÆÚÐÇÆÚ¼¸£»
-Range("a1").NumberFormat = "mmmm" ' ÉèÖÃÓ¢ÎÄÈ«³Æ£»
-Range("a1").NumberFormat = "mmm" 'ÉèÖÃÓ¢ÎÄ¼ò³Æ£»
-Range("a1").NumberFormat = "aaaa" 'ÉèÖÃººÓïÐÇÆÚ£»
-Range("a1").NumberFormat = "dddd" 'ÉèÖÃÓ¢ÓïÐÇÆÚ£»
-Range("a1").NumberFormat = ";;" 'Òþ²Øµ¥Ôª¸ñÊý×Ö£»
-Range("a1").NumberFormat = ";;;" '½«Òþ²Øµ¥Ôª¸ñÊý×ÖºÍÎÄ±¾
-Range("a1").NumberFormat = "0;-0;;@" 'Òþ²Øµ¥Ôª¸ñÁãÖµ
-
-
+å¸¸è§çš„å•å…ƒæ ¼æ•°æ®æ ¼å¼ï¼š
+Range("a1").NumberFormat = "0.00" 'å°†æ•°å­—è®¾ç½®ä¸ºä¸¤ä½å°æ•°ï¼›
+Range("a1").NumberFormat = "0.00%" 'å°†æ•°å­—è®¾ç½®ä¸ºä¸¤ä½å°æ•°çš„ç™¾åˆ†æ•°ï¼›
+Range("a1").NumberFormat = "000000" 'å°†æ•°å­—è®¾ç½®ä¸º6ä½æ•´æ•°ï¼ˆé‚®ç¼–ï¼‰ï¼›
+Range("a1").NumberFormat = "@" 'å°†æ•°å­—è®¾ç½®ä¸ºæ–‡æœ¬ï¼›
+RRange("a1").NumberFormat = "[DBNum2]" 'å°†æ•°å­—è®¾ç½®ä¸ºä¸­æ–‡å¤§å†™ï¼›
+RRange("a1").NumberFormatLocal = "(ï¿¥#,##0.00_); [çº¢è‰²] (ï¿¥#,##0.00)" 'å°†æ•°å­—è®¾ç½®ä¸ºäººæ°‘å¸ï¼›
+Range("a1").NumberFormat = "yyyyå¹´mæœˆdæ—¥" 'è®¾ç½®ä¸ºæ—¥æœŸï¼›
+Range("a1").NumberFormat = "yyyyå¹´mæœˆdæ—¥aaaa" 'è®¾ç½®ä¸ºæ—¥æœŸæ˜ŸæœŸå‡ ï¼›
+Range("a1").NumberFormat = "yyyy-m-d dddd" 'è®¾ç½®ä¸ºæ—¥æœŸæ˜ŸæœŸå‡ ï¼›
+Range("a1").NumberFormat = "mmmm" ' è®¾ç½®è‹±æ–‡å…¨ç§°ï¼›
+Range("a1").NumberFormat = "mmm" 'è®¾ç½®è‹±æ–‡ç®€ç§°ï¼›
+Range("a1").NumberFormat = "aaaa" 'è®¾ç½®æ±‰è¯­æ˜ŸæœŸï¼›
+Range("a1").NumberFormat = "dddd" 'è®¾ç½®è‹±è¯­æ˜ŸæœŸï¼›
+Range("a1").NumberFormat = ";;" 'éšè—å•å…ƒæ ¼æ•°å­—ï¼›
+Range("a1").NumberFormat = ";;;" 'å°†éšè—å•å…ƒæ ¼æ•°å­—å’Œæ–‡æœ¬
+Range("a1").NumberFormat = "0;-0;;@" 'éšè—å•å…ƒæ ¼é›¶å€¼
 
 
 
@@ -35,84 +33,86 @@ Range("a1").NumberFormat = "0;-0;;@" 'Òþ²Øµ¥Ôª¸ñÁãÖµ
 
 
 
-Public Sub Àý10_56()
+
+
+Public Sub ä¾‹10_56()
     Dim myRange As Range
     Dim myVad As Validation
-    Set myRange = Range("A1")    'Ö¸¶¨ÈÎÒâµÄµ¥Ôª¸ñ»òµ¥Ôª¸ñÇøÓò
+    Set myRange = Range("A1")    'æŒ‡å®šä»»æ„çš„å•å…ƒæ ¼æˆ–å•å…ƒæ ¼åŒºåŸŸ
     Set myVad = myRange.Validation
     With myVad
-        .Delete    'É¾³ýÔ­ÓÐµÄÓÐÐ§ÐÔÉèÖÃ
+        .Delete    'åˆ é™¤åŽŸæœ‰çš„æœ‰æ•ˆæ€§è®¾ç½®
         
-        'ÏÂÃæÊÇ¸÷ÖÖÊäÈë¹æÔòµÄÉèÖÃ£¬¿ÉÒÔ¸ù¾ÝÊµ¼ÊÇé¿öÑ¡ÔñÈÎÒâÒ»ÖÖ
+        'ä¸‹é¢æ˜¯å„ç§è¾“å…¥è§„åˆ™çš„è®¾ç½®ï¼Œå¯ä»¥æ ¹æ®å®žé™…æƒ…å†µé€‰æ‹©ä»»æ„ä¸€ç§
         .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
         Operator:=xlBetween, _
-Formula1:="100", Formula2:="10000"    'Ö»ÔÊÐíÊäÈëÄ³·¶Î§µÄÕûÊý
+Formula1:="100", Formula2:="10000"    'åªå…è®¸è¾“å…¥æŸèŒƒå›´çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreater, Formula1:="100"    'Ö»ÔÊÐíÊäÈë´óÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreater, Formula1:="100"    'åªå…è®¸è¾“å…¥å¤§äºŽæŸå€¼çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreater, Formula1:="100"    'Ö»ÔÊÐíÊäÈë´óÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreater, Formula1:="100"    'åªå…è®¸è¾“å…¥å¤§äºŽæŸå€¼çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlLess, Formula1:="100"    'Ö»ÔÊÐíÊäÈëÐ¡ÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlLess, Formula1:="100"    'åªå…è®¸è¾“å…¥å°äºŽæŸå€¼çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreaterEqual, Formula1:="100"   'Ö»ÔÊÐíÊäÈë´óÓÚ»òµÈÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreaterEqual, Formula1:="100"   'åªå…è®¸è¾“å…¥å¤§äºŽæˆ–ç­‰äºŽæŸå€¼çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlLessEqual, Formula1:="100"    'Ö»ÔÊÐíÊäÈëÐ¡ÓÚ»òµÈÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlLessEqual, Formula1:="100"    'åªå…è®¸è¾“å…¥å°äºŽæˆ–ç­‰äºŽæŸå€¼çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlNotEqual, Formula1:="100"    'Ö»ÔÊÐíÊäÈë²»µÈÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlNotEqual, Formula1:="100"    'åªå…è®¸è¾“å…¥ä¸ç­‰äºŽæŸå€¼çš„æ•´æ•°
         
 '        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlEqual, Formula1:="100"    'Ö»ÔÊÐíÊäÈëµÈÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlEqual, Formula1:="100"    'åªå…è®¸è¾“å…¥ç­‰äºŽæŸå€¼çš„æ•´æ•°
         
-        'Èç¹ûÊÇÉèÖÃÊäÈëÐ¡Êý£¬Ôò½«Type²ÎÊý½øÐÐÐÞ¸ÄÈçÏÂ£¬ÆäËû²ÎÊý²»±ä£º
+        'å¦‚æžœæ˜¯è®¾ç½®è¾“å…¥å°æ•°ï¼Œåˆ™å°†Typeå‚æ•°è¿›è¡Œä¿®æ”¹å¦‚ä¸‹ï¼Œå…¶ä»–å‚æ•°ä¸å˜ï¼š
 '        .Add Type:=xlValidateDecimal, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreater, Formula1:="100"    'Ö»ÔÊÐíÊäÈë´óÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreater, Formula1:="100"    'åªå…è®¸è¾“å…¥å¤§äºŽæŸå€¼çš„æ•´æ•°
         
-        'Èç¹ûÊÇÉèÖÃÊäÈëÈÕÆÚ£¬Ôò½«Type²ÎÊý½øÐÐÐÞ¸ÄÈçÏÂ£¬ÆäËû²ÎÊý²»±ä£º
+        'å¦‚æžœæ˜¯è®¾ç½®è¾“å…¥æ—¥æœŸï¼Œåˆ™å°†Typeå‚æ•°è¿›è¡Œä¿®æ”¹å¦‚ä¸‹ï¼Œå…¶ä»–å‚æ•°ä¸å˜ï¼š
 '        .Add Type:=xlValidateDate, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreater, Formula1:="100"    'Ö»ÔÊÐíÊäÈë´óÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreater, Formula1:="100"    'åªå…è®¸è¾“å…¥å¤§äºŽæŸå€¼çš„æ•´æ•°
         
-        'Èç¹ûÊÇÉèÖÃÊäÈëÊ±¼ä£¬Ôò½«Type²ÎÊý½øÐÐÐÞ¸ÄÈçÏÂ£¬ÆäËû²ÎÊý²»±ä£º
+        'å¦‚æžœæ˜¯è®¾ç½®è¾“å…¥æ—¶é—´ï¼Œåˆ™å°†Typeå‚æ•°è¿›è¡Œä¿®æ”¹å¦‚ä¸‹ï¼Œå…¶ä»–å‚æ•°ä¸å˜ï¼š
 '        .Add Type:=xlValidateTime, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreater, Formula1:="100"    'Ö»ÔÊÐíÊäÈë´óÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreater, Formula1:="100"    'åªå…è®¸è¾“å…¥å¤§äºŽæŸå€¼çš„æ•´æ•°
         
-        'Èç¹ûÊÇÉèÖÃÊäÈëÎÄ±¾³¤¶È£¬Ôò½«Type²ÎÊý½øÐÐÐÞ¸ÄÈçÏÂ£¬ÆäËû²ÎÊý²»±ä£º
+        'å¦‚æžœæ˜¯è®¾ç½®è¾“å…¥æ–‡æœ¬é•¿åº¦ï¼Œåˆ™å°†Typeå‚æ•°è¿›è¡Œä¿®æ”¹å¦‚ä¸‹ï¼Œå…¶ä»–å‚æ•°ä¸å˜ï¼š
 '        .Add Type:=xlValidateTextLength, AlertStyle:=xlValidAlertStop, _
-'        Operator:=xlGreater, Formula1:="100"    'Ö»ÔÊÐíÊäÈë´óÓÚÄ³ÖµµÄÕûÊý
+'        Operator:=xlGreater, Formula1:="100"    'åªå…è®¸è¾“å…¥å¤§äºŽæŸå€¼çš„æ•´æ•°
         
-        'Èç¹ûÊÇÉèÖÃÊäÈëÐòÁÐ£¬Ôò½«AddÓï¾äÐÞ¸ÄÈçÏÂ£º
+        'å¦‚æžœæ˜¯è®¾ç½®è¾“å…¥åºåˆ—ï¼Œåˆ™å°†Addè¯­å¥ä¿®æ”¹å¦‚ä¸‹ï¼š
 '        .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, _
 '        Operator:=xlEqual, Formula1:="1,2,3,4,5,6,7,8,9,10,11,12"
         
-        'Èç¹ûÊÇÉèÖÃÊäÈëÐòÁÐ£¬²¢ÇÒÒýÓÃ¶¨ÒåµÄÃû³Æ£¬Ôò½«AddÓï¾äÐÞ¸ÄÈçÏÂ£º
+        'å¦‚æžœæ˜¯è®¾ç½®è¾“å…¥åºåˆ—ï¼Œå¹¶ä¸”å¼•ç”¨å®šä¹‰çš„åç§°ï¼Œåˆ™å°†Addè¯­å¥ä¿®æ”¹å¦‚ä¸‹ï¼š
 '        .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, _
 '        Operator:=xlBetween, Formula1:="=myName"
         
-        'ÏÂÃæÊÇÆäËûÏîÄ¿µÄÉèÖÃ
-        .IgnoreBlank = True       'ÔÊÐí¿ÕÖµ
-        .InCellDropdown = True    'ÏÔÊ¾º¬ÓÐÓÐÐ§È¡ÖµµÄÏÂÀ­ÁÐ±í
-        .InputTitle = "ÕûÊý"      'ÉèÖÃÊý¾ÝÓÐÐ§ÐÔÊäÈë¶Ô»°¿òµÄ±êÌâ
-        .ErrorTitle = "Êý¾Ý´íÎó"    'ÉèÖÃÊý¾ÝÓÐÐ§ÐÔ´íÎó¶Ô»°¿òµÄ±êÌâ
-        .InputMessage = "ÇëÊäÈëÕûÊý"    'ÉèÖÃÊý¾ÝÓÐÐ§ÐÔ¼ìÑéÊäÈëÐÅÏ¢
-        .ErrorMessage = "Êý¾Ý³¬³öÁË·¶Î§"    'ÉèÖÃÊý¾ÝÓÐÐ§ÐÔ¼ìÑé´íÎóÐÅÏ¢
-        .IMEMode = xlIMEModeOff    'ÉèÖÃÊäÈë·¨¹æÔòµÄËµÃ÷
-        .ShowInput = True    'Ñ¡¶¨Ä³Ò»µ¥Ôª¸ñÊ±£¬ÏÔÊ¾Êý¾ÝÓÐÐ§ÐÔ¼ì²éÊäÈëÏûÏ¢
-        .ShowError = True    'ÓÃ»§ÊäÈëÎÞÐ§Êý¾ÝÊ±ÏÔÊ¾Êý¾ÝÓÐÐ§ÐÔ¼ì²é´íÎóÏûÏ¢
+        'ä¸‹é¢æ˜¯å…¶ä»–é¡¹ç›®çš„è®¾ç½®
+        .IgnoreBlank = True       'å…è®¸ç©ºå€¼
+        .InCellDropdown = True    'æ˜¾ç¤ºå«æœ‰æœ‰æ•ˆå–å€¼çš„ä¸‹æ‹‰åˆ—è¡¨
+        .InputTitle = "æ•´æ•°"      'è®¾ç½®æ•°æ®æœ‰æ•ˆæ€§è¾“å…¥å¯¹è¯æ¡†çš„æ ‡é¢˜
+        .ErrorTitle = "æ•°æ®é”™è¯¯"    'è®¾ç½®æ•°æ®æœ‰æ•ˆæ€§é”™è¯¯å¯¹è¯æ¡†çš„æ ‡é¢˜
+        .InputMessage = "è¯·è¾“å…¥æ•´æ•°"    'è®¾ç½®æ•°æ®æœ‰æ•ˆæ€§æ£€éªŒè¾“å…¥ä¿¡æ¯
+        .ErrorMessage = "æ•°æ®è¶…å‡ºäº†èŒƒå›´"    'è®¾ç½®æ•°æ®æœ‰æ•ˆæ€§æ£€éªŒé”™è¯¯ä¿¡æ¯
+        .IMEMode = xlIMEModeOff    'è®¾ç½®è¾“å…¥æ³•è§„åˆ™çš„è¯´æ˜Ž
+        .ShowInput = True    'é€‰å®šæŸä¸€å•å…ƒæ ¼æ—¶ï¼Œæ˜¾ç¤ºæ•°æ®æœ‰æ•ˆæ€§æ£€æŸ¥è¾“å…¥æ¶ˆæ¯
+        .ShowError = True    'ç”¨æˆ·è¾“å…¥æ— æ•ˆæ•°æ®æ—¶æ˜¾ç¤ºæ•°æ®æœ‰æ•ˆæ€§æ£€æŸ¥é”™è¯¯æ¶ˆæ¯
     End With
     Set myVad = Nothing
     Set myRange = Nothing
 End Sub
 
-myRange.Font.Underline = xlUnderlineStyleSingle   'µ¥ÏÂ»®Ïß
-myRange.Font.Underline = xlUnderlineStyleDouble   'Ë«ÏÂ»®Ïß
-myRange.Font.Underline = xlUnderlineStyleSingleAccounting   '»á¼Æµ¥ÏÂ»®Ïß
-myRange.Font.Underline = xlUnderlineStyleDouble Accounting  '»á¼ÆË«ÏÂ»®Ïß
-myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
+myRange.Font.Underline = xlUnderlineStyleSingle   'å•ä¸‹åˆ’çº¿
+myRange.Font.Underline = xlUnderlineStyleDouble   'åŒä¸‹åˆ’çº¿
+myRange.Font.Underline = xlUnderlineStyleSingleAccounting   'ä¼šè®¡å•ä¸‹åˆ’çº¿
+myRange.Font.Underline = xlUnderlineStyleDouble Accounting  'ä¼šè®¡åŒä¸‹åˆ’çº¿
+myRange.Font.Underline = xlUnderlineStyleNone   'å–æ¶ˆä¸‹åˆ’çº¿
 
 
 
@@ -120,27 +120,27 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
 
 
 
-  '¶¨ÒåÕýÔò±í´ïÊ½¶ÔÏó
+  'å®šä¹‰æ­£åˆ™è¡¨è¾¾å¼å¯¹è±¡
     Dim oRegExp As Object
-    '¶¨ÒåÆ¥Åä×Ö·û´®¼¯ºÏ¶ÔÏó
+    'å®šä¹‰åŒ¹é…å­—ç¬¦ä¸²é›†åˆå¯¹è±¡
     Dim oMatches As Object
-    '´´½¨ÕýÔò±í´ïÊ½
-    '¶¨ÒåÒªÖ´ÐÐÕýÔò²éÕÒµÄÎÄ±¾±äÁ¿
+    'åˆ›å»ºæ­£åˆ™è¡¨è¾¾å¼
+    'å®šä¹‰è¦æ‰§è¡Œæ­£åˆ™æŸ¥æ‰¾çš„æ–‡æœ¬å˜é‡
     Dim sText As String
-    sText = "ÕâÊÇvÒ»¸öÕýÔò±í´ïÊ½bµÄ·¶Àý³ÌÐòa´úÂë"
+    sText = "è¿™æ˜¯vä¸€ä¸ªæ­£åˆ™è¡¨è¾¾å¼bçš„èŒƒä¾‹ç¨‹åºaä»£ç "
     Set oRegExp = CreateObject("vbscript.regexp")
     With oRegExp
-        'ÉèÖÃÊÇ·ñÆ¥ÅäËùÓÐµÄ·ûºÏÏî£¬True±íÊ¾Æ¥ÅäËùÓÐ, False±íÊ¾½öÆ¥ÅäµÚÒ»¸ö·ûºÏÏî
+        'è®¾ç½®æ˜¯å¦åŒ¹é…æ‰€æœ‰çš„ç¬¦åˆé¡¹ï¼ŒTrueè¡¨ç¤ºåŒ¹é…æ‰€æœ‰, Falseè¡¨ç¤ºä»…åŒ¹é…ç¬¬ä¸€ä¸ªç¬¦åˆé¡¹
         .Global = True
-        'ÉèÖÃÊÇ·ñÇø·Ö´óÐ¡Ð´£¬True±íÊ¾²»Çø·Ö´óÐ¡Ð´, False±íÊ¾Çø·Ö´óÐ¡Ð´
+        'è®¾ç½®æ˜¯å¦åŒºåˆ†å¤§å°å†™ï¼ŒTrueè¡¨ç¤ºä¸åŒºåˆ†å¤§å°å†™, Falseè¡¨ç¤ºåŒºåˆ†å¤§å°å†™
         .IgnoreCase = True
-        'ÉèÖÃÒª²éÕÒµÄ×Ö·ûÄ£Ê½
+        'è®¾ç½®è¦æŸ¥æ‰¾çš„å­—ç¬¦æ¨¡å¼
         .Pattern = "[\u4e00-\u9fa5]+"
-        'ÅÐ¶ÏÊÇ·ñ¿ÉÒÔÕÒµ½Æ¥ÅäµÄ×Ö·û£¬Èô¿ÉÒÔÔò·µ»ØTrue
+        'åˆ¤æ–­æ˜¯å¦å¯ä»¥æ‰¾åˆ°åŒ¹é…çš„å­—ç¬¦ï¼Œè‹¥å¯ä»¥åˆ™è¿”å›žTrue
         MsgBox .Test(sText)
-        '¶Ô×Ö·û´®Ö´ÐÐÕýÔò²éÕÒ£¬·µ»ØËùÓÐµÄ²éÕÒÖµµÄ¼¯ºÏ£¬ÈôÎ´ÕÒµ½£¬ÔòÎª¿Õ
+        'å¯¹å­—ç¬¦ä¸²æ‰§è¡Œæ­£åˆ™æŸ¥æ‰¾ï¼Œè¿”å›žæ‰€æœ‰çš„æŸ¥æ‰¾å€¼çš„é›†åˆï¼Œè‹¥æœªæ‰¾åˆ°ï¼Œåˆ™ä¸ºç©º
         Set oMatches = .Execute(sText)
-        '°Ñ×Ö·û´®ÖÐÓÃÕýÔòÕÒµ½µÄËùÓÐÆ¥Åä×Ö·ûÌæ»»ÎªÆäËü×Ö·û
+        'æŠŠå­—ç¬¦ä¸²ä¸­ç”¨æ­£åˆ™æ‰¾åˆ°çš„æ‰€æœ‰åŒ¹é…å­—ç¬¦æ›¿æ¢ä¸ºå…¶å®ƒå­—ç¬¦
         MsgBox .Replace(sText, "")
     End With
     Set oRegExp = Nothing
@@ -150,32 +150,32 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
 
 
 
-    'É¾³ýÊý¾ÝÓÐÐ§ÐÔ
+    'åˆ é™¤æ•°æ®æœ‰æ•ˆæ€§
      Target.Validation.Delete
     
-    '¿Í»§·ÖÀà
+    'å®¢æˆ·åˆ†ç±»
     If Target.Column = 4 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
             .Add Type:=xlValidateList, _
                 AlertStyle:=xlValidAlertStop, _
                 Operator:=xlBetween, _
-                Formula1:="ÖØµã¿Í»§,Ò»°ã¿Í»§"
+                Formula1:="é‡ç‚¹å®¢æˆ·,ä¸€èˆ¬å®¢æˆ·"
              .ShowError = True
         End With
     End If
-    '¿Í»§ÐÅÓÃµÈ¼¶
+    'å®¢æˆ·ä¿¡ç”¨ç­‰çº§
      If Target.Column = 5 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
             .Add Type:=xlValidateList, _
                 AlertStyle:=xlValidAlertStop, _
                 Operator:=xlBetween, _
-                Formula1:="ÓÅÐã,Á¼ºÃ,½ÏºÃ,Ò»°ã,½Ï²î,²î"
+                Formula1:="ä¼˜ç§€,è‰¯å¥½,è¾ƒå¥½,ä¸€èˆ¬,è¾ƒå·®,å·®"
              .ShowError = True
         End With
     End If
-    'ÔöÖµË°ÂÊ£¨%£©
+    'å¢žå€¼ç¨ŽçŽ‡ï¼ˆ%ï¼‰
     If Target.Column = 8 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
@@ -186,7 +186,7 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
         End With
         Target.NumberFormat = "0.00"
     End If
-     '×¢²á×Ê½ð£¨ÍòÔª£©
+     'æ³¨å†Œèµ„é‡‘ï¼ˆä¸‡å…ƒï¼‰
     If Target.Column = 15 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
@@ -196,7 +196,7 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
              .ShowError = True
         End With
     End If
-    'ÒµÎñ¿ªÊ¼ÈÕÆÚ£¨YYYY-MM-DD£©
+    'ä¸šåŠ¡å¼€å§‹æ—¥æœŸï¼ˆYYYY-MM-DDï¼‰
     If Target.Column = 21 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
@@ -207,7 +207,7 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
         End With
         Target.NumberFormat = "yyyy-m-d"
     End If
-    'ÒµÎñ½áÊøÈÕÆÚ£¨YYYY-MM-DD£©
+    'ä¸šåŠ¡ç»“æŸæ—¥æœŸï¼ˆYYYY-MM-DDï¼‰
     If Target.Column = 22 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
@@ -218,19 +218,19 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
         End With
         Target.NumberFormat = "yyyy-m-d"
     End If
-    '×´Ì¬
+    'çŠ¶æ€
     If Target.Column = 24 And Target.Row > 2 And Target.Row < 5001 Then
         With Target.Validation
             .Delete
             .Add Type:=xlValidateList, _
                 AlertStyle:=xlValidAlertStop, _
                 Operator:=xlBetween, _
-                Formula1:="ÓÐÐ§,ÎÞÐ§"
+                Formula1:="æœ‰æ•ˆ,æ— æ•ˆ"
              .ShowError = True
         End With
     End If
 
-            'ÕýÔò     µç»°
+            'æ­£åˆ™     ç”µè¯
     If Target.Column = 18 And Target.Row > 2 And Target.Row < 5001 Then
          Dim regx, S$, Strnew$
             Set regx = CreateObject("vbscript.regexp")
@@ -243,7 +243,7 @@ myRange.Font.Underline = xlUnderlineStyleNone   'È¡ÏûÏÂ»®Ïß
     
     
     
-     'ÕýÔò     ÓÊÏä
+     'æ­£åˆ™     é‚®ç®±
     If Target.Column = 20 And Target.Row > 2 And Target.Row < 5001 Then
            
             Set regx = CreateObject("vbscript.regexp")
