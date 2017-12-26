@@ -1,0 +1,255 @@
+http://www.feiesoft.com/vba/excel/
+http://www.51zxw.net/list.aspx?cid=392
+
+1A，2B, 3C, 4D, 5E, 6F, 7G, 8H, 9I, 10J, 11K, 12L, 13M, 14N, 15O, 16P, 17Q, 18R, 19S, 20T, 21U, 22V, 23W, 24X, 25Y, 26Z
+
+excel限制行数的属性在VBA中的ScrollArea属性，写法是$A$1:$X$5000;冒号代表的是值的范围
+
+
+
+常见的单元格数据格式：
+Range("a1").NumberFormat = "0.00" '将数字设置为两位小数；
+Range("a1").NumberFormat = "0.00%" '将数字设置为两位小数的百分数；
+Range("a1").NumberFormat = "000000" '将数字设置为6位整数（邮编）；
+Range("a1").NumberFormat = "@" '将数字设置为文本；
+RRange("a1").NumberFormat = "[DBNum2]" '将数字设置为中文大写；
+RRange("a1").NumberFormatLocal = "(￥#,##0.00_); [红色] (￥#,##0.00)" '将数字设置为人民币；
+Range("a1").NumberFormat = "yyyy年m月d日" '设置为日期；
+Range("a1").NumberFormat = "yyyy年m月d日aaaa" '设置为日期星期几；
+Range("a1").NumberFormat = "yyyy-m-d dddd" '设置为日期星期几；
+Range("a1").NumberFormat = "mmmm" ' 设置英文全称；
+Range("a1").NumberFormat = "mmm" '设置英文简称；
+Range("a1").NumberFormat = "aaaa" '设置汉语星期；
+Range("a1").NumberFormat = "dddd" '设置英语星期；
+Range("a1").NumberFormat = ";;" '隐藏单元格数字；
+Range("a1").NumberFormat = ";;;" '将隐藏单元格数字和文本
+Range("a1").NumberFormat = "0;-0;;@" '隐藏单元格零值
+
+
+
+
+
+
+
+
+
+
+
+Public Sub 例10_56()
+    Dim myRange As Range
+    Dim myVad As Validation
+    Set myRange = Range("A1")    '指定任意的单元格或单元格区域
+    Set myVad = myRange.Validation
+    With myVad
+        .Delete    '删除原有的有效性设置
+        
+        '下面是各种输入规则的设置，可以根据实际情况选择任意一种
+        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+        Operator:=xlBetween, _
+Formula1:="100", Formula2:="10000"    '只允许输入某范围的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreater, Formula1:="100"    '只允许输入大于某值的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreater, Formula1:="100"    '只允许输入大于某值的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlLess, Formula1:="100"    '只允许输入小于某值的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreaterEqual, Formula1:="100"   '只允许输入大于或等于某值的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlLessEqual, Formula1:="100"    '只允许输入小于或等于某值的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlNotEqual, Formula1:="100"    '只允许输入不等于某值的整数
+        
+'        .Add Type:=xlValidateWholeNumber, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlEqual, Formula1:="100"    '只允许输入等于某值的整数
+        
+        '如果是设置输入小数，则将Type参数进行修改如下，其他参数不变：
+'        .Add Type:=xlValidateDecimal, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreater, Formula1:="100"    '只允许输入大于某值的整数
+        
+        '如果是设置输入日期，则将Type参数进行修改如下，其他参数不变：
+'        .Add Type:=xlValidateDate, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreater, Formula1:="100"    '只允许输入大于某值的整数
+        
+        '如果是设置输入时间，则将Type参数进行修改如下，其他参数不变：
+'        .Add Type:=xlValidateTime, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreater, Formula1:="100"    '只允许输入大于某值的整数
+        
+        '如果是设置输入文本长度，则将Type参数进行修改如下，其他参数不变：
+'        .Add Type:=xlValidateTextLength, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlGreater, Formula1:="100"    '只允许输入大于某值的整数
+        
+        '如果是设置输入序列，则将Add语句修改如下：
+'        .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlEqual, Formula1:="1,2,3,4,5,6,7,8,9,10,11,12"
+        
+        '如果是设置输入序列，并且引用定义的名称，则将Add语句修改如下：
+'        .Add Type:=xlValidateList, AlertStyle:=xlValidAlertStop, _
+'        Operator:=xlBetween, Formula1:="=myName"
+        
+        '下面是其他项目的设置
+        .IgnoreBlank = True       '允许空值
+        .InCellDropdown = True    '显示含有有效取值的下拉列表
+        .InputTitle = "整数"      '设置数据有效性输入对话框的标题
+        .ErrorTitle = "数据错误"    '设置数据有效性错误对话框的标题
+        .InputMessage = "请输入整数"    '设置数据有效性检验输入信息
+        .ErrorMessage = "数据超出了范围"    '设置数据有效性检验错误信息
+        .IMEMode = xlIMEModeOff    '设置输入法规则的说明
+        .ShowInput = True    '选定某一单元格时，显示数据有效性检查输入消息
+        .ShowError = True    '用户输入无效数据时显示数据有效性检查错误消息
+    End With
+    Set myVad = Nothing
+    Set myRange = Nothing
+End Sub
+
+myRange.Font.Underline = xlUnderlineStyleSingle   '单下划线
+myRange.Font.Underline = xlUnderlineStyleDouble   '双下划线
+myRange.Font.Underline = xlUnderlineStyleSingleAccounting   '会计单下划线
+myRange.Font.Underline = xlUnderlineStyleDouble Accounting  '会计双下划线
+myRange.Font.Underline = xlUnderlineStyleNone   '取消下划线
+
+
+
+
+
+
+
+  '定义正则表达式对象
+    Dim oRegExp As Object
+    '定义匹配字符串集合对象
+    Dim oMatches As Object
+    '创建正则表达式
+    '定义要执行正则查找的文本变量
+    Dim sText As String
+    sText = "这是v一个正则表达式b的范例程序a代码"
+    Set oRegExp = CreateObject("vbscript.regexp")
+    With oRegExp
+        '设置是否匹配所有的符合项，True表示匹配所有, False表示仅匹配第一个符合项
+        .Global = True
+        '设置是否区分大小写，True表示不区分大小写, False表示区分大小写
+        .IgnoreCase = True
+        '设置要查找的字符模式
+        .Pattern = "[\u4e00-\u9fa5]+"
+        '判断是否可以找到匹配的字符，若可以则返回True
+        MsgBox .Test(sText)
+        '对字符串执行正则查找，返回所有的查找值的集合，若未找到，则为空
+        Set oMatches = .Execute(sText)
+        '把字符串中用正则找到的所有匹配字符替换为其它字符
+        MsgBox .Replace(sText, "")
+    End With
+    Set oRegExp = Nothing
+    Set oMatches = Nothing
+
+
+
+
+
+    '删除数据有效性
+     Target.Validation.Delete
+    
+    '客户分类
+    If Target.Column = 4 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateList, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlBetween, _
+                Formula1:="重点客户,一般客户"
+             .ShowError = True
+        End With
+    End If
+    '客户信用等级
+     If Target.Column = 5 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateList, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlBetween, _
+                Formula1:="优秀,良好,较好,一般,较差,差"
+             .ShowError = True
+        End With
+    End If
+    '增值税率（%）
+    If Target.Column = 8 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateDecimal, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlGreater, Formula1:="0", Formula2:="100"
+             .ShowError = True
+        End With
+        Target.NumberFormat = "0.00"
+    End If
+     '注册资金（万元）
+    If Target.Column = 15 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateWholeNumber, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlGreater, Formula1:="0"
+             .ShowError = True
+        End With
+    End If
+    '业务开始日期（YYYY-MM-DD）
+    If Target.Column = 21 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateDate, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlGreater, Formula1:="100"
+             .ShowError = True
+        End With
+        Target.NumberFormat = "yyyy-m-d"
+    End If
+    '业务结束日期（YYYY-MM-DD）
+    If Target.Column = 22 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateDate, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlGreater, Formula1:="100"
+             .ShowError = True
+        End With
+        Target.NumberFormat = "yyyy-m-d"
+    End If
+    '状态
+    If Target.Column = 24 And Target.Row > 2 And Target.Row < 5001 Then
+        With Target.Validation
+            .Delete
+            .Add Type:=xlValidateList, _
+                AlertStyle:=xlValidAlertStop, _
+                Operator:=xlBetween, _
+                Formula1:="有效,无效"
+             .ShowError = True
+        End With
+    End If
+
+            '正则     电话
+    If Target.Column = 18 And Target.Row > 2 And Target.Row < 5001 Then
+         Dim regx, S$, Strnew$
+            Set regx = CreateObject("vbscript.regexp")
+            S = Target.Text
+            regx.Pattern = "^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$"
+            regx.Global = True
+            Strnew = regx.Test(S)
+            If Strnew = "False" Then Target.ClearContents
+    End If
+    
+    
+    
+     '正则     邮箱
+    If Target.Column = 20 And Target.Row > 2 And Target.Row < 5001 Then
+           
+            Set regx = CreateObject("vbscript.regexp")
+            S = Target.Text
+            regx.Pattern = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$"
+            regx.Global = True
+            Strnew = regx.Test(S)
+            If Strnew = "False" Then Target.ClearContents
+    End If
