@@ -1,0 +1,39 @@
+﻿一、$http.jsonp【实现跨域】
+1. 指定callback和回调函数名，函数名为JSON_CALLBACK时，会调用success回调函数，JSON_CALLBACK必须全为大写。
+2. 指定其它回调函数，但必须是定义在window下的全局函数。url中必须加上callback。
+
+实现：
+
+方法一：
+
+$http.jsonp("http://localhost/sitesettings/getBadgeInfo.pt?jsonp=JSON_CALLBACK&siteid=137bd406").success(function(data){ ... });
+//  The name of the callback should be the string JSON_CALLBACK.
+方法二【返回值，需要使用对应callback方法接收，但如何置于$scope???】：
+
+$http.jsonp("http://localhost/sitesettings/getBadgeInfo.pt?jsonp=badgeabc&siteid=137bd406");
+function badgeabc(data){ ... }
+二、$http.get【实现跨域】
+1. 在服务器端设置允许在其他域名下访问
+
+response.setHeader("Access-Control-Allow-Origin", "*"); //允许所有域名访问
+response.setHeader("Access-Control-Allow-Origin", "http://www.123.com"); //允许www.123.com访问
+2. AngularJS端使用$http.get()
+
+实现：
+
+$http.get('http://localhost/ajax/getAllIndustryCategoty.pt?languageColumn=name_eu').success(function(data){
+	$scope.industries = data;
+});
+三、$http.post【实现跨域】
+1. 在服务器端设置允许在其他域名下访问，及响应类型、响应头设置
+
+response.setHeader("Access-Control-Allow-Origin", "*");
+response.setHeader("Access-Control-Allow-Methods","POST");
+response.setHeader("Access-Control-Allow-Headers","x-requested-with,content-type");
+2. AngularJS端使用$http.post()，同时设置请求头信息
+
+实现：
+
+$http.post('http://localhost/ajax/getAllIndustryCategoty.pt',{languageColumn:'name_eu'},{'Content-Type':'application/x-www-form-urlencoded'}).success(function(data){
+	$scope.industries = data;
+});

@@ -1,0 +1,48 @@
+打包的模块为多模块部分中的web模块
+1.编写启动类(SpringBoot的启动类需要重新定义(项目发布和开发阶段的启动不同))
+		①编写新的启动类(UserServer是原先开发时自动创建的启动类)
+			package com.nrims.imslean.user;
+	
+			import org.springframework.boot.builder.SpringApplicationBuilder;
+			import org.springframework.boot.web.support.SpringBootServletInitializer;
+			
+			/**
+			 * @author duanfuju
+			 * @create 2018-01-11 11:20
+			 * @desc
+			 **/
+			public class SpringBootStartApplication extends SpringBootServletInitializer{
+			
+			    @Override
+			    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+			        return builder.sources(UserServer.class);
+			    }
+			}
+				
+2.pom.xml增加引用
+		①将启动类的引用增加到pom.xml
+			<properties>
+        		<start-class>com.nrims.imslean.user.SpringBootStartApplication</start-class>
+			</properties>
+		②将使用的web容器的依赖引用
+			<dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+	        </dependency>
+	        <!-- marked the embedded servlet container as provided -->
+	        <dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-starter-tomcat</artifactId>
+	            <scope>provided</scope>
+	        </dependency>
+		③修改maven打包的格式,默认为jar
+			<packaging>war</packaging>
+3.使用idea2017进行打包
+		①找到Maven Projects工具
+			View>Tool Buttons>Maven Projects
+		②选中父级模块,项目名称旁带有【(root)】的为父级
+		③打开Lifecycle文件夹,双击package命令
+4.到指定子模块下的target文件夹,找到war包,直接丢tomcat就行
+	例:
+		D:\ideaWorkspace\imslean_release\imslean-user\target
+		我自己的imslean_release是父级项目名称,imslean-user为子级项目名称
