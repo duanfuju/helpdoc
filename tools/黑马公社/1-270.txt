@@ -1,0 +1,645 @@
+视频工具下载（编号：001～270）
+2018-01-17 黑马公社
+黑马公社三分钟工具下载
+
+（前270期）
+
+
+
+提醒：链接需要复制到在浏览器打开
+
+
+ 1   手机控制电脑－TeamViewer
+https://www.teamviewer.com/zhcn/download/
+
+ 2   微信PC版
+http://weixin.qq.com/
+
+ 4   破解加密文件工具
+http://d.a1b.cn/3mintools/004-pojiejiami.zip
+
+ 5   屏蔽网页广告插件 
+安装方法一：
+Chrome应用店： 
+https://chrome.google.com/webstore/detail/adblock/gighmmpiobklfepjocnamgkkbiglidom?hl=zh-CN
+打开该链接需要使用谷歌助手：
+http://www.ggfwzs.com/
+安装方法二：
+将 .crx 文件拖入浏览器中的『扩展程序』页面安装（也适用于Chromium内核的国产浏览器）：
+http://d.a1b.cn/3mintools/005-AdBlock.zip
+
+ 8   iPhone修改铃声
+iTools官网下载地址： 
+http://www.itools.cn/iTunes
+官网下载地址：
+http://www.apple.com/cn/itunes/download/
+
+ 16   Windows安装Linux虚拟机工具 
+链接：http://pan.baidu.com/s/1gf0XhSn 密码：9c4u
+
+ 17    导出微信语音 
+同步助手官网下载地址：
+http://www.tongbu.com/iTunes
+官网下载地址：
+http://www.apple.com/cn/itunes/download/
+
+ 18   清理C盘工具 
+http://d.a1b.cn/3mintools/018-qinglicpan.zip
+
+ 19   隐藏和加密文件工具 
+http://d.a1b.cn/3mintools/019-Locker.zip
+
+ 20   自建Wi-Fi热点代码 
+http://d.a1b.cn/3mintools/020-shezhiWI-FIredian.zip
+
+ 26   系统软件一键卸载命令 
+http://d.a1b.cn/3mintools/026-shanchuchengxu.zip
+
+ 27   百度高级搜索命令 
+http://d.a1b.cn/3mintools/027-sousuomingling.zip
+
+ 31   Windows查看密钥工具 
+http://d.a1b.cn/3mintools/031-chaxunmiyao.zip
+
+ 32   各类搜索工具
+云盘搜索：http://so.baiduyun.me
+微信搜索：http://weixin.sogou.com 
+新浪微博：http://s.weibo.com
+豆瓣搜索：http://www.douban.com
+谷歌替代：http://gufensoso.com
+                 http://gfsoso.99lb.net
+
+ 33   Adminstrator开启代码 
+http://d.a1b.cn/3mintools/033-adminzhanghu.zip
+
+ 34   老毛桃U盘制作工具 
+http://www.laomaotao.org/lmtxz/
+
+ 35   去除广告工具ADSafe 
+http://www.ad-safe.com/
+
+ 37   冰点文库下载器 
+http://www.bingdian001.com/?cat=2
+
+ 38   硕鼠下载器 
+http://www.flvcd.com/
+
+ 39   P2P终结者下载 
+http://d.a1b.cn/3mintools/039-p2pover4.34.zip
+
+ 41   一键切换搜索引擎 
+安装方法一：
+Chrome应用店： 
+https://chrome.google.com/webstore/detail/%E4%B8%80%E9%94%AE%E5%88%87%E6%8D%A2/fknieppmhfgnjilnkdeoegocjkijpbfh?hl=zh-CN
+打开该链接需要使用谷歌助手：http://www.ggfwzs.com/ 
+安装方法二： 将 .crx 文件拖入浏览器中的『扩展程序』页面安装（也适用于Chromium内核的国产浏览器）：http://d.a1b.cn/3mintools/041-yijianqiehuan.zip
+
+ 44   双开大师
+http://www.wandoujia.com/apps/com.lbe.parallel
+
+ 48   拖把更名器下载链接 
+http://d.a1b.cn/3mintools/048-tuoba.zip
+
+ 49   百度云限速破解版 
+链接：http://pan.baidu.com/s/1jIiAiz0 密码：1q3g
+
+ 54   百度翻译和翰林词典插件下载 
+安装方法一：
+Chrome应用店： 
+https://chrome.google.com/webstore/detail/%E7%BF%B0%E6%9E%97%E8%8B%B1%E6%B1%89%E5%8F%8C%E8%A7%A3%E8%AF%8D%E5%85%B8/fidicgekecdkdmkjghdgadgdmcfodfid?hl=zh-CN
+打开该链接需要使用谷歌助手：http://www.ggfwzs.com/
+安装方法二： 
+将 .crx 文件拖入浏览器中的『扩展程序』页面安装（也适用于Chromium内核的国产浏览器）：http://d.a1b.cn/3mintools/054-fanyichajian.zip
+
+ 55   QQ2009（免更新显IP） 
+http://d.a1b.cn/3mintools/055-lingyunqq2009.zip
+
+ 56   本地搜索神器Everything
+http://d.a1b.cn/3mintools/056-Everything1.4.zip
+
+ 60   标签页管理TooManyTabs 
+安装方法一：
+Chrome应用店： 
+https://chrome.google.com/webstore/detail/toomanytabs-for-chrome/amigcgbheognjmfkaieeeadojiibgbdp?hl=zh-CN
+打开该链接需要使用谷歌助手：http://www.ggfwzs.com/
+安装方法二：
+将 .crx 文件拖入浏览器中的『扩展程序』页面安装（也适用于Chromium内核的国产浏览器）： http://d.a1b.cn/3mintools/060-biaoqianguanli.zip
+
+ 61   密码泄露查询     
+社工库：http://www.xiumima.com/  
+菊花库：http://www.juhuaku.com/    
+冰凌网安社工库：http://sgk.iceinternet.cn/
+
+ 62   去除Windows更新工具    
+http://d.a1b.cn/3mintools/062-wushowhide.zip
+
+ 63   比特彗星下载网
+http://www.bitcomet.com/index-zh-cn.php
+
+ 64   Android手机安装谷歌服务
+http://d.a1b.cn/3mintools/064-VPNandGoogle.zip
+
+ 84   三个梯子
+三个免费的梯子推荐：
+极速：
+http://d.a1b.cn/3mintools/HidemeVPN.zip
+蓝灯：
+http://d.a1b.cn/3mintools/Lantern.zip
+赛风：
+http://d.a1b.cn/3mintools/Psiphon.zip
+
+ 89   鼠标右键设置工具     
+http://d.a1b.cn/3mintools/087-winmaster.zip
+
+ 87   配色提取工具ColorCube 
+http://www.fancynode.com.cn/colorcube/home
+
+ 92   免ROOT提取APK工具 
+http://www.wandoujia.com/apps/com.javiersantos.mlmanager
+
+ 93   不越狱安装旧App工具
+Charles下载地址：https://www.charlesproxy.com/download/ 
+iTunes下载地址：http://www.apple.com/cn/itunes/download/   
+
+ 94   无损处理图片工具
+无损压缩图片工具网址：https://tinypng.com/
+无损放大图片工具PhotoZoom：http://d.a1b.cn/3mintools/094-PhotoZoomPortable.zip
+
+ 95   通知提醒纪录NotifLogFree 
+http://www.wandoujia.com/apps/org.dvdh.notiflog
+
+ 96   视频加密工具 
+http://d.a1b.cn/3mintools/096-jindun2016S.zip
+
+ 97   iTools安卓模拟器 
+http://pro.itools.cn/simulate/  
+
+ 98   安卓回收站Dumpster 
+http://www.wandoujia.com/apps/cn.baloota.dumpster
+
+ 99   射手播放器Splayer 
+http://www.splayer.org/
+
+ 100   数据恢复工具Recuva
+https://www.piriform.com/recuva
+
+ 101   数据擦除工具Clean Disk Security 
+http://d.a1b.cn/3mintools/101-CleanDiskSecurity.zip
+
+ 102   手机数据擦除工具 
+AntiVirus豌豆荚下载地址：
+http://www.wandoujia.com/apps/com.antivirus
+核擦除豌豆荚下载地址：
+http://www.wandoujia.com/apps/com.avengermobile.nukemyphone
+
+ 105   文件和U盘加密工具LockDir 
+http://d.a1b.cn/3mintools/105-lockdir.zip
+
+ 106   下载GooglePlay APK工具 
+http://d.a1b.cn/3mintools/106-APKPure.zip
+
+ 110   按键精灵 
+http://www.anjian.com/
+
+ 113   User Agent Switcher 
+安装方法一：
+Chrome应用店： 
+https://chrome.google.com/webstore/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg?hl=zh-CN
+打开该链接需要使用谷歌助手：http://www.ggfwzs.com/
+安装方法二：
+将 .crx 文件拖入浏览器中的『扩展程序』页面安装（也适用于Chromium内核的国产浏览器）： http://d.a1b.cn/3mintools/113-UserAgentSwitcher.zip
+
+ 115   视频处理
+http://player.qq.com/
+
+ 116   文件目录导出
+http://d.a1b.cn/3mintools/116-tiqumuludaima.zip
+
+ 119   U盘4G
+http://d.a1b.cn/3mintools/119-paragonntfs.zip
+
+ 120   多标签文件处理
+http://cn.ejie.me/
+
+ 121   清理重复文件和空文件夹
+http://d.a1b.cn/3mintools/121-RED2.zip
+
+ 122   chrome内存占用过多
+http://d.a1b.cn/3mintools/122-OneTab.zip
+
+ 123   傻瓜式清理C盘
+http://d.a1b.cn/3mintools/123-xindubaxitongpan.zip
+
+ 124   自动调节色温
+https://justgetflux.com/
+
+ 127   win预览功能
+http://d.a1b.cn/3mintools/127-Seer-0.7.2.zip
+
+ 129   win+R快速启动
+http://d.a1b.cn/3mintools/129-nTurn.zip
+
+ 131   网址二维码
+http://d.a1b.cn/3mintools/131-AnythingtoQRcode.zip
+
+ 134   谷歌访问助手
+http://www.ggfwzs.com/
+
+ 135   伪装手机锁
+http://www.wandoujia.com/apps/com.aiweisuo.wechatlock
+
+ 137   朋友圈装逼工具
+http://odkah.com/zb/
+
+ 138   修改百度云提取码
+http://d.a1b.cn/3mintools/138-tiquma.zip
+
+ 139   文字转音频
+http://www.443w.com/tts/
+
+ 144   更改win10登录背景
+http://d.a1b.cn/3mintools/144-Win10denglubeijing.zip
+
+ 145   不限速下载工具
+http://d.a1b.cn/3mintools/145-IDM6.25.25.zip
+
+ 148   搭建本地服务器
+DAEMON Sync软件手机端豌豆荚下载地址：
+http://www.wandoujia.com/apps/com.discsoft.daemonsync
+DAEMON Sync软件PC端下载地址： 
+https://www.daemon-tools.cc/chn/products/daemonsyn
+
+ 149   iTunes
+http://www.apple.com/cn/itunes/download/
+
+ 150   微信助手
+http://coolapk.com/apk/com.wandoujia.ymir
+
+ 152   更改U盘图标
+http://d.a1b.cn/3mintools/152-tupianzhuanhuanqi.zip
+
+ 153   氦备份
+http://www.wandoujia.com/apps/com.koushikdutta.backup
+
+ 155   U盘安卓系统
+http://www.phoenixos.com/download_x86
+
+ 156   更改图标
+http://d.a1b.cn/3mintools/156-Aveicon.zip
+
+ 157   小黄人声音
+http://d.a1b.cn/3mintools/157wuxia.zip
+
+ 158   整人手机
+http://www.wandoujia.com/apps/com.yyes.fun2
+
+ 159   反转视频
+视频倒转软件Reverse（安卓版）豌豆荚下载地址： 
+http://www.wandoujia.com/apps/com.mobile.bizo.reverse
+视频倒转软件视频倒转（iOS版）下载地址： 
+https://itunes.apple.com/cn/app/shi-pin-dao-zhuan-ni-zhuan/id1073957020?mt=8&ign-mpt=uo%3D4
+
+ 160   去水印
+http://d.a1b.cn/3mintools/160-Inpaint.zip
+
+ 161   屏蔽百度推广
+http://d.a1b.cn/3mintools/161-pingbibaidu.zip
+
+ 162   下载在线音乐和视频
+http://d.a1b.cn/3mintools/162-xiazaiyinyueheshipin.zip
+
+ 163   导出文档里的图片
+http://d.a1b.cn3mintools/163-OfficeImageExtractionWizard.zip
+
+ 164   提升电脑复制文件速度
+http://d.a1b.cn3mintools/.aliyuncs.com/3mintools/164ExtremeCopy.zip
+
+ 165   上帝模式
+.{ED7BA470-8E54-465E-825C-99712043E01C}
+
+ 166   向日葵
+http://sunlogin.oray.com/zh_CN/download/
+
+ 167   全平台听歌listen1
+https://github.com/listen1/listen1/
+
+ 170   BTSync
+https://www.getsync.com/platforms/desktop
+
+ 171   心形图片
+http://www.shapecollage.com/
+
+ 176   鼠标焦点跟踪
+http://d.a1b.cn/3mintools/176AltDrag-1.1.zip
+
+ 177   屏蔽微博广告
+http://d.a1b.cn/3mintools/177-pingbiweibo.zip
+
+ 178   免费电影
+天天看下载地址： http://www.tiantiankan123.com/ 
+磁力看片神器： http://www.wandoujia.com/apps/com.appshenqi.cilikanpian
+
+ 180   批量下载图片
+http://d.a1b.cn/3mintools/180-Fatkun.zip
+
+ 184   视频下载
+http://www.apowersoft.cn/free-online-screen-recorder
+
+ 186   Windows镜像
+http://d.a1b.cn/3mintools/186KMSAutoNet.zip
+
+ 187   全平台加密
+http://veracrypt.codeplex.com/releases/view/619351
+
+ 191   录音转文字
+讯飞听见网址： http://www.iflyrec.com  
+录音宝下载地址： http://luyin.voicecloud.cn/
+
+ 193   定时自动同步
+http://d.a1b.cn/3mintools/193-filegee-geren.zip
+
+ 194   录制GIF
+https://itunes.apple.com/us/app/giphy-capture.-the-gif-maker/id668208984?mt=12
+https://screentogif.codeplex.com/
+
+ 195   网页截图
+http://d.a1b.cn/3mintools/195-jietu.zip
+
+ 199   农历时间
+http://hd.a1b.cn/3mintools/199-mytime.zip
+
+ 200   Android后台管理
+http://coolapk.com/apk/com.oasisfeng.greenify
+
+ 201   Chrome下载插件
+Chrono下载管理器安装方法一：Chrome应用商店下载
+下载网址：
+https://chrome.google.com/webstore/detail/chrono-download-manager/mciiogijehkdemklbdcbfkefimifhecn?hl=zh-CN
+打开上面的网址需使用Chrome插件：http://www.ggfwzs.com/
+Chrono下载管理器安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/201Chromedownload.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+ 205   一键关闭代码
+复制下载地址到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！
+一键关闭运行程序代码：
+http://d.a1b.cn/3mintools/205-daima.zip
+
+ 206   WPS 和 CAJ
+WPS下载地址：
+http://www.wps.cn/product/beta/?from=www.wps.cn
+CAJ Viewer下载地址：
+http://cajviewer.cnki.net/download.html
+
+ 207   识别二维码
+识别二维码网站工具：
+http://cdn.malu.me/qrdecode/
+Chrome二维码识别插件安装方法一：Chrome应用商店下载
+下载网址：
+https://chrome.google.com/webstore/detail/qr-code-generator-and-rea/hkojjajclkgeijhcmfjcjkddfjpaimek?hl=zh-CN
+打开上面的网址需使用Chrome插件：http://www.ggfwzs.com/
+Chrome二维码识别插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/207-shibieerweima.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+ 210   PPT遥控器
+https://ppt.baidu.com/
+
+ 211   批量新建文件夹
+复制下载地址到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！
+批量新建文件夹命令.txt：
+http://d.a1b.cn/3mintools/211-piliangxinjian.zip
+
+ 212   手机投影和录屏
+http://www.apowersoft.cn/screen-recorder
+
+ 214   链接转换
+磁力链接和种子转换网站：http://www.torrent.org.cn/
+迅雷、快车、旋风等链接转换：http://tool.lu/urlconvert/
+
+ 215   Chrome插件组策略
+谷歌访问助手插件：http://www.ggfwzs.com/
+Chrome插件白名单组策略文件（Chrome.adm）：
+http://d.a1b.cn/3mintools/215-chajianzucelue.zip
+（复制下载地址到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+
+ 216   通知栏小游戏
+iOS - Steve：
+https://itunes.apple.com/cn/app/steve-jumping-dinosaur-widget/id1090617661?mt=8&ign-mpt=uo%3D4
+Android - HungerMoji:
+http://coolapk.com/game/com.mikeroelens.hungermoji
+
+ 218   压缩包隐藏到图片
+copy/b 图片名称.jpg+压缩包名称.rar 生成后图片的名称.jpg
+注意：
+1、图片名称和压缩包名称必须和你使用的文件一致，包括后缀名。生成后的图片名称自行设定，而且生成图片的后缀名必须和前面使用的图片的后缀名一致。
+2、请直接复制，空格不能少。
+
+221   多边形图片
+多边形背景制作：
+http://qrohlf.com/trianglify-generator/
+低多边形效果生成：
+http://www.shejidaren.com/examples/tools/low-poly/#
+格式转换：
+https://convertio.co/zh/
+
+222   鼠标手势操作插件
+插件安装方法一：Chrome应用商店下载
+下载网址：
+https://chrome.google.com/webstore/detail/jlgkpaicikihijadgifklkbpdajbkhjo
+打开上面网址需使用Chrome插件：http://www.ggfwzs.com/
+插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/222-shoushicaozuochajian.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+228   配色和图标
+配色网站：
+http://colorhunt.co/
+https://color.adobe.com/zh/create/color-wheel/
+http://www.colorhunter.com/
+RGB和十六进制颜色码转换：
+http://www.sioe.cn/yingyong/yanse-rgb-16/
+图标工具：
+http://www.iconfont.cn/
+http://www.easyicon.net/
+
+229  IE Tab
+插件安装方法一：Chrome应用商店下载
+下载网址：https://chrome.google.com/webstore/detail/ie-tab/hehijbfgiekmjfkfjpbkbammjbdenadd?utm_source=chrome-ntp-icon
+打开上面的网址需使用Chrome插件：http://www.ggfwzs.com/删除 
+插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/229-IEtab.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+232  定时关机
+1、一分钟后关机代码：shutdown -s -t 60
+2、立即关机：shutdown -p
+3、取消定时关机代码：shutdown -a
+4、一分钟后重启电脑：shutdown -r -t 60
+温馨提示：关机时间为秒数，如果想半个小时后关机，就把数字改为1800就可以了。
+
+233  阿里小号
+iOS：
+https://itunes.apple.com/cn/app/a-li-xiao-hao/id922830198?mt=8&ign-mpt=uo%3D4
+Android：
+http://coolapk.com/apk/com.alicom.smartdail
+
+236  键盘操作Chrome
+Vimium插件安装方法一：Chrome应用商店下载
+下载网址：
+https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=zh-CN
+打开上面的网址需使用Chrome插件：
+http://www.ggfwzs.com/
+Vimium插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/236-Vimium.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+237  黑客装逼网站
+网址一：http://hackcode.ishoulu.com/hackertyper/
+网址二：http://hackcode.ishoulu.com/scp/
+网址三：http://hackcode.ishoulu.com/combine/
+网址四：http://hackcode.ishoulu.com/blackmesa/
+网址五：http://hackcode.ishoulu.com/linux/
+网址六：http://hackcode.ishoulu.com/matrix/
+网址七：http://hackcode.ishoulu.com/swan/
+使用的时候按 F11 全屏，按下数字小键盘的 / * - + 2 8 0 等按键可以弹出不同的特效，譬如出现登录成功、登录失败、雷达扫描、导弹发射等等效果，按下 ESC 可以移除它们。
+
+239  定时关机代码
+1、一分钟后关机代码：shutdown -s -t 60
+2、取消定时关机代码：shutdown -a
+3、在23:00点关机代码（时间自行设定）：at 23:00 shutdown -s
+温馨提示：如果想取消定时关机，在设定定时关机时，可使用：at 23:00 shutdown -s -t 120         
+那么想取消关机的代码为（比设定关机时间多一分钟）：at 23:01 shutdown -a
+
+242   搜索合集
+快搜网站：http://so.chongbuluo.com
+
+243   扩展管理
+插件安装方法一：Chrome应用商店下载
+一键管理下载网址：http://dwz.cn/3RE80G
+扩展管理器下载网址：http://dwz.cn/3RE9au
+打开上面的网址需使用Chrome插件：
+http://www.ggfwzs.com/删除 
+插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/243-tuozhanguanli.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+244   装B神器
+iOS版：
+https://itunes.apple.com/cn/app/zhuangx-shen-qi-1miao-bian/id1101595187?mt=8&ign-mpt=uo%3D4
+Android版：
+http://www.wandoujia.com/apps/com.color365.drunbility
+
+
+246   Windows 快捷键
+复制下载地址到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！
+下载地址：http://d.a1b.cn/3mintools/246-kuaijiejian.zip
+
+247   安卓微信双标签
+//MULTIWEBVIEW
+
+249   网站传输文件
+P2P传输（任何网络的PC端传输）：https://reep.io/
+局域网任何设备的传输：https://snapdrop.net/
+
+250   网页禁用右键复制
+插件安装方法一：Chrome应用商店下载
+Allow Copy下载网址：
+https://chrome.google.com/webstore/detail/allow-copy/abidndjnodakeaicodfpgcnlkpppapah/related
+Enable Copy下载网址：
+http://dwz.cn/3U0XO1
+打开上面的网址需使用Chrome插件：
+http://www.ggfwzs.com/
+插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/250-pojieyoujian.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+251   base64编码和摩斯密码
+BASE64编码：
+http://tool.chinaz.com/tools/base64.aspx
+文字加密：
+http://tool.chinaz.com/tools/textencrypt.aspx
+摩斯密码：
+中文：
+http://www.atool.org/morse.php
+英文：
+http://www.zhongguosou.com/zonghe/moErSiCodeConverter.aspx
+
+253   特殊字符输入
+复制下载地址到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！
+特殊字符输入方法汇总和对照表：
+http://d.a1b.cn/3mintools/253-teshuzifu.zip
+
+256   创客贴
+创客贴网址：https://www.chuangkit.com/index.html
+
+257   批量处理网页链接
+插件安装方法一：Chrome应用商店下载
+下载网址：
+https://chrome.google.com/webstore/detail/linkclump/lfpjkncokllnfokkgpkobnkbkmelfefj
+打开上面的网址需使用Chrome插件：http://www.ggfwzs.com/
+插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/257Linkclump_v2.7.3.zip
+（复制下载链接到浏览器打开，iPhone用户请在PC端或第三方下载应用打开！）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+258   微信功能代码
+weixin://dl/scan 扫一扫
+weixin://dl/feedback 反馈
+weixin://dl/moments 朋友圈
+weixin://dl/settings 设置
+weixin://dl/notifications 消息通知设置
+weixin://dl/chat 聊天设置
+weixin://dl/general 通用设置
+weixin://dl/officialaccounts 公众号
+weixin://dl/games 游戏
+weixin://dl/help 帮助
+weixin://dl/feedback 反馈
+weixin://dl/profile 个人信息
+weixin://dl/features 功能插件
+
+261    iPhone取消更新
+iPhone取消系统更新的描述文件：
+oldcat.me/webOTA9.mobileconfig
+（复制到浏览器打开）
+
+263   动态文字图片
+http://t.3gwen.com/
+
+264   网页打开加速
+插件安装方法一：Chrome应用商店下载
+下载网址：
+https://chrome.google.com/webstore/detail/speed-booster-load-websit/bogglmmbglnfnjdnaabjkphdelhdiomd
+打开上面的网址需使用Chrome插件：
+http://www.ggfwzs.com/
+插件安装方法二：通过黑马的分享链接下载
+下载链接：http://d.a1b.cn/3mintools/264-Speed-Booster.zip
+（复制下载链接到浏览器打开）
+下载解压后得到.crx文件，将.crx文件拖到Chrome浏览器的扩展程序页面中即可安装！
+
+265   手机纹身
+手机AR纹身应用目前仅有iOS 版：
+https://itunes.apple.com/cn/app/inkhunter-try-tattoo-designs/id991558368?mt=8&ign-mpt=uo%3D4
+
+268   3个文件互传工具
+闪传官方下载地址：
+http://www.shanchuan.cn/
+Portal官方下载地址：
+http://portal.pushbullet.com/
+Send Anywhere官网下载地址：
+https://send-anywhere.com/web/page/download
+
+270   生成网页导航
+链接: https://pan.baidu.com/s/1mhRGO7u 密码: b2iv
+
+
+
+
+阅读 100000+1443 投诉
