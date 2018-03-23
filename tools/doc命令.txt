@@ -1,0 +1,24 @@
+﻿bcdedit /set increaseuserva 4096
+（这里的4096指单进程可允许的最大值，如果进程所需内存大于4096MB，则改为6144或8192均可）
+
+
+
+依次输入
+msiexec  /unregserver
+msiexec /regserver
+net start msiserver
+目的是重启windows安装服务
+
+
+msconfig	系统配置
+
+
+mstsc		远程控制
+
+
+services.msc	服务
+
+
+notepad		文本
+
+c:\windows\system32\drivers\etc		hosts文件

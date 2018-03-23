@@ -1,0 +1,6 @@
+根据域名查询最快的
+http://tool.chinaz.com/dns?type=1&host=github.com&ip=
+
+
+192.30.253.112   github.com 
+151.101.73.147   duanfuju.github.io

@@ -1,0 +1,7 @@
+ajax中data传参时需要注意
+	json格式对象和json格式对象字符串是有区别的
+		例：
+			json格式对象：			var obj = {id："913500680",name:"寻香",realname="段福举"};
+			json格式对象字符串：		var obj = {id："913500680",name:"寻香",realname="段福举"};
+									obj=JSON.stringify(obj)
+		ps:虽然只是多一个转换,但是打印出来的格式是不一样的,后台接受参数的写法也是不一样的
