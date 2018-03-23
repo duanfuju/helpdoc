@@ -1,0 +1,9 @@
+﻿--禁用所有约束
+SET FOREIGN_KEY_CHECKS=0;
+
+
+--启用所有约束
+SET FOREIGN_KEY_CHECKS=1;
+
+--去除表中字段值中的空格
+update cm_crsnapshot set CI_NEW_DATA = REPLACE(CI_NEW_DATA,' ','')
