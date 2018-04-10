@@ -1,0 +1,13 @@
+HTTP
+	HTTP 是一个网络协议，是专门用来帮你传输 Web 内容(图片、CSS 样式、JS 脚本)
+	
+
+	
+SSL/TLS
+	SSL(Secure Sockets Layer/安全套接层)
+	TLS(Transport Layer Security/传输层安全协议)
+
+
+
+HTTPS
+	通常所说的 HTTPS 协议，说白了就是"HTTP 协议"和"SSL/TLS 协议"的组合
