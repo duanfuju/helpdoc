@@ -1,0 +1,6 @@
+﻿ps -ef|grep java		查询进程
+kill -9 15402			杀进程
+cd /usr/local/imslean/imslean-user	进入指定文件夹
+nohup java -jar imslean-user.jar &	后台运行
+cat > nohup.out			清除日志
+tail -f 20000 nohup.out		启动日志

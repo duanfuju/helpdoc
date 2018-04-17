@@ -7,3 +7,7 @@ SET FOREIGN_KEY_CHECKS=1;
 
 --去除表中字段值中的空格
 update cm_crsnapshot set CI_NEW_DATA = REPLACE(CI_NEW_DATA,' ','')
+
+--授予此用户从任何主机连接到mysql服务器的话
+grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option; 
+flush privileges;

@@ -1,0 +1,21 @@
+﻿Nginx
+	中文文档:https://www.nginx.cn/doc/index.html
+	下载路径:http://nginx.org/en/download.html
+	基本使用方法:https://blog.csdn.net/liuhailiuhai12/article/details/75009661
+
+安装与配置
+	Windows下Nginx+Tomcat整合的
+
+常用命令(dos进入nginx文件夹后)
+	启动				start nginx
+	重新加载文件			nginx -s reload
+	看自己的配置文件		nginx -t
+
+配置文件(conf\nginx.conf)
+	访问服务的名称		http>server>server_name(键值对)
+	所要转发的服务		http>server>location>proxy_pass(键值对)
+	
+
+
+注意事项
+	server_name配置为本机的ip地址,后台服务重定向和此一致
