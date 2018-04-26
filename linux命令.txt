@@ -11,6 +11,6 @@ cat > nohup.out			清除日志
 tail -f 20000 nohup.out		启动日志
 
 
-
-cd ./usr/local/nginx/sbin
+./nginx
+cd /usr/local/nginx/sbin
 ./nginx -s reload

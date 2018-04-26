@@ -2,6 +2,7 @@ dockerid:duanfuju
 password:52cl1314
 email:913500680@qq.com
 
+cd /d/ideaWorkspace/imslean/imslean-user/src/main/docker
 
 docker login
 
@@ -13,7 +14,7 @@ docker info
 
 docker run hello-world		#Pull the hello-world image from Docker Hub and run a container
 
-docker image ls			#List the hello-world image that was downloaded from Docker Hub
+docker image ls			#List the hello-world image that was downloaded from Docker Hub	查看本机所安装的集装箱
 
 docker container ls --all	#List the hello-world container (that exited after displaying “Hello from Docker!”)
 
@@ -25,8 +26,18 @@ docker container ls --help
 
 docker run --help
 
+docker ps -a			#查看正在运行的容器
 
+docker rm docker ps -a -q	#删除所有的容器
 
-docker-machine restart default      # Restart the environment
+docker stop Name/ID 		#停止一个容器
 
-eval $(docker-machine env default)  # Refresh your environment settings
+docker start Name/ID 		#启动一个容器
+
+docker kill Name/ID		#杀死一个容器
+
+docker-machine upgrade default 		#docker-machine upgrade default 
+
+docker-machine restart default      	# Restart the environment
+
+eval $(docker-machine env default)  	# Refresh your environment settings
