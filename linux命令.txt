@@ -1,6 +1,16 @@
-﻿ps -ef|grep java		查询进程
+﻿IP地址:172.16.31.94
+用户名:root
+密码:rootroot
+端口:22
+
+ps -ef|grep java		查询进程
 kill -9 15402			杀进程
 cd /usr/local/imslean/imslean-user	进入指定文件夹
 nohup java -jar imslean-user.jar &	后台运行
 cat > nohup.out			清除日志
 tail -f 20000 nohup.out		启动日志
+
+
+
+cd ./usr/local/nginx/sbin
+./nginx -s reload
