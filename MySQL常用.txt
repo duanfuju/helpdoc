@@ -23,3 +23,9 @@ set sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISI
 解决方法2
 在etc/my.cnf 文件 最下方 添加 
 sql_mode ='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+
+
+问题
+authentication plugin caching_sha2_password
+解决方法
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
