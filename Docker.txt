@@ -1,4 +1,4 @@
-dockerid:duanfuju
+ï»¿dockerid:duanfuju
 password:52cl1314
 email:913500680@qq.com
 
@@ -17,9 +17,9 @@ docker info
 
 docker run hello-world		#Pull the hello-world image from Docker Hub and run a container
 
-docker image ls			#List the hello-world image that was downloaded from Docker Hub	²é¿´±¾»úËù°²×°µÄ¼¯×°Ïä
+docker image ls			#List the hello-world image that was downloaded from Docker Hub	æŸ¥çœ‹æœ¬æœºæ‰€å®‰è£…çš„é›†è£…ç®±
 
-docker container ls --all	#List the hello-world container (that exited after displaying ¡°Hello from Docker!¡±)
+docker container ls --all	#List the hello-world container (that exited after displaying â€œHello from Docker!â€)
 
 docker --help
 
@@ -29,23 +29,25 @@ docker container ls --help
 
 docker run --help
 
-docker ps -a			#²é¿´ÕıÔÚÔËĞĞµÄÈİÆ÷
+docker ps -a			#æŸ¥çœ‹æ­£åœ¨è¿è¡Œçš„å®¹å™¨
 
-docker rm docker ps -a -q	#É¾³ıËùÓĞµÄÈİÆ÷
+docker rm docker ps -a -q	#åˆ é™¤æ‰€æœ‰çš„å®¹å™¨
+docker stop $(docker ps -a -q) //  stopåœæ­¢æ‰€æœ‰å®¹å™¨
+docker  rm $(docker ps -a -q) //   removeåˆ é™¤æ‰€æœ‰å®¹å™¨
 
-docker stop Name/ID 		#Í£Ö¹Ò»¸öÈİÆ÷
+docker stop Name/ID 		#åœæ­¢ä¸€ä¸ªå®¹å™¨
 
-docker start Name/ID 		#Æô¶¯Ò»¸öÈİÆ÷
+docker start Name/ID 		#å¯åŠ¨ä¸€ä¸ªå®¹å™¨
 
-docker kill Name/ID		#É±ËÀÒ»¸öÈİÆ÷
+docker kill Name/ID		#æ€æ­»ä¸€ä¸ªå®¹å™¨
 
-docker rm cid	#É¾³ıÖ¸¶¨idÈİÆ÷
+docker rm cid	#åˆ é™¤æŒ‡å®šidå®¹å™¨
 
-docker rmi cid	#É¾³ıÖ¸¶¨id¾µÏñ
+docker rmi cid	#åˆ é™¤æŒ‡å®šidé•œåƒ
 
-docker save -o imslean-user.tar duanfuju/imslean-user		#µ¼³ö¾µÏñ°ü
+docker save -o imslean-user.tar duanfuju/imslean-user		#å¯¼å‡ºé•œåƒåŒ…
 
-docker load -i imslean-user.tar		#µ¼Èë¾µÏñ°ü	
+docker load -i imslean-user.tar		#å¯¼å…¥é•œåƒåŒ…	
 
 
 docker-machine upgrade default 		#docker-machine upgrade default 
@@ -55,17 +57,15 @@ docker-machine restart default      	# Restart the environment
 eval $(docker-machine env default)  	# Refresh your environment settings
 
 
-docker pull mysql/mysql-server:latest		#»ñÈ¡mysql×îĞÂµÄ¾µÏñ°ü
+docker pull mysql/mysql-server:latest		#è·å–mysqlæœ€æ–°çš„é•œåƒåŒ…
 
-docker run --name mysql -p 192.168.99.100:3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:latest	#Æô¶¯mysql£¬ÉèÖÃÃÜÂëÎªroot
+docker run --name mysql -p 192.168.99.100:3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql/mysql-server:latest	#å¯åŠ¨mysqlï¼Œè®¾ç½®å¯†ç ä¸ºroot
 
-docker exec -it mysql bash		#Í¨¹ıÖ÷»úÃüÁîĞĞ½øÈëmysqlÈİÆ÷
+docker exec -it mysql bash		#é€šè¿‡ä¸»æœºå‘½ä»¤è¡Œè¿›å…¥mysqlå®¹å™¨
 
-mysql -uroot -p		#Ê¹ÓÃrootÓÃ»§µÇÂ¼mysql
+mysql -uroot -p		#ä½¿ç”¨rootç”¨æˆ·ç™»å½•mysql
 
-grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option		#ÔÊĞírootÓÃ»§Ô¶³ÌÁ¬½Ó
-
-
+grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option		#å…è®¸rootç”¨æˆ·è¿œç¨‹è¿æ¥
 
 
 
@@ -80,86 +80,88 @@ grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option
 
 
 
-Dockerfile£º
 
-DockerfileÓÉÒ»ĞĞĞĞÃüÁîÓï¾ä×é³É£¬²¢ÇÒÖ§³ÖÓÃ¡°#¡±¿ªÍ·×÷Îª×¢ÊÍ£¬Ò»°ãµÄ£¬Dockerfile·ÖÎªËÄ²¿·Ö£º»ù´¡¾µÏñĞÅÏ¢£¬Î¬»¤ÕßĞÅÏ¢£¬¾µÏñ²Ù×÷Ö¸ÁîºÍÈİÆ÷Æô¶¯Ê±Ö´ĞĞµÄÖ¸Áî¡£
 
-DockerfileÖ¸Áî£º
+Dockerfileï¼š
 
-1¡¢FROM
+Dockerfileç”±ä¸€è¡Œè¡Œå‘½ä»¤è¯­å¥ç»„æˆï¼Œå¹¶ä¸”æ”¯æŒç”¨â€œ#â€å¼€å¤´ä½œä¸ºæ³¨é‡Šï¼Œä¸€èˆ¬çš„ï¼ŒDockerfileåˆ†ä¸ºå››éƒ¨åˆ†ï¼šåŸºç¡€é•œåƒä¿¡æ¯ï¼Œç»´æŠ¤è€…ä¿¡æ¯ï¼Œé•œåƒæ“ä½œæŒ‡ä»¤å’Œå®¹å™¨å¯åŠ¨æ—¶æ‰§è¡Œçš„æŒ‡ä»¤ã€‚
 
-¸ñÊ½£ºFROM <image>»ò FROM <image>:<tag>
+DockerfileæŒ‡ä»¤ï¼š
 
-µÚÒ»ÌõÖ¸Áî±ØĞëÎªFROMÖ¸Áî£¬²¢ÇÒ£¬Èç¹ûÔÚÍ¬Ò»¸öDockerfileÖĞ´´½¨¶à¸ö¾µÏñÊ±£¬¿ÉÒÔÊ¹ÓÃ¶à¸öFROMÖ¸Áî£¨Ã¿¸ö¾µÏñÒ»´Î£©
+1ã€FROM
 
-2¡¢MAINTAINET
+æ ¼å¼ï¼šFROM <image>æˆ– FROM <image>:<tag>
 
-¸ñÊ½£ºMAINTAINET <name>
+ç¬¬ä¸€æ¡æŒ‡ä»¤å¿…é¡»ä¸ºFROMæŒ‡ä»¤ï¼Œå¹¶ä¸”ï¼Œå¦‚æœåœ¨åŒä¸€ä¸ªDockerfileä¸­åˆ›å»ºå¤šä¸ªé•œåƒæ—¶ï¼Œå¯ä»¥ä½¿ç”¨å¤šä¸ªFROMæŒ‡ä»¤ï¼ˆæ¯ä¸ªé•œåƒä¸€æ¬¡ï¼‰
 
-Ö¸¶¨Î¬»¤ÕßµÄĞÅÏ¢
+2ã€MAINTAINET
 
-3¡¢RUN
+æ ¼å¼ï¼šMAINTAINET <name>
 
-¸ñÊ½£ºRUN <command> »ò RUN ["", "", ""]
+æŒ‡å®šç»´æŠ¤è€…çš„ä¿¡æ¯
 
-Ã¿ÌõÖ¸Áî½«ÔÚµ±Ç°¾µÏñ»ù´¡ÉÏÖ´ĞĞ£¬²¢Ìá½»ÎªĞÂµÄ¾µÏñ¡££¨¿ÉÒÔÓÃ¡°\¡±»»ĞĞ£©
+3ã€RUN
 
-4¡¢CMD
+æ ¼å¼ï¼šRUN <command> æˆ– RUN ["", "", ""]
 
-¸ñÊ½£ºCMD ["","",""]
+æ¯æ¡æŒ‡ä»¤å°†åœ¨å½“å‰é•œåƒåŸºç¡€ä¸Šæ‰§è¡Œï¼Œå¹¶æäº¤ä¸ºæ–°çš„é•œåƒã€‚ï¼ˆå¯ä»¥ç”¨â€œ\â€æ¢è¡Œï¼‰
 
-Ö¸¶¨Æô¶¯ÈİÆ÷Ê±Ö´ĞĞµÄÃüÁî£¬Ã¿¸öDockerfileÖ»ÄÜÓĞÒ»ÌõCMDÖ¸Áî£¬Èç¹ûÖ¸¶¨ÁË¶àÌõÖ¸Áî£¬Ôò×îºóÒ»ÌõÖ´ĞĞ¡££¨»á±»Æô¶¯Ê±Ö¸¶¨µÄÃüÁî¸²¸Ç£©
+4ã€CMD
 
-5¡¢EXPOSE
+æ ¼å¼ï¼šCMD ["","",""]
 
-¸ñÊ½£ºEXPOSE <port>  [ <port> ...]
+æŒ‡å®šå¯åŠ¨å®¹å™¨æ—¶æ‰§è¡Œçš„å‘½ä»¤ï¼Œæ¯ä¸ªDockerfileåªèƒ½æœ‰ä¸€æ¡CMDæŒ‡ä»¤ï¼Œå¦‚æœæŒ‡å®šäº†å¤šæ¡æŒ‡ä»¤ï¼Œåˆ™æœ€åä¸€æ¡æ‰§è¡Œã€‚ï¼ˆä¼šè¢«å¯åŠ¨æ—¶æŒ‡å®šçš„å‘½ä»¤è¦†ç›–ï¼‰
 
-¸æËßDocker·şÎñ¶Ë±©Â¶¶Ë¿Ú£¬ÔÚÈİÆ÷Æô¶¯Ê±ĞèÒªÍ¨¹ı -p ×ö¶Ë¿ÚÓ³Éä
+5ã€EXPOSE
 
-6¡¢ENV
+æ ¼å¼ï¼šEXPOSE <port>  [ <port> ...]
 
-¸ñÊ½£ºENV <key> <value>
+å‘Šè¯‰DockeræœåŠ¡ç«¯æš´éœ²ç«¯å£ï¼Œåœ¨å®¹å™¨å¯åŠ¨æ—¶éœ€è¦é€šè¿‡ -p åšç«¯å£æ˜ å°„
 
-Ö¸¶¨»·¾³±äÁ¿£¬»á±»RUNÖ¸ÁîÊ¹ÓÃ£¬²¢ÔÚÈİÆ÷ÔËĞĞÊ±±£´æ
+6ã€ENV
 
-7¡¢ADD
+æ ¼å¼ï¼šENV <key> <value>
 
-¸ñÊ½£ºADD  <src>  <dest>
+æŒ‡å®šç¯å¢ƒå˜é‡ï¼Œä¼šè¢«RUNæŒ‡ä»¤ä½¿ç”¨ï¼Œå¹¶åœ¨å®¹å™¨è¿è¡Œæ—¶ä¿å­˜
 
-¸´ÖÆÖ¸¶¨µÄ<src>µ½ÈİÆ÷µÄ<dest>ÖĞ£¬<src>¿ÉÒÔÊÇDockerfileËùÔÚµÄÄ¿Â¼µÄÒ»¸öÏà¶ÔÂ·¾¶£»¿ÉÒÔÊÇURL£¬Ò²¿ÉÒÔÊÇtar.gz£¨×Ô¶¯½âÑ¹£©
+7ã€ADD
 
-8¡¢COPY
+æ ¼å¼ï¼šADD  <src>  <dest>
 
-¸ñÊ½£ºCOPY <src>  <dest>
+å¤åˆ¶æŒ‡å®šçš„<src>åˆ°å®¹å™¨çš„<dest>ä¸­ï¼Œ<src>å¯ä»¥æ˜¯Dockerfileæ‰€åœ¨çš„ç›®å½•çš„ä¸€ä¸ªç›¸å¯¹è·¯å¾„ï¼›å¯ä»¥æ˜¯URLï¼Œä¹Ÿå¯ä»¥æ˜¯tar.gzï¼ˆè‡ªåŠ¨è§£å‹ï¼‰
 
-¸´ÖÆ±¾µØÖ÷»úµÄ <src> £¨ Îª Dockerfile ËùÔÚÄ¿Â¼µÄÏà¶ÔÂ·¾¶£©µ½ÈİÆ÷ÖĞµÄ <dest> £¨µ±Ê¹ÓÃ±¾µØÄ¿Â¼ÎªÔ´Ä¿Â¼Ê±£¬ÍÆ¼öÊ¹ÓÃ COPY£©
+8ã€COPY
 
-9¡¢ENTRYPOINT
+æ ¼å¼ï¼šCOPY <src>  <dest>
 
-¸ñÊ½£ºENTRYPOINT ["","",""]
+å¤åˆ¶æœ¬åœ°ä¸»æœºçš„ <src> ï¼ˆ ä¸º Dockerfile æ‰€åœ¨ç›®å½•çš„ç›¸å¯¹è·¯å¾„ï¼‰åˆ°å®¹å™¨ä¸­çš„ <dest> ï¼ˆå½“ä½¿ç”¨æœ¬åœ°ç›®å½•ä¸ºæºç›®å½•æ—¶ï¼Œæ¨èä½¿ç”¨ COPYï¼‰
 
-ÅäÖÃÈİÆ÷Æô¶¯ºóÖ´ĞĞµÄÃüÁî£¬²¢ÇÒ²»¿É±» docker run Ìá¹©µÄ²ÎÊı¸²¸Ç¡££¨Ã¿¸ö Dockerfile ÖĞÖ»ÄÜÓĞÒ»¸ö ENTRYPOINT £¬µ±Ö¸¶¨¶à¸öÊ±£¬Ö»ÓĞ×îºóÒ»¸öÆğĞ§£©
+9ã€ENTRYPOINT
 
-10¡¢VOLUME
+æ ¼å¼ï¼šENTRYPOINT ["","",""]
 
-¸ñÊ½£ºVOLUME ["/mnt"] 
+é…ç½®å®¹å™¨å¯åŠ¨åæ‰§è¡Œçš„å‘½ä»¤ï¼Œå¹¶ä¸”ä¸å¯è¢« docker run æä¾›çš„å‚æ•°è¦†ç›–ã€‚ï¼ˆæ¯ä¸ª Dockerfile ä¸­åªèƒ½æœ‰ä¸€ä¸ª ENTRYPOINT ï¼Œå½“æŒ‡å®šå¤šä¸ªæ—¶ï¼Œåªæœ‰æœ€åä¸€ä¸ªèµ·æ•ˆï¼‰
 
-´´½¨Ò»¸ö¿ÉÒÔ´Ó±¾µØÖ÷»ú»òÆäËûÈİÆ÷¹ÒÔØµÄ¹ÒÔØµã£¬Ò»°ãÓÃÀ´´æ·ÅÊı¾İ¿âºÍĞèÒª±£³ÖµÄÊı¾İµÈ
+10ã€VOLUME
 
-11¡¢USER
+æ ¼å¼ï¼šVOLUME ["/mnt"] 
 
-¸ñÊ½£ºUSER daemon
+åˆ›å»ºä¸€ä¸ªå¯ä»¥ä»æœ¬åœ°ä¸»æœºæˆ–å…¶ä»–å®¹å™¨æŒ‚è½½çš„æŒ‚è½½ç‚¹ï¼Œä¸€èˆ¬ç”¨æ¥å­˜æ”¾æ•°æ®åº“å’Œéœ€è¦ä¿æŒçš„æ•°æ®ç­‰
 
-Ö¸¶¨ÔËĞĞÈİÆ÷Ê±µÄÓÃ»§Ãû»ò UID£¬ºóĞøµÄ RUN Ò²»áÊ¹ÓÃÖ¸¶¨ÓÃ»§¡£
+11ã€USER
 
-12¡¢WORKDIR
+æ ¼å¼ï¼šUSER daemon
 
-¸ñÊ½£ºWORKDIR /path/to/workdir
+æŒ‡å®šè¿è¡Œå®¹å™¨æ—¶çš„ç”¨æˆ·åæˆ– UIDï¼Œåç»­çš„ RUN ä¹Ÿä¼šä½¿ç”¨æŒ‡å®šç”¨æˆ·ã€‚
 
-ÎªºóĞøµÄ RUN ¡¢ CMD ¡¢ ENTRYPOINT Ö¸ÁîÅäÖÃ¹¤×÷Ä¿Â¼¡££¨¿ÉÒÔÊ¹ÓÃ¶à¸ö WORKDIR	Ö¸Áî£¬ºóĞøÃüÁîÈç¹û²ÎÊıÊÇÏà¶ÔÂ·¾¶£¬ Ôò»á»ùÓÚÖ®Ç°ÃüÁîÖ¸¶¨µÄÂ·¾¶£©
+12ã€WORKDIR
 
-13¡¢ONBUILD
+æ ¼å¼ï¼šWORKDIR /path/to/workdir
 
-¸ñÊ½£ºONBUILD [INSTRUCTION]
+ä¸ºåç»­çš„ RUN ã€ CMD ã€ ENTRYPOINT æŒ‡ä»¤é…ç½®å·¥ä½œç›®å½•ã€‚ï¼ˆå¯ä»¥ä½¿ç”¨å¤šä¸ª WORKDIR	æŒ‡ä»¤ï¼Œåç»­å‘½ä»¤å¦‚æœå‚æ•°æ˜¯ç›¸å¯¹è·¯å¾„ï¼Œ åˆ™ä¼šåŸºäºä¹‹å‰å‘½ä»¤æŒ‡å®šçš„è·¯å¾„ï¼‰
 
-ÅäÖÃµ±Ëù´´½¨µÄ¾µÏñ×÷ÎªÆäËüĞÂ´´½¨¾µÏñµÄ»ù´¡¾µÏñÊ±£¬ËùÖ´ĞĞµÄ²Ù×÷Ö¸Áî
+13ã€ONBUILD
+
+æ ¼å¼ï¼šONBUILD [INSTRUCTION]
+
+é…ç½®å½“æ‰€åˆ›å»ºçš„é•œåƒä½œä¸ºå…¶å®ƒæ–°åˆ›å»ºé•œåƒçš„åŸºç¡€é•œåƒæ—¶ï¼Œæ‰€æ‰§è¡Œçš„æ“ä½œæŒ‡ä»¤
