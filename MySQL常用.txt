@@ -12,6 +12,15 @@ update cm_crsnapshot set CI_NEW_DATA = REPLACE(CI_NEW_DATA,' ','')
 grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option; 
 flush privileges;
 
+--建立索引
+CREATE INDEX cm_cicr_ci_id ON cm_cicr (ci_id)
+
+--建立视图
+create or replace view view_cm_cicr
+as
+select * from cm_cicr t1 where not exists(select 1 from cm_cicr t2  where t1.ci_id = t2.ci_id and t2.created_at>t1.created_at) order by ci_id desc
+
+
 
 sql语句查询排序问题
 Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'temp.ci_cr_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
