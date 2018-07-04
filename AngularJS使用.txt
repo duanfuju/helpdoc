@@ -1,0 +1,7 @@
+﻿npm start 启动项目
+
+npm install下载依赖包
+
+npm install *.js下载指定依赖包
+
+ng build -aot	前端打包
