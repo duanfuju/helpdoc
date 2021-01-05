@@ -1,0 +1,50 @@
+https://redis.io/download
+https://www.runoob.com/redis/redis-install.html
+https://blog.csdn.net/gsj4719896/article/details/78231700
+
+#执行shell脚本
+sh env.sh
+
+#下载redis
+wget http://download.redis.io/releases/redis-5.0.5.tar.gz
+
+#解压压缩包
+tar xzf redis-5.0.5.tar.gz
+
+unzip *.zip
+
+#进入压缩文件目录
+cd redis-5.0.5
+
+#对redis文件进行编译
+make
+
+#安装
+make PREFIX=/usr/local/redis/ install
+
+#复制redis配置文件
+cp -f redis.conf /usr/local/redis/bin
+
+#进入安装目录下的bin目录
+cd "/usr/local/redis/bin"
+
+#启动redis
+./redis-server redis.conf
+
+#查看redis服务
+ps aux|grep redis
+
+
+#关闭服务器
+server-cli shutdown
+
+#关闭防火墙
+systemctl stop firewalld.service
+
+
+#错误，sh文件被windows系统操作系统打开过
+: invalid optionset: -
+set: usage: set [-abefhkmnptuvxBCHP] [-o option-name] [--] [arg ...]
+#解决问题命令行
+sed -i "s/\r//" env.sh
+

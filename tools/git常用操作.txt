@@ -1,0 +1,159 @@
+git有可以创建4096长度的文件名，然而在windows最多是260，因为git用了旧版本的windows api
+git config --global core.longpaths true
+
+git clone XXXX
+
+
+增加最低速度时间
+git config --global http.lowSpeedLimit 0
+git config --global http.lowSpeedTime 999999
+
+
+拉最新代码  
+git checkout master && git pull
+git checkout develop && git pull
+
+建本地分支
+git checkout -b frommaster && git rebase master
+
+
+修改之后
+把修改存起来
+git stash -m "XXX" 
+
+
+拉最新代码  
+git checkout master && git pull 
+
+git checkout eft && git pull 
+
+
+git checkout eft-gdlt && git pull 
+
+git checkout 4.2.4P2 && git pull 
+
+
+git checkout 4.3.0 && git pull 
+
+切换到本地分支，并合并最新的代码
+git checkout frommaster && git rebase master
+
+git checkout develop && git pull
+
+
+释放修改
+git stash  pop
+
+
+有冲突时解冲突
+git add XXX
+git commit -m "YYYY"
+
+
+提交
+git push origin HEAD:refs/for/master
+
+git push origin HEAD:refs/for/eft
+
+git push origin HEAD:refs/for/eft-gdlt
+
+
+git push origin HEAD:refs/for/4.2.4P2
+
+git push origin HEAD:refs/for/4.3.0
+
+
+git push origin HEAD:refs/for/develop
+
+
+git push origin develop
+
+git branch -a
+
+回退版本
+保留修改本地源代码
+	
+强制覆盖本地源代码
+git reset --hard  c37aa76e1c63e162ed79ce0148d5856c2aab1dd2
+
+git log
+
+
+
+
+
+解决git冲突
+①在提交管理页面废弃当前push的commit
+②使用reset命令退到上一个commit（废弃当前的commit）
+③更新代码
+⑤修改文件后再次提交
+
+获取钩子
+scp -p -P 29418 duanfj@172.16.164.211:hooks/commit-msg .git/hooks/
+
+git reset --soft 1da30d1a506f713baa79f26923c6fe8a0a1926b4
+
+
+git reflog	查找操作记录
+git reset --hard 9c14646
+回退一个版本,清空暂存区,将已提交的内容的版本恢复到本地,本地的文件也将被恢复的版本替换
+
+
+Login：cnpm login --registry=http://172.16.137.113:7001
+依次输入用户名密码，邮箱等信息
+username：certus
+Password：certusnet123
+wugg@certusnet.com.cn
+这个指令下载包
+cnpm install --registry=http://172.16.137.113:7001
+
+打包时跳过测试
+mvn clean install -Dmaven.test.skip=true
+
+
+
+
+然后将cnpm镜像直接设为公司cnpm私服地址：
+cnpm config set registry http://172.16.137.113:7001
+再注册一个自己的账号：
+cnpm adduser
+然后依次输入账号，密码，邮箱
+cnpm login
+cnpm install
+
+
+
+* !!vue-style-loader!css-loader?{"sourceMap":true}!
+执行以下命令就可以了
+cnpm install --save-dev less-loader less
+
+
+cnpm install
+先删除依赖包的文件夹，然后在package.json删除依赖，最后执行以下命令
+cnpm install --save @babel/polyfill
+cnpm install --save @vue/cli-plugin-babel
+
+日志查看
+ip：172.16.137.80
+路径：/opt/cloud-hub/logs
+用户名/密码：root/!QAZ2wsx
+查看日志命令：tail -1000f cloud-huawei-core.log
+cloud-ui-api.log
+
+
+tail -1000f cloud-ui-api.log
+
+
+172.16.66.135
+ip：172.16.137.80
+路径：/usr/local/cloud-hub/logs
+查看日志命令：tail -1000f cloud-ui-driver.log
+
+
+
+172.16.55.162
+root/123456
+路径：/var/log/cloud-hub/resources.log
+查看日志命令：
+	tail -1000f resources.log
+	tail -1000f huaweiApi.log

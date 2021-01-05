@@ -1,0 +1,9 @@
+进入指定路径
+cd /root/JGLYGZ/after-msa/
+
+查看指定文件1000行数据
+tail -1000f nohup.out
+
+日志切割
+cat *.out >>nohup`date +%Y-%m-%d`.out
+echo " " > nohup.out

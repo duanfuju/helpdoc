@@ -22,3 +22,14 @@ services.msc	服务
 notepad		文本
 
 c:\windows\system32\drivers\etc		hosts文件
+
+ipconfig /displaydns		显示dns
+
+ipconfig /flushdns		刷新dns
+
+netsh winsock reset		网络重置
+
+route print			显示路由配置
+route delete 0.0.0.0 mask 0.0.0.0 172.31.10.254
+route delete 0.0.0.0 mask 0.0.0.0 192.168.10.254
+route add 0.0.0.0 mask 0.0.0.0 192.168.237.254 -p
